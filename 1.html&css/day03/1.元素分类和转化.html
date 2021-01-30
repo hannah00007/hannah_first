@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1,.box2{
+            width: 300px;
+            height: 300px;
+            /* 块级元素转成行内块元素（可以在一行又能调宽高） */
+            /* display: inline-block; */
+             margin-left: -350px;
+        }
+        .box2{
+            background: lightpink;
+        }
+        .box1{
+            background: lightseagreen;
+        }
+        span{
+            width: 100px;
+            height: 100px;
+            display: block;
+            background: magenta;
+        }
+        img{
+            width: 300px;
+            display: block;
+         }
+    </style>
+</head>
+<body>
+
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwx3.sinaimg.cn%2Fcrop.0.4.1280.711%2Fed97c81bly1ghhddwq4flj20zk0k0ju0.jpg&refer=http%3A%2F%2Fwx3.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611886750&t=dec6583ade58c7a8c33071de6bb11984" alt="">
+    <span>太帅了</span>
+    <input type="123">
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 盒模型包含
+        + content 主要内容区域
+        + padding 内填充即内容到盒子边上的距离(不一定是文字内容，抽象是指主要区域看下面的例子)
+        + border 边框线的粗细
+        + magrin 盒子与盒子之间的距离  */
+    span {
+        display: inline-block;
+        background-color: yellow;
+        padding: 20px;
+        border: 1px solid red;
+        margin: 10px;
+    }
+</style>
+<body>
+    <span>我是span</span>
+    <span>我是span</span>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 例如
+            + 主要区域是里面的div的大小
+            + 要想里面的div远离外面的div并以外面的为基准:用padding，
+            + 以里面的div为基准则:用margin -->
+    <div class="fri">
+        <div class="sec"></div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        margin: 10px;
+        border: 10px solid red;
+    }
+</style>
+<body>
+    <!-- 计算盒子大小
+        + width:content的长+左右padding+左右border
+        + height:content的高+上下padding+上下border -->
+    <div>
+        我是王涵
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 
+    标准盒模型width和height是content的宽高
+    ie盒模型的width和height是总盒子的宽高
+    */
+    div {
+        /* 转换为 ie 盒模型之后的 width和 height是包括了 padding的 */
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        padding: 10px;
+        /* 可以转换为 ie盒模型：增加 padding 不会夸大盒子的大小 */
+        box-sizing: border-box;
+        /* 标准盒模型（默认) */
+        box-sizing: content-box;
+    }
+</style>
+
+<body>
+    <div>
+        是我王涵
+    </div>
+</body>
+
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        background-color: red;
+        /* padding是4个值的时候是顺时针，也可以用
+            + padding-top
+            + padding-right
+            + padding-left
+            + padding-buttom */
+        padding: 10px 20px 30px 40px;
+        /* padding3 个值是指上、左右、下，也就是少的那个位置就去找对面 */
+        /* 一个值是指 4 个值都是它 */
+        padding: 10px 20px 30px;
+    }
+</style>
+<body>
+    <div class="box">
+
+    </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .par{
+        width: 100px;
+        height: 100px;
+        background-color: greenyellow;
+    }
+    .child{
+        width: 50px;
+        height: 50px;
+        background-color: hotpink;
+        margin-top: 10px;
+    }
+
+</style>
+<body>
+    <div class="par">
+        <div class="child"></div>
+    </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .par{
+        width: 100px;
+        height: 100px;
+        background-color: greenyellow;
+        /* box-sizing: border-box;
+        padding-top: 30px; */
+        overflow: hidden;
+    }
+    .child{
+        width: 50px;
+        height: 50px;
+        background-color: hotpink;
+        /* margin 值穿透
+            + 理论上在里面的 div加上 padding 会让里面的 div 和外面的 div 分离，但是结果是外面的 div也会随之下来
+            + 解决办法
+                + 1、在外面的盒子设置 border的大小比如 1px，同时让边框的颜色成 transparent,但是盒子的大小会变，
+                    同时把 box-sizing: border-box;
+                + 2、用 overflow：hidden
+                + 3、给大盒子用 padding-top 用时要使用box-sizing: border-box; */
+        margin-top: 30px;
+        
+    }
+
+</style>
+<body>
+    <div class="par">
+        <div class="child"></div>
+    </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box1,.box2{
+        width: 100px;
+        height: 100px;
+        background-color: hotpink;
+    }
+    /* margin 值合并：
+        有两个兄弟元素：box1，box2,给 box1 设置 margin-buttom:100px, box2设置 margin-top:30px,
+        它们之间的距离不是 130px 而是 100px.即两个距离谁大计谁的，所以要想想着之间 130px 则直接在上面或者下面设置 130*/
+    .box1{
+        margin-bottom: 100px;
+    }
+    .box2{
+        background-color: indigo;
+        margin-top: 30px;
+    }
+
+</style>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>

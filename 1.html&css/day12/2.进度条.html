@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- meta:vp 回车 -->
+    <!-- 把pc端的放到移动端，默认 body是980，加下面的话那么就会变成手机的宽度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;       
+    }
+    /* body{
+        background-color: #fff;
+    } */
+    .box{
+        width: 300px;       
+        border: 1px solid red;
+        margin: 40px auto;
+        border-radius: 30px;
+    }
+    .box1{
+        /* width: 10px; */
+        border-radius: 30px;
+        height: 20px;
+        margin: 5px;
+        background: linear-gradient(
+            left top,
+            yellow 0%,
+            yellow 25%,
+            yellowGreen 25%,
+            yellowGreen 50%,
+            yellow 50%,
+            yellow 75%,
+            yellowGreen 75%,
+            yellowGreen 100%
+        );
+        background: -webkit-linear-gradient(
+            left top,
+            yellow 0%,
+            yellow 25%,
+            yellowGreen 25%,
+            yellowGreen 50%,
+            yellow 50%,
+            yellow 75%,
+            yellowGreen 75%,
+            yellowGreen 100%
+        );
+        background-size: 20px 20px;
+        animation: run 1s linear infinite;
+    }
+    @keyframes run{
+        0%{
+            width: 0;
+        }
+        100%{
+            width: 100%;
+            background-position: -20px;
+        }
+    }
+    .box2{
+        width: 100px;
+        height: 100px;
+        background: royalblue;
+    }
+    /* 制定规则 小于 600px */
+    @media screen and (max-width: 600px){
+        .box2{
+            width: 80px;
+        }
+    }
+    /* 制定规则 大于 300 px 小于 600px */
+    @media screen and (min-width: 300px) and (max-width: 600px){
+        .box2{
+            width: 80px;
+        }
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="box1">
+        </div>
+    </div>
+    <div class="box2">
+    </div>
+</body>
+</html>

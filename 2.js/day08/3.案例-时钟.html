@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        font-size: 40px;
+        height: 100px;
+        line-height: 100px;
+        background-color: cyan;
+        text-align: center;
+        letter-spacing: 2px;
+    }
+</style>
+
+<body>
+    <h2 id="clock"></h2>
+</body>
+
+</html>
+<script>
+    function addZero(sec) {
+        // if (sec < 10) {
+        //     sec = "0" + sec
+        // }
+        // return sec
+        return sec < 10 ? sec += "0" : sec
+    }
+    // new Date();获取你电脑当前的本地时间
+    function clock() {
+        var res = new Date();//对象
+        var 从1970开始的毫秒=new Date().getTime();
+        var year = res.getFullYear();
+        var month = res.getMonth() + 1;//0-11
+        var date = res.getDate();//日期
+        var day = res.getDay()//0-6
+        var hours = res.getHours();
+        var minutes = res.getMinutes();
+        var secs = res.getSeconds();
+        var milli = res.getMilliseconds();
+        var all = res.toLocaleDateString();//"2021/1/28"
+        var date = res.toDateString();//"Thu Jan 28 2021"
+        var time = res.toLocaleTimeString();//"下午8:17:32"
+        var week = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
+        var res = year + "年" + month + "月" + addZero(day) + "日" + week[day] +" "+ addZero(hours) + ":" + addZero(minutes) + ":" + addZero(secs);
+        return res
+    }
+    var ele = document.getElementById("clock");
+    ele.innerHTML = clock();
+    setInterval(function () {
+        ele.innerHTML = clock();
+    }, 1000);
+
+    
+
+
+
+
+</script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box1{
+        width: 500px;
+        height: 500px;
+        background-color: palevioletred;
+        margin: 0 auto;
+    }
+    .box2{
+        width: 100px;
+        height: 100px;
+        background-color: gold;
+        animation: box3 4s linear 1s 1 both;
+        border-radius: 50%;
+        
+        
+    }
+    @keyframes box3{   
+        0%{
+            transform:translate(0,0) ;
+            background: green;
+                   
+        }
+        25%{
+            transform:translate(400px,0) ;
+            background: red;
+        }
+        50%{
+            transform:translate(400px,400px) ;
+            background: lawngreen;
+        }
+        75%{
+            transform:translate(0,400px) ;
+            background-color: lightcoral;
+        }
+        /* 可以和 0%写到一起 */
+        100%{
+            transform:translate(0,0) ;
+            background-color: lightskyblue;
+        }
+    } 
+    /* .box4{
+        width: 240px;
+        height: 240px;   
+        margin: 150px auto;    
+        perspective: 1000px;
+    }
+    img:hover{
+        animation: music 5s linear 1s 1;
+        /* transform-origin: left top; 
+    } */
+    /* @keyframes music {  
+        0%{
+            transform: rotateX(0);
+        }
+        25%{
+            transform: rotateX(90deg);
+        }
+        50%{
+            transform: rotateX(180deg);
+        }
+        75%{
+            transform: rotateX(270deg);
+        }
+        100%{
+            transform: rotateX(260deg);
+        }
+    } */
+</style>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+    <div class="box4">
+        <img src="1.jpg" alt="">
+    </div>
+</body>
+</html>

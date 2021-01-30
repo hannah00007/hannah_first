@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div.box {
+        /* 和父元素作对比 */
+        width: 90%;
+        /* 最大的宽度不能超过 800px */
+        max-width: 800px;
+        background-color: lightskyblue;
+
+        /* 这是 border的一些单个属性值 */
+        border-width: 20px;
+        border-style: solid;
+        border-color: red;
+        border-radius: 5px;
+        /* 或者复合属性,如果要某一个方向改变则在下面在重写一个带方向的 */
+        border: 1px solid black;
+        /* 这是单个方向的样式，先是方向，再是属性 */
+        border-left-width: 5px;
+    }
+    div.box2{
+        width: 500px;
+        height: 500px;
+        /* background一些符合属性值 */
+        background-color: teal;
+        background-image: url(../day05/reg_bg_min.jpg);
+        /* 控制背景图平铺方式：沿着 x/y轴平铺或者不平铺， 默认是沿着双方向共同平铺*/
+        background-repeat: no-repeat;
+        /* 控制背景图的位置相对于左上角，第一个数字是水平，第二个数字是垂直 */
+        background-position: 50px 50px;
+        background-position: left center;
+        /* 居中咯 */
+        background-position: center center;
+        background-position: 50% 50%;
+        /* 相对于文字，图片是不动的，只有文字在滚动，scroll 图片和文字一起动 */
+        background-attachment: fixed;
+        /* 直接写数字第一个数字是水平，第二个是垂直，控制背景图大小 */
+        background-size: 500px 500px;
+        /* 直接写百分比第一个是水平，第二个是垂直，控制背景图大小 */
+        background-size: 100% 100%;
+        /* 图片按照一定比例扩大，直到整个图片充满盒子，有可能超出的部分会被删掉 */
+        background-size: cover;
+        /* 图片按照一定比例扩大，只要有一个变充满盒子就不会再放大了，所以存在盒子充不满的情况 */
+        background-size: contain;
+        /* 综上所述 有些可以直接写到一起，但是像是 background-size就单独写吧*/
+        background: pink url() center center  no-repeat;
+
+
+
+
+        
+    }
+</style>
+
+<body>
+    <div class="box">
+    百度（纳斯达克：BIDU）是全球最大的中文搜索引擎，中国最大的以信息和知识为核心的互联网综合服务公司，
+    核心技术的中国高科技企业，也使中国成为美国、俄罗斯、和韩国之外，全球仅有的4个拥有搜索引擎核心技术的国家之一。 
+    </div>
+    <div class="box2"></div>
+</body>
+
+</html>

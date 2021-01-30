@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: aqua
+    }
+
+    .main {
+      margin: 0 auto;
+      width: 400px;
+      border: 2px solid lightblue;
+    }
+
+    .Btn {
+      display: block;
+      height: 50px;
+      width: 100%;
+      line-height: 50px;
+      text-align: center;
+
+    }
+    img{
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="main" id="main">
+    <button class="Btn" id="Btn">隐藏</button>
+    <img id="img"
+      src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1577444372587&di=1684c649c2b1d4b1fdcd5910968c508b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fpcdlc%2F1709%2F16%2Fc79%2F59427944_1505500668556.gif"
+      alt="">
+  </div>
+</body>
+
+</html>
+<script>
+  var Btn = document.getElementById("Btn"); 
+  var img = document.getElementById("img")
+  Btn.onclick = function () {
+    // var value = Btn.innerText;
+
+    if (Btn.innerText == "隐藏") {
+      img.style.display = "none";
+      Btn.innerText = "显示"
+
+    }else {
+      img.style.display = "block";
+      Btn.innerText = "隐藏"
+    }
+  }
+
+
+</script>

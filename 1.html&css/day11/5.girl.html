@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 240px;
+        height: 187px;
+        background: url(smile.jpg) no-repeat;
+        animation: girl 1s steps(6) infinite, run 6s linear infinite;
+    }
+
+    @keyframes girl {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: -1446px 0;
+        }
+    }
+
+    @keyframes run {
+        0% {
+            transform: translate(100vw,0);
+        }
+
+        100% {
+            transform: translate(-240px,0);
+        }
+    }
+</style>
+
+<body>
+    <div class="box">
+
+    </div>
+</body>
+
+</html>

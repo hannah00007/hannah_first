@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- css嵌入的第一种方式：行内式-->
+    <div style="color: darkmagenta;width: 100px;height: 100px;">我最美</div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- css嵌入的第二种方式：内嵌式 -->
+    <style>
+        div{
+            color: darkred;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div>我最美</div>
+</body>
+</html>
+
+
+<!--  css嵌入的第三种方式：外链式 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- rel=stylesheet是样式表的意思 -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div>box</div>
+</body>
+</html>
+
+<!-- css嵌入的第四种方式：导入式 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* @import是页面加载完才会去加载css ，外链式*/
+        @import url(10.index.css);
+    </style>
+</head>
+<body>
+    <div>box</div>
+</body>
+</html>
+

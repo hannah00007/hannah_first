@@ -1,0 +1,25 @@
+.md{
+    width: 1226px;
+    margin: 0 auto;
+    background-color: brown;
+}
+div.app{
+    width: 1624px;
+}
+div .adv{
+    height: 120px;
+    background: url(../images/adv1.jpg) center center no-repeat;
+    background-size: cover;
+}
+/* 导航条 */
+div.nva{
+    height: 40px;
+    line-height: 40px;
+    background-color: #333;
+    
+}
+.nvaInLeft a,.nvaInRight a{
+    color: #b0b0b0;
+    font-size: 12px;
+}
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 空格节点是 text，注释节点是 comment -->
+    <div id="main">
+        <!-- 注释节点 -->
+        <h3>h3</h3>
+        <h1>h1</h1>
+        <div id="box"></div>
+        <div id="box1"></div>
+        <div id="box2"></div>
+
+    </div>
+    <ul id="oul">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>
+<script>
+    /*
+    获取某标签下面的所有子标签， 理论上 ie8以上可以使用 .children方法，但是为了适配所有的浏览器兼容，可以手动封装一个函数
+    核心思想：
+        + 1、获取目标标签；
+        + 2、得到这个标签所有子节点返回的是一个类数组；
+        + 3、新增一个空数组，便于后期存放
+        + 4、遍历这个类数组中的每一项（别忘记[i]）
+        + 5、用 nodeType的值来判断是不是标签（nodeType=1）
+        + 6、如果是就推进你的空数组中
+        + 7、封装函数，返回新数组
+    */
+    function getNextEle(value) {
+        var getchildNodes = value.childNodes;// 注意，使用childNodes方法返回的是一个类数组;
+        console.log(getchildNodes)//[text, comment, text, h3, text, h1, text, div#box, text, div#box1, text, div#box2, text]
+        var newAry = [];
+        for (var i = 0; i < getchildNodes.length; i++) {// getSib是一个类数组，里面的[i]千万别忘记写
+            if (getchildNodes[i].nodeType == 1) {
+                newAry.push(getchildNodes[i])
+            }
+
+        }
+        return newAry
+    }
+
+    var main = document.getElementById("main");
+
+    getNextEle(main)
+
+
+
+    /*
+    获取当前元素的哥哥元素，理论上 ie8以上可以使用 .previousElementSibling方法，但是为了适配所有的浏览器兼容，可以手动封装一个函数
+    核心思想：
+        + 获取目标元素
+        + 获取目标元素的哥哥节点
+        + 用 while 条件判断该节点是否存在以及 node.Type==1？（不能用 for，因为并不知道前面的长度是多少）
+        + 如果不是就继续往前面找知道找到节点存在并且node.Type==1；
+        + 封装函数，返回给节点值
+    */
+
+
+
+    var oul = document.getElementById("oul");
+    function getPreEle(value) {
+        var getPreSib = value.previousSibling;//这只是获取当前节点的上一个节点，并不是上面的所有节点！所以返回值并不是类数组,只是一个结果
+        // console.log(getPreSib)
+        // if(getPreSib && getPreSib.nodeType !== 1){
+        //     getPreSib = getPreSib.previousSibling
+        // }
+        while (getPreSib && getPreSib.nodeType !== 1) {
+            getPreSib = getPreSib.previousSibling
+        }
+        return getPreSib
+    }
+    getPreEle(oul)
+
+
+    // 获取父节点,虽然是个节点，但是载体一定是元素
+    box.parentNode;//<div id=​"main">​…​</div>​
+    // 获取当前节点的所有子节点，返回的是类数组(换行节点text，注释节点comment，h1 节点，div节点)
+    main.childNodes;
+    // 获取当前文本下的所有子元素，返回的是类数组（ie6-ie8不兼容）
+    oul.children;
+    // 获取当前节点的亲哥哥节点 返回一个值
+    box.previousSibling;
+    box.previousSibling.previousSibling;
+    // 获取当前节点的亲弟弟节点 返回一个值
+    box.nextSibling;
+    box.nextSibling.nextSibling;
+    // 获取当前节点的亲哥哥元素（ie6-ie8不兼容）返回一个值
+    box.previousElementSibling;
+    box.previousElementSibling.previousElementSibling
+    // 获取当前节点的亲弟弟元素（ie6-ie8不兼容）返回一个值
+    box.nextElementSibling
+    box.nextElementSibling.nextElementSibling
+    //n获取当前节点的第一个子节点 返回一个值
+    main.firstChild;//可能是空格文本
+    // 获取当前节点的第一个子元素 返回一个值
+    main.firstElementChild;//（ie6-ie8不兼容）
+    // 获取当前节点的最后一个子节点 返回一个值
+    main.lastChild;
+    // 获取当前节点的最后一个子元素 返回一个值
+    main.lastElementChild;//（ie6-ie8不兼容）
+</script>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=ta, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 700px;
+            height: 400px;
+            margin: 0 auto;
+            text-align: center;
+            /* 清除表格中重叠的表框 */
+            border-collapse: collapse;
+            /* 让宽度均分，前提是要设计宽度哈 */
+            table-layout: fixed;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- cellpadding是控制文字到单元格的距离，cellspacing 是控制单元格与但单元格的距离，border 是边框 -->
+    <!-- table是块级元素 -->
+    <table border="2px" cellpadding="20px" cellspacing="20px">
+        
+        <caption>这是表名字</caption>
+        <!-- tr 是每一行 -->
+        <tr>
+            <!-- th是每表头 -->
+            <th>数学</th>
+            <th>语文</th>
+            <th>英语</th>
+        </tr>
+        <tr>
+            <!-- 这是表格 -->
+            <td rowspan="2">120</td>
+            <td>110</td>
+            <td>80</td>
+        </tr>
+
+        <tr>
+            <!-- 这是表格 -->
+            <td>110</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <!-- 这是表格 -->
+            <!-- td的属性：合并列用 colspan -->
+            <td colspan="3">120</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+
+这是写表格的另外一种更规范的形式，当我把表身和表尾巴顺序写反没关系这就是规范所在
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2px" cellpadding="20px" cellspacing="20px">
+        <caption>这是表名字</caption>
+        <thead>
+            <th>数学</th>
+            <th>语文</th>
+            <th>英语</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>120</td>
+                <td>110</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>120</td>
+                <td>110</td>
+                <td>90</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">120</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

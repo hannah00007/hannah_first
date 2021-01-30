@@ -1,0 +1,312 @@
+.white{
+    background: white;
+    padding-bottom: 28px;
+}
+.md{
+    width: 1200px;
+    margin: 0 auto;
+}
+.nav{
+    height: 52px;
+    line-height: 52px;
+    margin: 16px 0;
+}
+.nav a{
+    color: #2a2a2a;
+}
+.nav .logo{
+    width: 172px;
+    height: 52px;
+    background: url(../images/logo.png) center center no-repeat;
+    background-size: contain;
+    overflow: hidden;
+}
+.logo>a{
+    display: block;
+    height: 52px;
+    width: 172px;
+}
+.content>a{
+    margin-left: 55px;
+}
+.cart .carCart>img{
+    vertical-align: middle;
+    margin-right: 7px;
+}
+.cart .load{
+    margin: 0 37px;
+}
+.nav .logo,.nav .content{
+    float: left;
+}
+.nav .cart{
+    float: right;
+}
+.banner{
+    position: relative;
+}
+.banner>a{
+    display: block;
+    height: 360px;
+    background: url(../images/bannerͼ1.png) center center no-repeat;
+    background-size: cover;
+}
+.banner ul{
+    width: 240px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(2, 0, 0, 0.2);
+}
+.banner li{
+    padding: 0 30px;  
+}
+.banner li>a{
+    height: 72px;
+    line-height: 72px;
+    color: #fff;
+    display: block;
+    border-bottom: 1px solid white;
+    box-sizing: border-box;
+    position: relative;
+}
+.banner li:nth-child(5)>a{
+    border-bottom: none;
+}
+.banner li>a::after{
+    content: "";
+    width: 16px;
+    height: 16px;
+    background: url(../images/arrow.png) center center no-repeat;
+    position: absolute;
+    top: 30px;
+    right: 0;
+}
+.banner li:hover{
+    background-color: rgba(11, 11, 11, 0.2);
+
+}
+
+.free h3{
+    margin: 39px 0 16px 0;
+    font-size: 16px;
+    color: #2d2d2d;
+    /* 行高自身和内容之间有点缝隙 */
+    line-height: 1;
+}
+.free li{
+    /* 父亲值需要设置宽，高由儿子自己填充 */
+    width: 251px;
+    position: relative;
+    margin-right: 65px;
+    float: left;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+.free a{
+    /* 儿子只需要设置高就能填充父亲宽 */
+    display: block;
+    height: 184px;
+    background: url(../images/免费好课1.png) center top no-repeat;
+}
+.free .box{
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 15px 15px 0 15px;
+    /* 当不设置固定宽高的时候，box-sizing这个属性没什么作用 */
+    /* box-sizing: border-box; */
+}
+.free li:last-child{
+    margin-right: 0px;
+}
+.box .top{
+    height: 40px;
+    overflow: hidden;
+}
+.box .top:hover{
+    /* 这是最终展示的 */
+    /* height: 76px; */
+    height: 76px;
+    /* 这是过渡：属性，时间，匀速*/
+    transition: height 0.5s linear;
+}
+.box .title{
+    margin: 6px 0 10px;
+}
+.box .top h5{
+    color: #1e1e1e;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.box .top p{
+    font-size: 12px;
+    color: #9e9d9d;
+}
+.box .bottom{
+    height: 43px;
+    line-height: 43px;
+    color: #9e9d9d;
+    font-size: 12px;
+}
+.box .price{
+    float: left;
+    color: #c71b1b;
+}
+.box .number{
+    float: right;
+}
+.gray{
+    background-color: #f3f5f7;
+    padding: 34px 0 54px;
+    height: 380px;
+    overflow: hidden;
+}
+.grayIn>a,.grayIn>div{
+    margin-right: 24px;
+    float: left;
+    height: 380px;
+}
+.grayIn .two{
+    width: 397px;
+}
+.grayIn .three{
+    width: 254px;
+
+    margin-right: 24px;
+}
+.grayIn .left{
+    display: block;
+    width: 224px;  
+    background: url(../images/bottom1.png) center center no-repeat;
+}
+.grayIn .two{
+    float: left;
+}
+.grayIn .two>a{
+    display: block;
+    height: 184px;
+   
+}
+.grayIn .two .top{
+    background: url(../images/bottom2.png) center center no-repeat;
+    background-size: cover;
+
+}
+.grayIn .two .bottom{
+    background: url(../images/bottom3.png) center center no-repeat;
+    background-size: cover;   
+    margin-top: 12px; 
+}
+.three>div{
+    height: 184px;
+    
+}
+.three .threeTop{
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    position: relative; 
+}
+.threeTop a{
+    display: block;
+    height: 184px;
+    background: url(../images/bottom4.png) center top no-repeat;
+    
+}
+.threeTop .big{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 15px 15px 0;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #fff;
+}
+.big .top{
+    height: 40px;
+    overflow: hidden;
+}
+.big .top:hover{
+    height: 70px;
+}
+.big .top h5{
+    color: #1e1e1e;
+    font-size: 14px;
+    line-height: 1;
+}
+.top .hot{
+    margin: 6px 0 10px;
+}
+.threeTop .big .bottom{
+    height: 43px;
+    line-height: 43px;
+    overflow: hidden;
+}
+.big .bottom .price{
+    float: left;
+    color: #c71b1b;
+    font-size: 12px;
+}
+.big .bottom .number{
+    float: right;
+    color: #9e9d9d;
+    font-size: 12px;
+}
+.big .top p{
+    color: #9e9d9d;
+    font-size: 12px;
+}
+.three .threeButtom{
+    margin-top: 12px;
+
+       
+}
+.threeButtom a{
+    display: block;
+    height: 184px;
+    background: url(../images/bottom5.png) center top no-repeat;
+    
+}
+.grayIn .four{
+    width: 251px;
+    height: 380px;
+    position: relative;
+    margin-right: 0;
+    
+
+}
+
+.four a{
+    display: block;
+    height: 184px;
+    background: url(../images/bottom6.png) center top no-repeat;
+}
+.four .all{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 308px;
+    background-color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+   
+}
+.mix h3{
+    margin: 6px 0 10px ;
+    
+}
+
+.all ul{
+    height: 196px;
+
+}
+.all li{
+    
+    margin-top: 15px;
+}
+.all .fir{
+    margin-top: 30px;
+}

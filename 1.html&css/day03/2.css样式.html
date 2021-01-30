@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 通配符选择器，选中页面中所有元素 */
+    *{
+        /* 一般情况默认是 8，但是有的浏览区不一样 */
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        width: 100px;
+        height: 200px;
+        background-color: mediumaquamarine;
+        /* 块级元素水平居中 */
+        margin: 0 auto;
+
+    }
+    ul,ol{
+        /* 去掉前面的点或者数字 */
+        list-style: none;
+    }
+    a{
+        /* 去掉超链接的下划线 */
+        text-decoration: none;
+    }
+    /* 注意一下id选择器的使用*/
+    #box{
+        width: 100px;
+        height: 200px;
+        background-color: mediumblue;
+    }
+    p{
+        /* 首行缩进两个字2em, 也可以用 2px*/
+        text-indent: 2em;
+        /* 注意一下面会覆盖上面的 */
+        text-indent: 20px;
+        /* 字体大小,浏览器最小是12px,默认是 16px */
+        font-size: 32px;
+        /* 字体颜色 */
+        color: red;  
+        /* 字体用中文时要加双引号 */
+        font-family: "宋体";
+        /* 字体有多个英文单词组成的需要用单引号 */
+        font-family: 'Courier New', Courier, monospace;
+        /* 正常的粗细normal=400px */
+        font-weight: normal;
+         /* 加粗bold=700px */
+        font-weight: bold;
+         /* 加粗bold=900px */
+        font-weight: bolder;
+        /* 让斜体变正常 */
+        font-style: normal;
+        /* 让正常变斜体 */
+        font-style: italic;
+        /* 控制文字对齐方式，只是试用于块级元素*/
+        text-align: center;
+        /* 边框线：边框大小、边框样式、边框颜色 */
+        /*solid 实线，dashed 虚线 */
+        border: 2px solid darkmagenta;
+        border: 20px dashed darkmagenta;
+    }
+    h1{
+        background:chartreuse;
+        font-size: 100px;
+        /* 让文字垂直居中：让高度等于行高 */
+        height: 150px;
+        /* 上一行文字顶部到下一行文字顶部就是行高 */
+        line-height: 150px;
+    }
+</style>
+<body>
+    <div class="box">box</div>
+    <div class="box1">box1</div>
+    <div id="box">idbox</div>
+    <ul>
+        <li><span>1</span>呵呵</li>
+        <li><span>2</span>呵呵</li>
+        <li><span>3</span>呵呵</li>
+        <li><span>4</span>呵呵</li>
+        <li><span>6</span>呵呵</li>
+    </ul>
+    <ol>
+        <li>呵呵</li>
+        <li>呵呵</li>
+        <li>呵呵</li>
+        <li>呵呵</li>
+        <li>呵呵</li>
+        <li>呵呵</li>
+    </ol>
+    <a href="">百度</a>
+
+    <p>哈哈哈哈是我是我哈哈哈哈是我是我</p>
+    <h1>你好</h1>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+
+    }
+
+    body {
+        background-image: url(reg_bg_min.jpg);
+        background-repeat: no-repeat;
+    }
+
+    form {
+        width: 500px;
+        height: 360px;
+        /* border: 2px solid red; */
+        /* margin: 0 auto; */
+        margin-top: 50px;
+        margin-left: 50px;
+        /* background-color: white; */
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 30px;
+        position: fixed;
+        right: 100px;
+        top: 100px;
+    }
+
+    .box {
+        width: 500px;
+        height: 50px;
+        /* border: 1px solid black; */
+        padding: 15px 0 0 0;
+    }
+
+    .box1 {
+        width: 100px;
+        height: 20px;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        text-align: right;
+        margin-right: 10px;
+    }
+
+    .box2,
+    .box3 {
+        width: 300px;
+        height: 40px;
+        padding-left: 10px;
+        font-weight: bold;
+        border: 0px solid lightgrey;
+        font-size: 14px;
+    }
+
+    .box3 {
+        width: 150px;
+    }
+
+    .box4 {
+        width: 140px;
+        height: 40px;
+        border: 1px solid lightgrey;
+        margin-left: 5px;
+        font-size: 14px;
+    }
+
+    a {
+        text-decoration: none;
+        color: blue;
+
+
+    }
+
+    .box5 {
+        width: 315px;
+        height: 40px;
+        line-height: 40px;
+        /* border: 1px solid red; */
+        margin-left: 115px;
+        /* margin-top: 5px; */
+        font-size: 5px;
+
+
+    }
+
+    .box6 {
+        /* width: 300px; */
+        height: 10px;
+        margin: 0 auto;
+    }
+
+    .box6 {
+        background: url('images/radio.svg') no-repeat 100% 100%;
+        width: 10px;
+        height: 10px;
+        appearance: none;
+    }
+
+    .box7 {
+        width: 300px;
+        height: 40px;
+        background-color: rgb(71, 189, 232);
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        border: transparent;
+        border-radius: 20px;
+        padding-left: 10px;
+
+    }
+    .box8{
+        padding-top: 10px;
+    }
+</style>
+
+<body>
+
+    <form action="">
+        <div class="box">
+            <div class="box1">用户名</div>
+            <input class="box2" type="text" placeholder="请设置用户名">
+        </div>
+        <div class="box">
+            <div class="box1">手机号</div>
+            <input class="box2" type="text" placeholder="可用于登录和找回密码">
+        </div>
+        <div class="box">
+            <div class="box1">密码</div>
+            <input class="box2" type="password" placeholder="请设置登录密码">
+        </div>
+        <div class="box">
+            <div class="box1">验证码</div>
+            <input class="box3" type="text" placeholder="请输入验证码">
+            <input class="box4" type="button" value="获取短信验证码">
+        </div>
+        <div class="box5">
+            <input class="box6" type="checkbox" name="" id="">阅读并接受<a href="">《百度用户协议》</a>及<a href="">《百度隐私权保护协议》</a>
+        </div>
+        <div class="box box8">
+            <div class="box1"></div>
+            <button class="box7">注册</button>
+        </div>
+    </form>
+</body>
+
+
+</html>

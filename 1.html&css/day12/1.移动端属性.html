@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        /* 圆：宽高一致，并且 border-radius50% */
+        border-radius: 20px 30px 40px 50px;
+        /* 火狐 */
+        -moz-border-radius: 20px 30px 40px 50px;
+        /* ie */
+        -ms-border-radius: 20px 30px 40px 50px;
+        /* 欧朋 */
+        -o-border-radius: 20px 30px 40px 50px;
+        /* 谷歌 */
+        -webkit-border-radius: 20px 30px 40px 50px;
+        /* X轴偏移，Y 轴偏移，阴影模糊度，阴影大小，颜色，样式（内嵌），也可以做成多层阴影，用逗号隔开 */
+        /* 也可以用 box-shadow做成边框线，0 0 0 2px color
+            + 和 border 的区别是这个不占位置 */
+        box-shadow: 0px 0px 0px 20px rgba(red, green, blue, alpha) inset,
+            0px 0px 0px 40px rgba(red, green, blue, alpha) inset,
+            0px 0px 0px 60px rgba(red, green, blue, alpha) inset;
+        background:linear-gradient(red ,green);
+        background:-webkit-linear-gradient(red ,green);
+
+        background:linear-gradient(top, red, green);
+        background:-webkit-linear-gradient(top, red, green);
+
+        background:linear-gradient(bottom, red, green);
+        background:-webkit-linear-gradient(bottom, red, green);
+
+        background:linear-gradient(left top,  red, green);
+        background:-webkit-linear-gradient(left top,  red, green);
+        /* 10%之前是红色，20%之后是绿，10%-20%是渐变色 */
+        background:linear-gradient(45deg, red 10%, green 20%);
+        background:linear-gradient(45deg, red 0%, red 50%, green 50% green 100%);
+        background:-webkit-linear-gradient(45deg, red, green);
+        /* 径向渐变 */
+        background: radial-gradient();
+        background: -webkit-radial-gradient();
+
+    }
+</style>
+<body>
+    <!-- 移动端新增的标签，相较于 pc端 -->
+    <header>头部</header>
+    <nav>导航</nav>
+    <main>主题内容
+        <article>包裹文字</article>
+        <section>相当于div</section>
+        <!-- 配套需要在外面加上一个 figure -->
+        <figure>
+            <img src="" alt="">
+            <figcapion>配图说明</figcapion>
+        </figure>
+        <!-- 视频 mp4 控制器 自动播放 循环播放 打开页面直接加载，不写则是点击才加载，生活中一般不加-->
+        <video src="" controls autoplay loop preload></video>   
+        <!-- 视频 mp4 控制器 自动播放 循环播放 打开页面直接加载，不写则是点击才加载，生活中一般不加
+            + audio会有兼容问题，需要添加几行代码-->
+        <audio>
+            <source src="1.mp3">
+            <source src="1.ogg">
+            <source src="1.wav">
+        </audio>
+    </main>
+    <aside>侧边栏（无关紧要的）</aside>
+    <footer>底部</footer>
+
+    <!-- 新增的表单标签 -->
+    <!-- 只能填数字 -->
+    <input type="number" name="" id="">
+    <!-- 搜索 -->
+    <input type="search" name="" id="">
+    <!-- 电话 -->
+    <input type="tel" name="" id="">
+    <!-- 颜色面板 -->
+    <input type="color" name="" id="">
+    <!-- 文件上传 -->
+    <input type="file" name="" id="">
+    <!-- 日期 -->
+    <input type="date" name="" id="">
+    <!-- 范围 -->
+    <input type="range" name="" id="">
+
+    <!-- 邮箱 -->
+    <input type="email" name="" id="">
+
+
+    
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">      
+    </div>
+</body>
+</html>
+<script>
+    // 创建一个元素p
+    var op = document.createElement("p");
+    // 创建文本
+    var otext = document.createTextNode("哈哈");
+    // 容器;把文本加入到某个标签容器里面
+    op.appendChild(otext);
+    // 把新标签加到某个标签里面
+    main.appendChild(op)
+    // 把这个 元素加入到 body 里面（带样式）
+    document.body.appendChild(op)
+    // 把新的标签op插入到指定的某个标签h1前面
+    main.insertBefore(op, oh1);
+    // 删除某个标签
+    main.removeChild(op)
+    // 只克隆一层，浅克隆
+    main.cloneNode()
+    // 把里面的所有结构都克隆，深克隆
+    main.cloneNode(true)
+   
+
+    // 方法一：
+    // 添加属性名属性值，直接添加到dom结构上
+    main.setAttribute("index", 0) 
+    // 获取某个元素属性名的属性值
+    main.getAttribute("index")
+    // 删除某个元素属性
+    main.removeAttribute("index")
+
+
+    // 方法二：以对象形式，直接添加到堆内存里面，可以通过 console.dir()方式查看
+    // 添加某个属性
+    main["index"] = 0
+    main.index = 0
+    // 获取
+    main["index"]
+    main.index
+    // 删除
+    delete main["index"]
+    main["index"] = null
+</script>

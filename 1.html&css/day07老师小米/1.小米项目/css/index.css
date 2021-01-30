@@ -1,0 +1,292 @@
+/* 首页样式 */
+@font-face {
+    font-family: 'iconfont';
+    src: url('../../iconfont/iconfont.eot');
+    src: url('../../iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
+        url('../../iconfont/iconfont.woff2') format('woff2'),
+        url('../../iconfont/iconfont.woff') format('woff'),
+        url('../../iconfont/iconfont.ttf') format('truetype'),
+        url('../../iconfont/iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.md{
+    width: 1226px;
+    margin: 0 auto;
+}
+.adv{
+    /* 宽可以不写会充满父级 */
+    /* width: ; */
+    height: 120px;
+    background: url(../images/adv1.jpg) 
+    center center no-repeat;
+    background-size: cover;
+}
+/* 划分页面规则：从外往内，从上往下 ，从左往右*/
+.nav{
+    height: 40px;
+    background-color: #333;
+}
+.navBd{
+    width: 1200px;
+    height: 100%;
+    /* background-color: aqua; */
+    margin: 0 auto;
+    line-height: 40px;
+    font-size: 12px;
+}
+.navBd a{
+    color: #b0b0b0;
+}
+.navBd a:hover{
+    color: white;
+}
+.nvaLeft a,.nvaLeft span{
+    float: left;
+}
+.nvaLeft span, .nvaRight span{
+    margin: 0 5px;
+    color: #424242;
+}
+.nvaLeft{
+    /* width: 200px; */
+    /* height: 100px; */
+    /* background-color: red; */
+    float: left;
+     
+}
+.nvaRight{
+    /* width: 200px; */
+    height: 40px;
+    /* background-color: yellow; */
+    float:right;
+}
+.nvaRight a,.nvaRight span{
+    float: left;
+}
+.nvaRight .cart{
+    width: 120px;
+    height: 40px;
+    background-color: #424242;
+    text-align: center;
+    margin-left: 50px;
+}
+.nvaRight .cart:hover{
+    background:#fff;
+    color:#ff6700;
+}
+.grayArea{
+    background-color: #f5f5f5;
+    
+}
+.grayIn{
+    background-color: #f5f5f5;
+    /* height: 500px; */
+}
+.phone .top{
+    height: 58px;
+    line-height: 58px;
+    background-color: purple;
+}
+.phone .bottom{
+    height: 614px;
+    background-color: yellow;
+}
+h3.title{
+    color: #333;
+    float: left;
+    font-weight: 200;
+    font-size: 22px;
+}
+.top .all{
+    color: #424242;
+    float: right;
+}
+.left a{
+    width: 234px;
+    height: 614px;
+    background: url(../images/左边图.webp) center center no-repeat;
+    background-size: cover;
+    float: left;
+}
+.bottom .lists{
+    width: 992px;
+    height: 614px;
+    float: left;
+    /* background-color: tomato; */
+}
+.lists>li{
+    width: 234px;
+    /* line-height: 300px; */
+    background-color: #ffffff;
+    float: left;
+    font-size: 14px;
+    margin-left: 14px;
+    margin-bottom: 14px;
+    /* border: 1px solid black; */
+}
+.lists img{
+    width: 160px;
+    height: 160px;
+    display: block;
+    margin: 0 auto;
+}
+.lists>li a{
+    /* width: 100px; */
+    height: 300px; 
+    /* border: 1px solid black; */
+    padding-top: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    display: block;
+}
+.lists>li h5{
+    font-size:14px;
+    color:#333;
+    font-weight: normal;
+    color: #333;
+    
+}
+.lists .desc{
+    margin: 10px 0 8px 0;
+    color: #b0b0b0;
+    font-size: 12px;
+    /* height: 18px; */
+}
+.lists .price{
+    color: #ff6700;
+}
+
+.grayArea .banner{
+    display: block;
+    width: 1226px;
+    height: 120px;
+    
+}
+.banner{
+    /* height: 120px; */
+    display: block;
+    background: url(../../1.小米项目/images/广告条.webp) center center no-repeat;
+    background-size: cover;
+    /* margin: 30px auto; */
+}
+.home{
+    /* height: 1000px; */
+    background: rosybrown;
+}
+.home .homeTop{
+    height: 58px;
+    line-height: 58px;
+    background: green;
+}
+.home .homeTopLink{
+    float: right;
+}
+.home .homeTopLink>a{    
+    display: inline-block;
+    height: 44px;
+    margin-left: 30px;
+}
+.current{
+    border-bottom: 2px solid #ff6700;
+    color:#ff6700;
+}
+
+.homeBottom ul>li{
+    width: 234px;
+    height: 300px;
+    background:red;
+    float: left;
+    margin: 0 14px 14px 0;
+}
+.homeBottom ul>li:nth-child(10),.homeBottom ul>li:nth-child(5),.homeBottom ul>li:nth-child(11){
+    margin-right: 0;
+}
+.homeBottom ul>li:nth-child(10),.homeBottom ul>li:nth-child(11){
+    height: 143px;
+}
+
+.whiteArea{
+    background: #fff;
+
+}
+.bannnerWrap{
+    height: 460px;
+    position: relative;
+}
+.banner a{
+    display: block;
+    height: 460px;
+    /* border: 1px solid red; */
+    background: url(../images/banner1.jpg) center center no-repeat;
+    background-size: cover;
+}
+.slideBar{
+    width: 234px;
+    height: 100%;
+    background-color: rgba(105,101, 101,0.6);
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+.slideBar>li{
+    height: 42px;
+    line-height: 48px;
+    text-indent: 25px;
+    background: url(../images/arrow.png) 200px center no-repeat;
+}
+.slideBar a{
+    color: #fff;
+    font-size: 14px;
+}
+.slideBar>li:hover{
+    background-color: #ff6700;
+}
+.leftArrow,.rightArrow{
+    width: 41px;
+    height: 69px;
+    background: url(../images/jiantou.png) no-repeat;
+    position: absolute;
+    top: 50%;
+    margin-top: -35px;
+    
+}
+.leftArrow{
+    left: 234px;
+}
+.rightArrow{
+    right: 0;
+}
+/* 精灵图、学不图 */
+.leftArrow{
+    background-position: -84px 0;
+}
+.leftArrow:hover{
+    background-position: -0px 0;
+}
+.rightArrow{
+    background-position: -126px 0;
+}
+.rightArrow:hover{
+    background-position: -42px 0;
+}
+.content{
+    width: 500px;
+    height: 460px;
+    background-color: red;
+    position: absolute;
+    left: 234px;
+    top: 0;
+    display: none;
+}
+.slideBar>li:hover .content{
+    display: block;
+}

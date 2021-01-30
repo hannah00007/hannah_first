@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .btn {
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    button {
+        margin-top: 20px;
+
+    }
+</style>
+
+<body>
+    <div class="btn" id="div"></div>
+    <button id="btn">点击获取验证码</button>
+</body>
+
+</html>
+<script>
+    var btn = document.getElementById("btn");
+    var content = document.getElementById("div");
+    function getCode() {
+        var str = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
+        var newStr = "";//注意这个空的等待装车的字符串一定写在 for外面
+        for (var i = 0; i < 4; i++) {
+            //随机获取 0-61整数；之所以要加round是为了四舍五入成整数
+            var index = Math.round(Math.random() * (str.length - 1));
+            var res = str[index];
+            //都转化成大写比较
+            if ((newStr.toUpperCase()).includes(str[index].toUpperCase())) {
+                i--;
+                continue;
+            } else {
+                newStr += res;
+            }
+        }
+        return newStr
+
+    }
+    // 打开页面默认执行一下
+    content.innerText = getCode()
+    // 当用户点击的时候再执行
+    btn.onclick = function () {
+        content.innerText = getCode()
+    }
+</script>
+
+<script>
+    var btn = document.getElementById("btn");
+    var content = document.getElementById("div");
+    function getCode() {
+        var str = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
+        var newStr = "";
+        while (newStr.length < 4) {
+            var index = Math.round(Math.random() * (str.length - 1));
+            var res = str[index];
+            if ((newStr.toUpperCase()).includes(str[index].toUpperCase()) == false) {
+                newStr += res;
+            }
+        }
+        return newStr
+
+    }
+    // 打开页面默认执行一下
+    content.innerText = getCode()
+    // 当用户点击的时候再执行
+    btn.onclick = function () {
+        content.innerText = getCode()
+    }
+
+    
+</script>

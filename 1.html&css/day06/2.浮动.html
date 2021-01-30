@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 让块级在一行展示 */
+
+    /* 方法一：用 display */
+    /* 方法缺点：设置了display=inline-block中间会有缝隙 
+    解决方法：
+        + 不要空行即 div与 div 之间放在一行
+        + 在他的父元素上加上 font-size=0，再具体写下各个标签的字号
+    解决方法的缺点：一个有文字一个没有文字，则有文字的区域会下降是因为浏览器默认是基线对齐，
+                    （基线对齐有个疑问是不是有文字就是看文字的基线，没有文字看盒子的基线）
+    解决缺点：vertical-align
+        + top 顶线
+        + middle 中线
+        + baseline 基线
+        + buttom 底线 */
+
+    /* 方法二：用浮动 即float:left */
+    /* 浮动特点 
+        + 脱离普通的文档流：状态就像是飘起来了，不再占位置，后面没有浮动的元素其实看不到他了 
+        + 浮动方向是父盒子的左边或者右边
+        + 在普通文档流中：子块级元素不设置宽只设置高，则宽会继承他的父级;
+          如果这个子块级元素设置了浮动，则宽度不会继承他的父元素，大小子块级内容的宽度决定; 
+        + 行内元素设置浮动之后也可以设置宽高了（转为行内块了） 
+        + 最初的本质是处理文字和图片的环绕问题，想要让文字环绕图片，只需要在图片上加上浮动 */
+    /* 浮动的问题:
+        + 在普通文档流中子盒子写了高，则父盒子由子盒子撑起来即父盒子的高就是子盒子的，
+          但是如果里面的盒子设置了浮动，即不在占有位置，父盒子的高就撑不起来了即父级盒子塌陷，
+          那么下面的盒子就看不到上面的盒子了，下面的盒子就会上来，造成页面混乱
+           解决方法：
+        + 把父级设置一个高度，但是写死了
+        + 在父级添加overflow:hidden （溢出隐藏）
+        + 在盒子最后（子级后面）加上一个 div,给这个 div清楚浮动clear:both/right/left 
+        + 加上专业代码，详细参考下方 */
+        
+    /*  + 在公共代码里面加上下面这两个样式
+        + 谁浮动就在谁的父级加上下面这个clearfix 这个类名 
+        + 伪元素:没有在 body添加而在样式里面用:after或者::after/:before或者::before等选择器添加内容；
+          这个 after是在盒子的后面也就是子级元素的后面加上 可以举例检查试试
+          ps:列表前面的点或者数字通过伪元素来改变样式 */
+
+    .clearfix:after {
+        /* 即使内容为空也必须写这个属性 */
+        content: "";
+        font-size: 0;
+        display: block;
+        height: 0;
+        visibility: hidden;
+        clear: both;
+    }
+
+    /* 兼容 ie6,所以下方代码可去掉 */
+    .clearfix {
+        *zoom: 1;
+    }
+</style>
+
+<body>
+    <div class="box1 clearfix">
+        <div class="box2"></div>
+    </div>
+</body>
+
+</html>

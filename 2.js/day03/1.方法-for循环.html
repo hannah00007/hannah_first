@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box"style="width: 100px">
+        是我
+    </div>
+</body>
+<script>
+
+
+    var box = document.getElementById("box");
+    console.dir(box);
+    box.style.backgroundColor="red"
+    box.innerText = "haha"
+    box.innerHTML="<h1>哈哈</h1>"
+    box.onmouseover=function(){
+        box.style.backgroundColor="yellow"
+    }
+    box.onmouseout=function(){
+        box.style.backgroundColor="white"
+    }
+    box.onmousemove=function(){
+        console.log("lalal")
+    }
+    box.onclick=function(){
+        box.innerText="点击"
+    }
+    // 需要按照某些规律去重复做一件事情的时候
+    //1、制定初始值 2、制定循环条件 3、符合条件就走执行体里面的语句 4、进入累计操作 5、符合条件再就走执行体里面的语句
+    var ary = [4, 6, 7]
+    // 正着打印
+    for (var i = 0; i < ary.length; i++) {
+        console.log(ary[i])
+
+    }
+    // 倒着打印
+    for (var i = ary.length - 1; i >= 0; i--) {
+        console.log(ary[i])
+        console.log(ary[ary.length - 1 - i])
+    }
+    //取出奇数位置
+    var ary = [4, 6, 7, 8]
+    for (var i = 0; i < ary.length; i++) {
+        if (i % 2 == 0) {
+            console.log(ary[i])
+        }
+    }
+    //取出偶数位置
+    var ary = [4, 6, 7, 8]
+    for (var i = 0; i < ary.length; i++) {
+        if (i % 2 !== 0) {
+            console.log(ary[i])
+        }
+    }
+
+    //continue:结束本轮的开始下一轮的，break：结束整个循环
+
+    for (var i = 0; i < 10; i++) {
+        if (i < 5) {
+            i++;
+            continue;
+        }
+        if (i > 7) {
+            i += 2;
+            break;
+        }
+        i += 1;
+    }
+    console.log(i);
+
+    for (var i = 1; i <= 10; i += 2) {
+        if (i <= 5) {
+            i++;//
+            continue;
+        } else {
+            i -= 2;
+            break;
+        }
+        i--;
+        console.log(i);
+
+    }
+    console.log(i);
+    // 不管++在前在后，i本身都会自增；++在前先自增再赋值，++在后先赋值再自增
+    var i=1;
+    var b=++i;
+    var c=i++;
+    
+    console.log(b,c,i)
+
+
+    
+</script>
+
+</html>

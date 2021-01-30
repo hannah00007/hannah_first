@@ -1,0 +1,196 @@
+html,
+body,
+.bannerWrap {
+    height: 100%;
+}
+/* 控制轮播图大小 */
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide#banner1 {
+    background: url(../images/hero-bg-2.jpg) 60% center no-repeat;
+    background-size: cover;
+}
+.swiper-slide#banner2 {
+    background: url(../images/hero-bg-3.jpg) center center no-repeat;
+    background-size: cover;
+}
+.swiper-slide#banner3 {
+    background: url(../images/hero-bg-4.jpg) center center no-repeat;
+    background-size: cover;
+}
+/* 共同版心 */
+.md {
+    width: 1080px;
+    padding: 0 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.bannerWrap {
+    position: relative;
+}
+.headBox {
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+    position: absolute;
+    top: 14px;
+    left: 0;
+    z-index: 9;
+}
+.headBoxIn {
+    height: 100%;
+}
+.headBoxIn .logo {
+    width: 100px;
+    height: 37px;
+
+    margin-top: 10px;
+    float: left;
+}
+.headBoxIn .navBox {
+    float: right;
+    height: 100%;
+}
+.navBox > a {
+    float: left;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 20px;
+}
+.advBox {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 9;
+}
+.advBoxIn > h1 {
+    color: #fff;
+    font-size: 66px;
+    margin-bottom: 20px;
+    line-height: 1;
+    transform: translateY(-50%);
+}
+.advBoxIn a {
+    width: 295px;
+    height: 57px;
+    line-height: 57px;
+    display: block;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    font-size: 22px;
+    color: #fff;
+    font-weight: bold;
+}
+.recommend li {
+    width: 25%;
+
+    border: 1px solid #fff;
+    float: left;
+    box-sizing: border-box;
+    border-top-width: 2px;
+    background: url(../images/promo-01.jpg) center center no-repeat;
+    background-size: cover;
+}
+.recommend li > a {
+    height: 258px;
+    display: block;
+}
+
+.recommend li:first-child {
+    border-left-width: 0;
+}
+.recommend li:last-child {
+    border-right-width: 0;
+}
+.recommend li h3 {
+    font-size: 24px;
+    color: #fff;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    font-weight: normal;
+    padding-top: 30px;
+}
+/* 滑到 1080
+1、导航没有了 
+2、下面图片变成 50%
+3、版心消失，宽度变成 100%
+滑到 640
+1、导航条消失
+2、图片 100%
+3、h1 变成 36px大小*/
+
+@media screen and (min-width: 641px) and (max-width: 1080px) {
+    .navBox {
+        display: none;
+    }
+    .recommend > li {
+        width: 50%;
+    }
+    .md {
+        width: 100%;
+    }
+}
+@media screen and (min-width: 0px) and (max-width: 640px) {
+    .navBox {
+        display: none;
+    }
+    .recommend > li {
+        width: 100%;
+    }
+    .advBoxIn h1 {
+        font-size: 36px;
+    }
+    .md {
+        width: 100%;
+    }
+}
+.footer{
+    display: flex;
+    align-items: center;
+    height: 140px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.content{
+    font-size: 16px;
+}
+.content h4{
+    font-weight: normal;
+}
+.footerIn{
+
+    display: flex;
+    height: 50px;
+}
+.footerIn .item{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    
+}
+.icon{
+    width: 50px;
+    height: 50px;
+    background: url(../images/icon-wechat.png) center center no-repeat;
+    background-size: contain;
+    margin-right: 10px;
+
+}
+.icon1{
+    background-image: url(../images/icon-rp.png);  
+}
+.icon2{
+    background-image: url(../images/icon-credit.png);  
+}
+.item1{
+    display: flex;
+    justify-content: center;
+}
+.item2{
+    display: flex;
+    justify-content: flex-end;
+}

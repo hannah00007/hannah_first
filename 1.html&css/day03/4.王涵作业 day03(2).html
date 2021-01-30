@@ -1,0 +1,284 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        text-align: center;
+        font-family: "黑体";
+    }
+
+    .bigbox,
+    .box {
+        width: 1500px;
+        margin: 0 auto;
+        background-color: #f3f3f3;
+    }
+
+    .bigbox {
+        margin-top: 80px;
+        padding: 30px 0 0 0;
+    }
+
+    .box {
+        padding: 50px 0 10px 0;
+    }
+
+    h1 {
+        color: #000e42;
+        font-size: 30px;
+    }
+
+    h3 {
+        margin-top: 15px;
+        font-weight: normal;
+        color: #555;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0 auto;
+        padding: 30px, 0;
+        width: 1200px;
+    }
+
+    li {
+        width: 220px;
+        padding-left: 30px;
+        padding-bottom: 30px;
+        display: inline-block;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    p {
+        margin-top: 0;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-color: white;
+        font-size: 14px;
+        font-weight: bold;
+        color: #000e42;
+        width: 100%;
+    }
+
+    img {
+        margin-bottom: 0;
+        border-radius: 10px;
+        width: 220px;
+    }
+</style>
+
+<body>
+    <div class="bigbox">
+        <h1>珠峰教学活动</h1>
+        <h3>来珠峰培训给你一个新的开始</h3>
+        <div class="box">
+            <ul>
+                <li>
+                    <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                        <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                        <p>2018年第十四期教学活动1</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                        <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                        <p>2018年第十四期教学活动2</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                        <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                        <p>2018年第十四期教学活动</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                        <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                        <p>2018年第十四期教学活动4</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                        <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                        <p>2018年第十四期教学活动</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                        <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                        <p>2018年第十四期教学活动6</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                        <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                        <p>2018年第十四期教学活动</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                        <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                        <p>2018年第十四期教学活动8</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> -->
+
+
+<!-- 老师讲解 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        /* 块级元素设置只设置宽，没有设置高，让里面的元素自己填充 */
+        width: 1200px;
+        border: 10px solid red;
+        margin: 0 auto;
+        background-color: #f3f3f3;
+    }
+    /* A是行内元素需要转化成块然后才能和里一样大 */
+    a{
+        text-decoration: none;
+        /* a不转成块，a 里面的 img也会充满 li？ */
+        display: block;
+  
+    }
+    ul,li{
+        list-style: none;
+    }
+    ul{
+        width: 1100px;
+        margin: 0 auto;
+    }
+
+    li{
+        display: inline-block
+    }
+    h1,h3{
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+    h1{
+        font-size: 32px;
+        font-weight: bold;
+        color: #000e42;
+    }
+    h3{
+        font-size: 14px;
+        font-weight: normal;
+    }
+    img{
+        /* display: block; */
+        margin-top: 20px;
+    }
+    p{
+        color: black;
+        background-color: blanchedalmond;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="mian">
+        <h1>珠峰教学活动</h1>
+        <h3>来珠峰培训给你一个新的开始</h3>
+        <ul>
+            <li>
+                <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                    <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                    <p>
+                        2018年第十四期教学活动
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                    <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                    <p>
+                        2018年第十四期教学活动
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                    <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                    <p>
+                        2018年第十四期教学活动
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                    <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                    <p>
+                        2018年第十四期教学活动
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                    <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                    <p>
+                        2018年第十四期教学活动
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                    <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                    <p>
+                        2018年第十四期教学活动
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                    <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                    <p>
+                        2018年第十四期教学活动
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="http://bbs.zhufengpeixun.cn/bbs2014/forum.php?mod=viewthread&tid=553&extra=">
+                    <img src="http://www.zhufengpeixun.cn/images/img1605.jpg" alt="2018年第十四期教学活动">
+                    <p>
+                        2018年第十四期教学活动
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+
+

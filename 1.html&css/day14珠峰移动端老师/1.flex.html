@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        /* 行内弹性盒 */
+        display: inline-flex;
+        /* 块状的弹性盒 */
+        display: flex;
+    }
+
+    /* 使用完 flex之后，就变成了容器 */
+    ul {
+        list-style: none;
+        width: 700px;
+        height: 500px;
+        background-color: blue;
+        display: flex;
+        /* 默认也就是横轴 row-reverse横轴返过来*/
+        flex-direction: row;
+        /* 这是垂直  column-reverse 纵轴返过来*/
+        /* flex-direction: column; */
+
+
+
+
+        /* 控制项目是否换行 默认是 no-wrap不换行，如果容器的宽度要小于里面的小项目，默认会让里面的子项目成比例缩小*/
+        flex-wrap: wrap;
+        /* 是两面两个属性的简写，第一个数控制方向，第二个是是否换行 */
+        /* flex-flow: column wrap; */
+
+
+
+
+        /* 控制子项目在主轴的位置 */
+        /* justify-content: center; */
+        /* justify-content: flex-start; */
+        /* justify-content: flex-end; */
+        /* justify-content: space-between; */
+        /* justify-content: space-around;二倍 */
+        /* justify-content: space-evenly; 相等*/
+
+
+
+        /* 控制子项目在侧轴的位置*/
+        /* align-items: flex-end; */
+        /* align-items: flex-start; */
+        /* align-items: center; */
+        /* 如果没有写固定高或者固定宽就会填充整个高或者宽 */
+        align-items: stretch;
+        /* align-items只得是侧轴只有一根，如果容器的宽度要小于里面的小项目并且换行的时候用align-content */
+        /* align-content: center; */
+
+
+
+
+
+
+    }
+
+    /* 容器里面的就是子项目 */
+    li {
+        width: 100px;
+        height: 100px;
+        background-color: blueviolet;
+        /* 让里面的子项目均分 */
+    }
+
+    li:nth-child(even) {
+        background-color: cyan;
+        flex: 2;
+    }
+    li:nth-child(odd) {
+        flex: 1;
+        /* 某个项目在侧轴的位置 */
+        
+    }
+    /* 这是控制位置的，默认是 0 */
+    .box7{
+        order: 2;
+        /* 控制某个元素在侧轴的位置 */
+        align-self: flex-end;
+        /* 当外面的宽度大于里面的，那么这个元素就会填充多余的内容 */
+        flex-grow: 1;
+    }
+    
+
+</style>
+
+<body>
+    <div class="box"></div><span>span</span>
+
+
+    <ul>
+        <li class="box7">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    
+</body>
+
+</html>

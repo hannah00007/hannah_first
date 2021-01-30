@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box1 {
+        /* 块级元素不设置宽会默认填充父级的宽 */
+        /* 浏览器默认的是标准盒模型也就是 border会增加盒子的宽 */
+        /* width: 0px;
+        height: 20px; */
+        background-color: turquoise;
+        border: 50px solid black;
+        border-color: transparent transparent red transparent;
+
+    }
+    .box2{
+        width: 100px;
+        height: 100px;
+        /* 如果超出盒子的大小会自动添加滚动条 */
+        overflow: auto;
+        /* 不管是否超出都会增加滚动条行 */
+        overflow: scroll;
+    }
+</style>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2">编辑导语</div>
+</body>
+
+</html>

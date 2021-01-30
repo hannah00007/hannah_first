@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .clearfix:after {
+        display: block;
+        height: 0;
+        content: "";
+        clear: both;
+        overflow: hidden;
+        visibility: hidden;
+        font-size: 0;
+    }
+
+    .clearfix {
+        *zoom: 1
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+    }
+
+    .main {
+        height: 1086px;
+        background: url(dream.webp) center center no-repeat;
+        position: relative;
+    }
+
+    .box {
+        width: 800px;
+        height: 60px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -400px;
+        margin-top: -125px;
+
+
+    }
+
+    .monkey {
+        width: 200px;
+        height: 180px;
+        background: url(monkey.png) no-repeat;
+        float: left;
+        animation: monkey 0.5s steps(8) infinite;
+        margin-top: 30px;
+
+    }
+
+    .pig {
+        width: 200px;
+        height: 180px;
+        background: url(pig.png) no-repeat;
+        float: left;
+        animation: pig 1s steps(8) infinite;
+        margin-top: 30px;
+
+    }
+
+    .tang {
+        width: 170px;
+        height: 240px;
+        background: url(tang.png) no-repeat;
+        margin-top: 30px;
+        float: left;
+        animation: tang 1s steps(8) infinite;
+        
+
+    }
+
+    .kill {
+        width: 210px;
+        height: 500px;
+        background: url(kill.png) no-repeat;
+        float: left;
+        animation: kill 2s steps(8) infinite;
+        margin-top: 80px;
+        box-sizing: border-box;
+    }
+    @keyframes monkey{
+        0%{
+            background-position: 0 0;
+        }
+        100%{
+            background-position: -1600px 0;
+        }
+    }
+    @keyframes pig{
+        0%{
+            background-position: 0 0;
+        }
+        100%{
+            background-position: -1600px 0;
+        }
+    }
+    @keyframes tang{
+        0%{
+            background-position: 0 0;
+        }
+        100%{
+            background-position: -1360px 0;
+        }
+    }
+    @keyframes kill{
+        0%{
+            background-position: 0 0;
+        }
+        100%{
+            background-position: -1680px 0;
+        }
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="box">
+            <div class="monkey">
+
+            </div>
+            <div class="pig">
+
+            </div>
+            <div class="tang">
+
+            </div>
+            <div class="kill">
+
+            </div>
+            
+        </div>
+        <audio src="1.mp3" controls loop autoplay></audio>
+    </div>
+</body>
+
+</html>

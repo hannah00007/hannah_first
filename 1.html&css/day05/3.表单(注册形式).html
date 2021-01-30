@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- action 是提交地址 -->
+    <form action="" method="get">
+        <label for="">用户名</label>
+        <!-- 文本输入框 
+            + placeholder：占位符，提升用户输入信息
+            + require 是非空校验，提醒用户必须填写
+            + autofocus自动聚焦在这个框-->
+        <input type="text" placeholder="请输入用户名" name="username" required autofocus>
+
+        <!-- 密码输入框 -->
+        <input type="password" name="password" id="" placeholder="请输入密码">
+
+        <!-- 重置 -->
+        <input type="reset">
+
+        <!-- 提交 -->
+        <input type="submit" name="" id="">
+
+
+
+        <!-- radio单选按钮，比如性别 
+            + 默认选择 checked
+            + 单选要让浏览器知道这是一组，就需要加上相同的name
+            + 点男或女也会选中用 id链接-->
+        <label for="man">男</label>
+        <input type="radio" name="sex" id="man" checked>
+        <label for=" woman">女</label>
+        <input type="radio" name="sex" id="woman">
+
+
+        <!-- 多选按钮 ，比如兴趣-->
+        <input type="checkbox" name="" id="">
+
+        <!-- 按钮，同时里面可以写东西, ，disabled是禁用的意思-->
+        <input type="button" value="点击支付" disabled>
+        <!-- button 本身只是个按钮里面不会有文字，可以用是上面方法也可以用下面这种，type="button" 是禁止跳转-->
+        <button type="button">
+            点击支付
+        </button>
+
+        <!-- 下拉框
+            + value给后端返回的值
+            + selected默认选择 
+            + disable不让选择-->
+        <select name="" id="">
+            <!-- 代表江苏的是 0 -->
+            <option value="3" selected disabled>请输入你的城市</option>
+            <option value="0">江苏</option>
+            <option value="1">北京</option>
+            <option value="2">上海</option>
+        </select>
+
+        <!-- 留言板 cols 是列数，rows 是行数 
+            + 默认是可以拖动框的大小的，可以在 css里面设置一个样式(resize:none)就不可以拖拽了
+            + 框一点会成蓝色比较丑，所以用 （outline:none） 清除蓝色线 -->
+        <textarea name="" id="" cols="30" rows="10">
+        </textarea>
+    </form>
+</body>
+
+</html>

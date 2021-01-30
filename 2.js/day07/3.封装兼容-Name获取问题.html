@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box1" id="main">
+        <input type="text" name="he1">
+        <input type="text" name="he1">
+        <input type="text" name="he2">
+    </div>
+    <input class="box1" name="he1">
+</body>
+
+</html>
+<script>
+
+
+
+    // 封装一个函数，获取 main下面name=he1的元素，不存在兼容问题(document.getElementByName()不适用ie9以下)
+    var main = document.getElementById("main")  
+    function myGetName(content,val) {
+        var allTag = content.getElementsByTagName("*")//获取该元素下的所有子元素
+        var ary = []
+        for (var i = 0; i < allTag.length; i++) {
+            if (allTag[i].name == val) {
+                ary.push(allTag[i])
+
+            }
+        }
+        return ary
+    }
+    myGetName(main, "he1")//[input, input]
+
+</script>

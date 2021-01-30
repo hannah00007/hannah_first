@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" class="box"></div>
+    <div id="box" class="box"></div>
+    <ul id="ul">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <input type="text" name="username">
+    <input type="text" name="username">
+</body>
+</html>
+<script>
+    /*通过 id名字获取页面元素
+    + document 是固定的
+    + id 名字在一个页面中不能重复
+    + 可以直接把 id名字当成变量去使用box.
+    */
+    var box=document.getElementById("box")
+  
+
+
+    /*通过标签获取页面中的元素
+    + document 不是固定的
+    + 返回的是一个类数组，可以用数组的方法取出里面的元素
+
+    */
+    var ul=document.getElementById("ul")
+    var list=ul.getElementsByTagName("li")[0]
+    var allTag = content.getElementsByTagName("*")
+
+
+
+    /*通过类名获取页面中的元素
+    + document 不是固定的
+    + 返回的是一个类数组，可以用数组的方法取出里面的元素
+    */
+    var divs=document.getElementsByClassName("box")[0]
+
+
+    /*通过 name 名字得到一组元素
+    + document 是固定的（同id）
+    + 对于非表单元素，通过此方法获取元素在 ie9 以下不兼容，获取不到
+    + 返回的是一个类数组，可以用数组的方法取出里面的元素
+    */
+    var input=document.getElementsByName("username")[0]
+
+
+    /*通过css的选择器获取元素
+    + document.querySelector: 获取到的是第一个元素
+    + document.querySelectorAll: 获取到的是所有元素
+    */
+   document.querySelector(".ul li")//获取第一个li
+   document.querySelectorAll(".ul li")//获取全部的li
+
+    // 获取页面的头部
+   document.head
+
+    // 获取页面的身体 
+   document.body
+
+    // 获取 html
+   document.documentElement
+
+    // 获取一屏幕的宽和高
+    document.documentElement.clientHeight||document.body.clientHeight
+    document.documentElement.clientWidth||document.body.clientWidth
+</script>

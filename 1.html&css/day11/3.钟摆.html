@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box1 {
+        width: 20px;
+        height: 200px;
+        background-color: lime;
+        position: relative;
+        margin: 0 auto;
+        transform-origin: center top;
+        animation: run ease 2s infinite;
+    }
+    .box2 {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: maroon;
+        position: absolute;
+        top: 200px;
+        /* 柱子的宽-圆的半径/2 */
+        left: -5px;
+        
+    }
+    @keyframes run {
+        0%,100%{
+            transform:rotate(-45deg)
+        }
+        25%{
+            transform:rotate(0deg)
+        }
+        50%{
+            transform:rotate(45deg)
+        }
+        75%{
+            transform:rotate(0deg)
+        }
+    
+
+    }
+</style>
+
+<body>
+    <div class="box1">
+        <div class="box2">
+
+        </div>
+    </div>
+</body>
+
+</html>

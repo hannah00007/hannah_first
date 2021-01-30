@@ -1,0 +1,231 @@
+.whiteArea{
+    background-color: white;
+    padding-bottom: 28px;
+}
+.md{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.nav{
+    background-color: yellow;
+    height: 52px; 
+    line-height: 52px;
+    margin: 16px 0;
+
+}
+.nav a{
+    /* 字号默认是 14px */
+    color: #2a2a2a;
+}
+.logo{
+    width: 176px;    
+    height: 52px;  
+    background: url(../images/logo.png) center center no-repeat;
+    overflow: hidden;
+    float: left;
+}
+.logo>a{
+    display: block;
+    height: 52px;
+
+}
+.nav .links{
+    float: left;
+}
+.nav .links a{
+    margin-left: 55px;
+}
+.nav .message{
+    float: right;
+}
+.nav .cartBtn img{
+    vertical-align: middle;
+    margin-right: 7px;
+}
+.nav .logoIn{
+    margin: 0 37px;
+}
+/* 轮播区域 */
+.bannerBox{
+    height: 360px;
+    position: relative;
+    
+}
+.banner a{
+    display: block;
+    height: 360px;
+    background: url(../images/bannerͼ1.png) center center no-repeat;
+}
+.sliderBar{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(2, 0, 0, 0.2);
+    width: 240px;
+}
+.sliderBar li{
+    padding: 0 30px;
+}
+.sliderBar a{
+    display: block;
+    height: 72px;
+    line-height: 72px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    box-sizing: border-box;
+    position: relative;
+}
+.sliderBar li:last-child>a{
+    border-bottom: none;
+}
+.sliderBar li:hover{
+    background-color: rgba(11, 11, 11, 0.2);
+
+}
+.sliderBar .content{
+    position: absolute;
+    width: 500px;
+    height: 360px;
+    top: 0px;
+    left: 240px;
+    display: none;
+    background-color: rosybrown;
+}
+.sliderBar li:hover .content{
+    display: block;
+}
+.sliderBar li a::after{
+    content: "";
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background: url(../images/arrow.png);
+    background-size: contain;
+}
+.recommend h3{
+    font-size: 16px;
+    color: #2d2d2d;
+    margin: 39px 0 19px 0;
+    /* 一个块级元素本身会有一点的行距为了接近把行高设为 1 */
+    line-height: 1;
+
+}
+.recommend .lists li{
+    width: 251px;
+    /* height: 184px; */
+    position: relative;
+    /* 阴影：水平，竖直，模糊度，阴影大小，阴影颜色 */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    float: left;
+    margin-right: 65px;
+    
+}
+.lists li:last-child{
+    margin-right: 0;
+}
+.lists li a{
+    width: 251px;
+    height: 184px;
+    display: block;
+    background: url(../images/实战推荐2.png) center top no-repeat;
+}
+.recommend .layer{
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 15px 15px 0 15px;
+    box-sizing: border-box;
+}
+
+.recommend .layer .top{
+    height: 40px;
+    overflow: hidden;
+    
+}
+.layer .top:hover{
+    /* 这是最终展示的 */
+    /* height: 76px; */
+    height: 76px;
+    /* 这是过渡：属性，时间，匀速*/
+    transition: height 0.5s linear;
+}
+
+
+.recommend .layer h5{
+    color: #1e1e1e;
+    font-size: 14px;
+    line-height: 1;
+}
+.recommend .layer .title{
+    margin: 6px 0 10px;
+}
+.recommend p{
+    font-size: 12px;
+    color: #9e9d9d;
+}
+.recommend .bottom{
+    height: 43px;
+    line-height: 43px;
+    color: #9e9d9d;
+    font-size: 12px;
+}
+.recommend .price{
+    float: left;
+    color: #c71b1b;
+}
+.recommend .num{
+    float: right;
+}
+.grayArea{
+    background-color: #f3f5f7;
+    padding: 34px 0 54px;
+}
+.grayArea .one{
+    width: 224px;    
+    background: url(../images/bottom1.png) center center no-repeat;
+}
+.grayArea .two{
+    width: 397px;
+}
+.grayArea .three{
+    width: 254px;
+    background-color: red;
+}
+.grayArea .four{
+    width: 251px;    
+    background-color: lawngreen;
+    margin-right: 0px;
+}
+.grayAreaIn>a,.grayAreaIn>div{
+    margin-right: 24px;
+    float: left;
+    height: 380px;
+}
+.grayAreaIn .two>a{
+    display: block;
+    height: 184px;
+}
+.grayAreaIn .two>a:nth-child(1){
+     background: url(../images/bottom2.png) center center no-repeat;
+     margin-bottom: 12px;
+
+}
+.grayAreaIn .two>a:nth-child(2){
+    background: url(../images/bottom3.png) center center no-repeat;
+    
+}
+.foot1{
+    height: 272px;
+    background-color: #2e2e2e;
+    border-bottom: 1px solid #020202;
+}
+.foot2{
+    height: 92px;
+    background-color: #212121;
+    border-top: 2px solid #5b5c5c;
+}

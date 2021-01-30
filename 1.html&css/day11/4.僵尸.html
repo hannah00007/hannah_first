@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        background: black;
+    }
+    html,body{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .dead{
+        width: 200px;
+        height: 312px;
+
+        background: url(dead.png) no-repeat;
+        /* 背景图分 10 张 */
+        animation: dead 1s steps(10) infinite,run 10s linear infinite;
+
+    }
+    @keyframes dead {
+        0%{
+            background-position: 0 0;
+        }
+        100%{
+            /* 精灵图一般要用负数 */
+            background-position: -2000px 0;
+        }
+    }
+    @keyframes run {
+        0%{
+            transform: translate(100vw,0);
+        }
+
+        100%{
+            transform: translate(-200px,0);
+        }
+    }
+</style>
+<body>
+    <div class="dead">
+
+    </div>
+</body>
+</html>

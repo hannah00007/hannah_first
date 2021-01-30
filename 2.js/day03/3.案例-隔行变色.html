@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            width: 500px;
+            height: 30px;
+            line-height: 30px;
+            margin: 0 auto;
+            list-style: none;
+
+        }
+
+        .color1 {
+            background-color: hotpink;
+        }
+
+        .color2 {
+            background-color: lawngreen;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="main">
+        <li>最后一段恋情则是在2011年,滕丽名经人介绍与现在的老公朱建昆相识</li>
+        <li>最后一段恋情则是在2011年,滕丽名经人介绍与现在的老公朱建昆相识</li>
+        <li>最后一段恋情则是在2011年,滕丽名经人介绍与现在的老公朱建昆相识</li>
+        <li>最后一段恋情则是在2011年,滕丽名经人介绍与现在的老公朱建昆相识</li>
+        <li>最后一段恋情则是在2011年,滕丽名经人介绍与现在的老公朱建昆相识</li>
+    </ul>
+</body>
+
+</html>
+<script>
+    var main = document.getElementById("main");
+    var lis = main.getElementsByTagName("li");
+
+    // 通过添加属性
+    // for (var i = 0; i < lis.length; i++) {
+    //     if (i % 2 == 0) {
+    //         lis[i].className = "color1";
+    //     } else {
+    //         lis[i].className = "color2";
+    //     }
+    // }
+    // 通过判断
+    for (var i = 0; i < lis.length; i++) {
+        if (i % 2 == 0) {
+            lis[i].style.background = "blue";
+        } else {
+            lis[i].style.background = "yellow";
+        }
+        lis[i].onmouseover = function () {
+            //oldcolor是自定义属性，this 是获取当前所使用的元素
+            this.oldcolor = this.style.background;
+            this.style.background = "lightpink";
+        }
+        lis[i].onmouseout = function () {
+            this.style.background = this.oldcolor;
+        }
+
+    }
+
+</script>

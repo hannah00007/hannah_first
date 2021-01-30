@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div.box{
+        width: 200px;
+        height: 200px;
+        background: green;
+        /* 让 box 成为参照物 */
+        position: relative;
+        margin: 20px auto;
+        position: fixed;
+        right: 0;
+        top: 20px;
+ 
+    }
+    div.box1{
+        width: 100px;
+        height: 100px;
+        background: yellow;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+    }
+</style>
+<body>
+    <!-- 
+        定位方式：position
+            + relative 相对定位
+                + 特点
+                    + position:relative
+                    + 1.相对于自己当前位置移动，
+                    + 2.没有脱离普通文档流，之前的位置还在
+                    + 3.相对定位元素层级要高于普通文档流元素
+                    + 注意： top:正直往上，负值往下;right:正直往左，负值往右
+            + absolute绝对定位  
+                + 特点
+                    + position:absolute
+                    + 1.相对于其他元素的位置挪动而挪动
+                    + 2.不占位置
+                    + 3.层级要高于普通文档流
+                    + 4.参照物必须是祖先级元素
+                    + 5.某个元素设置了绝对定位，浏览器在在寻找参照物时候会一级一级往上找，
+                    如果没多个元素设置参照物后，浏览器会就近原则找到参照物，如果都没有就是 body,
+                    如果参照物里面已经有了绝对定位或者固定定位（position:absolute/fixed），
+                    那么就不用再写相对定位了position:relative
+                    + 块级元素不写宽度可以充满父级，但是只要这个元素写了绝对定位，那么就不会充满父级
+                    大小由内容大小决定
+                    + 行内元素本身设置宽高不起作用但是加上定位之后宽高就会起作用
+                    + 给绝对定位的元素的宽度用百分比，如果参照物和父级不是一个元素那么就会以参照物为准
+            + static 静态定位 默认
+            + fixed 固定定位
+                + 特点
+                    + 参照物是整个窗口
+
+            + 层级方式
+                + 有时两个元素设置相同绝对定位后就会后面的元素就会覆盖前面的元素
+                    + 解决方法：想让谁在上面就把谁的z-index值设置大一些
+
+            + 想让一个盒子在另一个盒子或者在屏幕中水平垂直居中
+                + 1.定位:让里面的盒子设置绝对定位和 left:50%,top:50%;margin-left:负宽度,magrin-top:负高度
+                + 2.用 c3 样式:margin-left:负宽度,magrin-top:负高度 改为：transform：translate(50%,50%)
+                好处是不用知道盒子的宽度
+                + 3.flex布局:
+                    + justify-content:center
+                    + align-content:center
+
+     -->
+
+         
+            
+        <div class="box">
+            <div class="box1"></div>
+     </div>
+</body>
+</html>

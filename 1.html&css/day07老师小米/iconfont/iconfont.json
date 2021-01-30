@@ -1,0 +1,16 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "13699252",
+      "name": "cart arrow down",
+      "font_class": "FontAwesomecartarrowdown",
+      "unicode": "e9b7",
+      "unicode_decimal": 59831
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        /* *:通配符权重：0；选择页面所有元素  */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 标签选择器权重：1；代表这一类的标签 */
+        h1 {
+            color: red;
+        }
+
+        /* 权重一样，下面的代码会把上面的覆盖掉 */
+        h1 {
+            color: rosybrown;
+        }
+
+
+        /* .类选择器权重：10；一个元素可以有多个类名只需要把类名用空格分开，一个类名可以多个元素共同使用，
+        对于不同元素可以使用用一个类名将这些元素设计成一个样式 */
+        .w {
+            width: 100px;
+            height: 200px;
+            background-color: blue;
+        }
+
+        /* []属性选择器：权重10；属性选择器或者是选中具备某个属性值的属性 */
+        [index] {
+            background-color: blue;
+        }
+
+        [index="a"] {
+            background-color: blue;
+        }
+
+        /* id选择器权重是 100 */
+        /* id的权重比类的权重要高 ,所以id会覆盖类，当然如果样式不一样的话就是都会实现*/
+        #box1 {
+            color: pink;
+        }
+
+        .box1 {
+            color: red;
+        }
+
+
+        /* 子选择器:大于号；不包括孙子哦 */
+        /* 这个权重是选择器组和之和 2 哦 */
+        /* ul里面所有的子元素仅限于子不包括孙子 */
+        ul>li {
+            background-color: red;
+        }
+
+        /* 这个权重就是 11 哦*/
+        .main>li {
+            color: red;
+        }
+
+        /* 后代选择器:空格;选择的是后代包括孙子哦 */
+        /* 这个权重是选择器组和之和 2 哦 */
+        /* .main 下面说有的 p 包括孙子 */
+        .main p {
+            color: red;
+        }
+
+
+        /* 分组选择器：逗号 */
+        /* 权重仅仅是每个选择器 */
+        /* 这个选择器的权重就 仅仅是 10 */
+        .box1,
+        .box2 {
+            color: red;
+        }
+
+        /*这个权重就是 20和 10（各个的权重看各个的） */
+        .main>.box1,
+        .box2 {
+            color: red;
+        }
+
+        /* 交集选择器（即A又B）：中间不加任何东西 */
+        /* 权重是之和 */
+        .w.y {
+            color: aqua;
+        }
+
+        /*就是选中所有 div中且类名是W*/
+        div.w {
+            color: aqua;
+        }
+
+        /* 同时具备 id是box1，类名是 box1 */
+        #box1.box1 {
+            color: brown;
+        }
+
+        /* 相邻兄弟选择器(向下寻找)：用加号（只要是相邻的都可以哦） */
+        /* h1下面的是p的所有p标签 权重是之和 2 */
+        h1+p {
+            color: brown;
+        }
+
+        /* 通用兄弟选择器:~,向下寻找 */
+        /* 不一定要相邻，权重相加 */
+        /* 这个权重是 2 哦 */
+        h1~p {
+            color: brown;
+        }
+
+        /* 伪类选择器 */
+        /* 超链接的几种状态 lvhh */
+        /* 默认颜色 */
+        a:link {
+            color: brown;
+        }
+
+        /* 访问后 */
+        a:visited {
+            color: black;
+        }
+
+        /* 鼠标放上 */
+        a:hover {
+            color: green;
+        }
+
+        /* 点击时 */
+        a:active {
+            color: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="box1 w x y">我是H1</h1>
+    <h2>我是H2</h2>
+    <h1>我是H1</h1>
+    <h2>我是H2</h2>
+    <p class="box1 w">我是p</p>
+    <div index="a"></div>
+    <div id="box1" class="box1">我我我</div>
+    <ul class="main">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <a href="http://www.qq.com">是我</a>
+
+</body>
+
+</html>

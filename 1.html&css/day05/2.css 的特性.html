@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 继承性：给某个标签设置样式他的后代也会生效 */
+        /* + 只给 div设置了样式，span 也跟着继承了 */
+        /* + 并不是所有的属性都有继承性 */
+        /* + color,font-size,line-height,visibility 是可以继承的*/
+        div{
+            width: 100px;
+            height: 100px;
+            /* 强制使用此属性 */
+            background-color: red !important;
+            font-size: 10px;
+            line-height: 100px;
+            text-align: center;
+        }
+        /* 层叠性 */
+        /* + 用多种选择器选择某个元素，但是给他相同的属性设置不同的值，css会处理这种冲突 */
+        /* + 对于权重相同的选择器，则看代码的加载的顺序（浏览器从上往下加载）
+             但是对于用不同的选择器即权重不同时则看权重的大小 */
+        /* + 优先级：！important>内联样式>#id>类>标签>通配符>继承>浏览器默认 */
+        .glue{
+            background-color: saddlebrown;
+        }
+    </style>
+</head>
+<body>
+    <div id="main" style="background-color: saddlebrown;">
+        <span class="glue">2123</span>
+    </div>
+</body>
+</html>

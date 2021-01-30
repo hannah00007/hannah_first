@@ -1,0 +1,26 @@
+/* 重置样式 */
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+ul,li{
+    list-style: none;
+}
+.clearfix:after {
+    /* 即使内容为空也必须写这个属性 */
+    content: "";
+    font-size: 0;
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+/* 兼容 ie6,所以下方代码可去掉 */
+.clearfix {
+    *zoom: 1;
+}

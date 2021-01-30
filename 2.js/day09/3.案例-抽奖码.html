@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box {
+        width: 250px;
+        height: 100px;
+        line-height: 100px;
+        background-color: cyan;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+
+</html>
+<script>
+    /*
+    需求
+        1、编码内容：0-9；
+        2、号码位数：4 位；
+        3、每个 1 秒的时候就变化一次,10 秒时候停止，就是中奖号码。
+    
+    */
+    var codeStr = "1234567890";
+    function getCode(str) {
+        var newStr = "";
+        for (var i = 0; i < 4; i++) {
+            var index = Math.round(Math.random() * (str.length - 1))
+            if (newStr.includes(str[index]) == false) {
+                newStr += str[index];
+            } else {
+                i--;
+                continue;
+            }
+        }
+        return newStr
+    }
+
+    var box = document.getElementById("box")
+    box.innerText = getCode(codeStr)
+
+    var timer = setInterval(function () {
+        box.innerText = getCode(codeStr)
+    }, 1000);
+
+    setInterval(function () {
+        clearInterval(timer)
+    }, 10000);
+</script>
