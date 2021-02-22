@@ -42,11 +42,13 @@
         border: 1px solid #333;
         display: none;
     }
-    .lists>li.current{
+
+    .lists>li.current {
         background-color: chartreuse;
         border-bottom-color: chartreuse;
     }
-    .main div.current{
+
+    .main div.current {
         background-color: chartreuse;
         display: block;
     }
@@ -63,25 +65,25 @@
         <div>电视2</div>
         <div>电视3</div>
     </div>
-
 </body>
 
 </html>
 <script>
-    var main=document.getElementById("main");
-    var lists=main.getElementsByTagName("li");
-    var divs=main.getElementsByTagName("div");
-    for(var i=0;i<divs.length;i++){
-        lists[i].index=i;       
-        lists[i].onclick=function(){
-            var index=this.index;
-            for(var i=0;i<divs.length;i++){
-                lists[i].className=""
-                divs[i].className=""
+
+    var main = document.getElementById("main");
+    var lists = main.getElementsByTagName("li");
+    var divs = main.getElementsByTagName("div");
+    for (var i = 0; i < divs.length; i++) {
+        lists[i].index = i;
+        lists[i].onclick = function () {
+            var index = this.index;
+            for (var i = 0; i < divs.length; i++) {
+                lists[i].className = ""
+                divs[i].className = ""
             }
-            lists[index].className="current"// this.className="current"
-            divs[index].className="current"
+            lists[index].className = "current"// this.className="current"
+            divs[index].className = "current"
         }
     }
-    
+
 </script>

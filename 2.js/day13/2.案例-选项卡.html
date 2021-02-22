@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul,
+    li {
+        list-style: none;
+    }
+
+    .main {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .main li {
+        width: 100px;
+        margin-right: 20px;
+        display: inline-block;
+        border: 1px solid #333;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        position: relative;
+        top: 1px;
+    }
+
+    .main>div {
+        height: 300px;
+        line-height: 300px;
+        text-align: center;
+        border: 1px solid #333;
+        display: none;
+    }
+
+    .main li.current {
+        background-color: aqua;
+        border-bottom-color: aqua;
+    }
+
+    .main>div.current {
+        background-color: aqua;
+        display: block;
+    }
+</style>
+
+<body>
+    <div id="main" class="main">
+        <ul>
+            <li class="current">电视1</li>
+            <li>电视2</li>
+            <li>电视3</li>
+        </ul>
+        <div class="current">电视1</div>
+        <div>电视2</div>
+        <div>电视3</div>
+    </div>
+</body>
+
+</html>
+<script>
+    //方法一：自定义属性
+    var olis = document.querySelectorAll(".main li")
+    var odivs = document.querySelectorAll(".main>div")
+    for (var i = 0; i < olis.length; i++) {
+        olis[i].index = i
+        console.log(i)
+        olis[i].onclick = function () {
+            index = this.index
+            for (var i = 0; i < olis.length; i++) {
+                olis[i].className = ""
+                odivs[i].className = ""
+            }
+            olis[index].className = "current"
+            odivs[index].className = "current"
+
+
+        }
+
+    }
+
+    // 方法二：闭包 1
+    var olis = document.querySelectorAll(".main li")
+    var odivs = document.querySelectorAll(".main>div")
+    for (var i = 0; i < olis.length; i++) {
+        //代码自上而下执行的时候，会直接执行这个自执行函数（每次执行自执行函数都会开辟一个新的栈内存）
+        //每次会把 i传给 m,又因为alert(m)使用自执行函数形参 m ，所以外面的自执行函数不会销毁，也就是每次的m都会保存好
+        (function (m) {
+            olis[m].onclick = function () {
+                for (var j = 0; j < olis.length; j++) {
+                    olis[j].className = ""
+                    odivs[j].className = ""
+                }
+                olis[m].className = "current"
+                odivs[m].className = "current"
+            }
+        })(i)
+    }
+    // 方法三：闭包 2
+    var olis = document.querySelectorAll(".main li")
+    var odivs = document.querySelectorAll(".main>div")
+    for (var i = 0; i < olis.length; i++) {
+        //代码自上而下执行的时候，会直接执行这个自执行函数（每次执行自执行函数都会开辟一个新的栈内存）,并把每次的return结果给到每个 olis身上 onclick 属性
+        //每次会把 i传给 m,又因为alert(m)使用自执行函数形参 m ，所以外面的自执行函数不会销毁，也就是每次的m都会保存好
+        olis[i].onclick = (function (m) {
+            return function () {
+                for (var j = 0; j < olis.length; j++) {
+                    olis[j].className = ""
+                    odivs[j].className = ""
+                }
+                olis[m].className = "current"
+                odivs[m].className = "current"
+            }
+        })(i);
+        /*
+        for (var i = 0; i < lis.length; i++) {
+        lis[i].onclick = function () {
+           /* 这里的i为啥会变成3？ */
+           /*
+                理解一：
+                    + 当我们触发点击事件的时候，这个函数执行，形成私有作用域，
+                    + 在这个私有作用域里面，并没有私有变量i，所以就会向上级作用域进行查找，此时上级作用域就是
+                    + 全局作用域里面的i，当我们发生点击时间的时候，此时for 循环早已完成，i早就是3
+
+                理解二：
+                    + for循环是同步事件，执行完i=3；点击事件是异步事件，当我们点击页面上的按钮的时候，这个for循环早已经执行完了。
+           */
+
+            //change(i);
+        //}
+        //}
+        
+    }
+
+
+
+
+
+    // 方法四：let
+    var olis = document.querySelectorAll(".main li")
+    var odivs = document.querySelectorAll(".main>div")
+    for (let i = 0; i < olis.length; i++) {
+        olis[i].onclick = function () {
+            for (var j = 0; j < olis.length; j++) {
+                olis[j].className = ""
+                odivs[j].className = ""
+            }
+            olis[i].className = "current"
+            odivs[i].className = "current"
+        }
+    }
+</script>
