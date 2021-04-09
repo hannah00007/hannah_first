@@ -1,0 +1,1 @@
+throw(new Error("这是我自己抛出的错误"))

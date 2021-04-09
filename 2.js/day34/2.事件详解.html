@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    /*
+        
+        事件类型
+
+            + [鼠标事件] 
+                + click 点击事件（PC:频繁点击 N 次，触发 N 次点击事件）
+                + 单击事件: （移动端: 300ms 内没有发生第二次点击操作算作单击行为，所以 click 在移动端会有 300ms 延迟）
+                + dblclick 双击
+                + contextmenu 鼠标右键触发
+
+                + mousedown 鼠标按下
+                + mouseup  鼠标抬起
+                + mousemove 鼠标移动
+
+                + mouseover 鼠标滑过--有冒泡  
+                + mouseout  鼠标滑出--有冒泡  
+
+                + mouseenter 鼠标进入--没有冒泡
+                + mouseleave 鼠标离开--没有冒泡
+
+                + mousewhell 鼠标滚轮滚动
+            
+
+            + [键盘事件]
+                + keydown 按下某个键
+                + keyup 抬起某个键
+                + keypress 除Shift/Fn/CapsLock键以外，其它键长按（连续触发）
+                + 注意: 可以给表单元素、body、html、window 绑定事件，键盘上任何一个健都可触发
+
+            + [表单元素常用事件]「案例-表单事件案例」
+                + focus 获取焦点
+                + blur 失去焦点
+                + change 内容改变,失去焦点时会触发
+                + reset 表单重置（前提：表单元素包含在 form中，并且店家的按钮是 reset）
+                + select 
+                + submit 表单提交（前提：表单元素包含在 form中，并且点击的按钮是 submit）
+
+            + [移动端手指事件-单手指模型]
+                + touchstart 手指按下
+                + touchmove 手指移动
+                + touchend  手指松开
+                + touchcancel 操作取消（一般应用于非正常状态下操作结束）
+                + 注意: 「案例-移动端事件案例」
+                    + 手指触摸+移动+抬起==》会执行 start、move、end
+                    + 手指触发+抬起==》会执行 start、end、click
+
+            + [移动端手指事件-多手指事件模型] 
+                + gesturestart 当一个手指已经按在屏幕上，另一个手指又触摸屏幕的时候触发
+                + gesturechange / gestureupdate 当触摸屏幕的任何一个手指的位置发生变化的时候触发
+                + gestureend 当任何一个手指从屏幕上面移开时触发
+                + gesturecancel
+
+            + [音视频常用事件]
+                + canplay  可以播放（资源没有加载完，播放中可能会卡顿）
+                + canplaythrough 可以播放（资源已经加载完，播放中不会卡顿）
+                + play 开始播放
+                + playing 播放中
+                + pause 暂停播放
+
+            + [其它常用事件]
+                + load 资源加载完
+                + unload 资源卸载
+                + beforeunload 当前页面关闭之前
+                + error 资源加载失败
+                + scroll 滚动事件
+                + readystatechange AJAX请求状态改变事件
+                + resize 屏幕大小变化
+                + hashchange hash变化
+
+
+        
+        事件绑定
+    
+            + DOM0级事件绑定
+                + 语法: 
+                    + ele.on[ev]=[函数](元素对象身上的事件名进行赋值)
+                    + document.body.onclick=function()
+                    + document.body.onclick=null
+                + 绑定事件: 元素的同一个事件只能绑定一个方法
+                + 移除事件: 直接给事件的值赋值 null
+                + 传播机制: DOM0 级的事件只会在冒泡阶段绑定方法
+                + 优点: 效率快，使用方便
+                + 缺点: 浏览器提供的事件行为用 DOM0不能绑定成功（window.onDomContentLoaded=function(){}是错误的）
+            
+    
+            + DOM2级事件绑定
+                + 语法: 
+                    + ele.addEventListener("事件",方法,布尔值)
+                    + ele.removeEventListener("事件",方法,布尔值)
+                    + true: 在捕获阶段执行方法
+                    + false: 在冒泡阶段执行方法（不写就是 false）
+                + 事件绑定: 采用事件池的方法，元素的同一个事件类型可以绑定多个不同的方法，触发事件时按照事件池的顺序依次执行
+                + 事件移除: 绑定方法一般都是匿名函数，便于移除事件
+                + 优点: 浏览器提供的事件都可以通过 DOM2绑定和移除
+                + 原理: DOM元素都会基于__proto__查找到 EventTarget.prototype上的 add/removeEventListensr方法
+                    - document.body.__proto__=HTMLBodyElement.prototype
+                    - HTMLBodyElement.prototype.__proto__= HTMLElement.prototype
+                    - HTMLElement.prototype.__proto__=Element.prototype  
+                    - Element.prototype.__proto__=EventTarget.prototype(上面有 add/remove...)
+        
+    
+        事件传播机制
+            + DOM0
+                + 冒泡阶段: 从里往外
+                + 阻止冒泡: 
+                    + ev.cancelBubble=true/false
+                    + ev.stopPropagation()//IE6-8会有兼容问题
+                        + 处理兼容: ev.stopPropagation?ev.stopPropagation():ev.cancelBubble=true
+                        + 本身的冒泡还是会执行，但是后面的冒泡就不会有了。
+                + 注意: 当元素身上某事件被触发时候，其父级及以上元素都会触发这个事件，如果该事件没有绑定方法事件本身还是会触发只是不会做任何的事
+            + DOM2
+                + 先捕获阶段: 从外往里 ，目的是为冒泡阶段的传播提供路径（ev.path 存放着手机的路径，有内往外依次存储），其他没啥实质意义         
+                + 目标执行阶段: 先绑定哪个阶段就执行哪个方法
+                + 后冒泡阶段: 从里往外
+                    + ev.cancelBubble=true/false
+                    + ev.stopPropagation()//IE6-8会有兼容问题
+                        + 处理兼容: ev.stopPropagation()?ev.stopPropagation():ev.cancelBubble=true
+                + 注意: 当元素身上某事件被触发时候，其父级及以上元素都会触发这个事件，如果该事件没有绑定方法事件本身还是会触发只是不会做任何的事
+
+            + 基于冒泡机制的事件委托
+                + 原理: 事件触发有冒泡机制。当我点击里面的盒子依次对里面每个盒子执行方法
+                    + 原始想法: 是在每个盒子身上绑定方法，但是这个耗费性能，有几个盒子就需要开辟几个堆内存
+                    + 事件委托: 都绑定在他们公有的父级身上即可。
+                        + 通过 target 事件源确定点击的是哪个盒子(ev.target.className=="box"/ev.target.tagName=="LI")
+
+        事件对象(简写:ev)
+            + 含义: 触发事件执行函数事件绑定方法时，会默认给函数传递一个实参「事件对象」，实参里面存贮当前时间操作触发的信息「浏览器本身记录」，里面的记录的信息就可能不一样，但是事件对象本身都是一样的，和在哪个函数执行无关。   
+            + 事件对象分类
+                + mouseEvent: 鼠标事件对象
+                    + ev.clientX/ev.clientY: 窗口
+                    + ev.pageX/ev.pageY: body(包含滚动条)
+                        + 注意: 当页面没有滚动条是ev.clientX=ev.pageX
+                    + ev.offsetX/ev.offsetY: 事件源内边框
+                    + ev.type: 事件类型
+                    + ev.target: 事件源
+                    + ev.path: 传播路径
+                    + ev.cancelBubble/ev.stopPropagation(): 组织冒泡
+                    + ev.returnValue/ev.preventDefault: 组织默认行为
+                    + ...
+
+                + keyBoardEvent: 键盘事件对象
+                    + ev.type: 事件类型
+                    + ev.target: 事件源
+                    + ev.path: 传播路径
+                    + ev.which/keyCode: 键盘码
+                        + 左上右下: 37-40
+                        + space: 32
+                        + enter: 13
+                        + del: 8
+                        + shift: 16
+                        + crtl: 17
+                        + option: 18
+                        + altKey: 是否按了 alt(option)
+                        + crtlKey: 是否按了 crtl
+                        + shifKey: 是否按了 shift
+                        + ...
+
+                + touchEvent: 手指事件对象
+                    + ev.changeTouches: 手指按下，移动，离开存储对应的信息，哪怕离开也会记录最后一次信息
+                    + ev.touches: 手指按下，移动，离开存储对应的信息，不会记录最后一次信息
+                        + 注:以上获取都是 TouchList 集合，每个手指的信息都是一个 Touch 对象
+                    document.ontouchstart=function(ev){
+                        let p =ev.TouchList[0]
+                        console.log(p)//一个 Touch对象
+                    }
+                + Event: 普通时间对象
+                    window.onload=function(ev){
+                        console.log(ev)
+                    }
+
+            鼠标划入划出与进入离开
+                + mouseover/mouseout: 划入划出（用的少），存在冒泡机制
+                    + 从父亲离开进入儿子算是离开父亲，一切以鼠标在谁身上为准
+                        + 大盒套小盒，从上往下执行结果
+                            -1.outer.onmouseover
+                            -2.outer.onmouseout、inner.onmouseover、outer.onmouseover
+                            -3.inner.onmouseout、outer.onmouseout、outer.onmouseover
+                            -4.outer.onmouseout
+                + mouseenter/mouseleave: 划入划出，不存在冒泡机制
+                    + 从父亲离开进入儿子不算是离开父亲
+                        + 大盒套小盒，从上往下执行结果
+                            -1.outer.onmouseenter
+                            -2.inter.onmouseenter
+                            -3.inner.onmouseleave
+                            -4.outer.onmouseleave
+                   
+    */
+    
+
+    /* 
+        移动端手指触发        
+    */
+       let box=document.querySelector("#box")//在移动端querySelector、querySelectorAll 性能比较好
+        box.ontouchstart=function(e){
+            console.log("手指触摸",e)//事件对象还是存在的 e.changedTouches
+        }
+        box.ontouchmove=function(){
+            console.log("手指移动")
+        }
+        box.ontouchend=function(){
+            console.log("触摸结束")
+        }
+        //如果我只是触摸一下不移动这时候 click 也会执行的，但是如果我触摸然后移动就不会执行 click
+        box.onclick=function(){
+            console.log("触摸一下")//也就是说点击和移动是互斥的
+        }
+
+
+      
+
+
+
+
+    </script>
+</body>
+
+</html>

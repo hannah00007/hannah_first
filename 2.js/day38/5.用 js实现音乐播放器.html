@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <audio id="music" width=900px src="./myDream.m4a" controls></audio>
+    <button id="start">开始</button>
+    <!-- <button id="pause">结束</button> -->
+</body>
+</html>
+<script>
+    let start=document.getElementById("start")
+    let pause=document.getElementById("pause")
+    let music=document.getElementById("music")
+
+    /*
+      + paly()
+      + pause()
+      + ended//查看当前音乐是否播放完
+      + paused//查看当前播放暂停的状态
+      + duration()//获取一共多长时间
+      + currentTime()//获取、设置当前播放时间
+    
+    */
+    start.onclick=function(){
+        console.log(111)
+        let flag=music.paused
+        if(flag){
+            music.play()
+        }else{
+            music.pause()
+        }
+    }
+
+</script>

@@ -1,0 +1,34 @@
+/*
+    less 是一门预编译的语言
+        + 本身是不被浏览器识别的,要让浏览器识别 less 可以把 less 转义为css
+        + less可以实现 css没有的语法
+            - 嵌套
+            - 变量(存在作用域): @xxx:200px
+            - &连接符 代表当前作用域选择器的名字
+            - 函数 可以实参传值，形参接收，形参可以赋默认值
+                — 注意形参没有赋默认值时必须传实参，否则报错
+            - 继承 extend
+            - if 判断语句
+*/
+#box {
+  width: 500px;
+  height: 100px;
+  background-color: aqua;
+}
+#box:hover {
+  background-color: gold;
+}
+#box span {
+  border: 1px solid red;
+  display: block;
+  width: 500px;
+  height: 100px;
+  font-size: 18px;
+  color: blue;
+}
+#box span i {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: green;
+}

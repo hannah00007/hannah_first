@@ -1,0 +1,53 @@
+/*
+    less 是一门预编译的语言
+        + 本身是不被浏览器识别的,要让浏览器识别 less 可以把 less 转义为css
+        + less可以实现 css没有的语法
+            - 嵌套
+            - 变量(存在作用域): @xxx:200px
+            - &连接符 代表当前作用域选择器的名字
+            - 函数 可以实参传值，形参接收，形参可以赋默认值
+                — 注意形参没有赋默认值时必须传实参，否则报错
+            - 继承 extend
+            - if 判断语句
+*/
+@public: 200px;
+@c: red;
+@img: "./img/"; //变量也可以是路径，但是记得加上字符串
+
+#box {
+    width: @public; //500px
+    height: 100px;
+    background-color: aqua;
+    // background: url("@{img}1.png");
+    @public: 500px; //box 里面的私有变量
+    &:hover {
+        background-color: gold;
+    }
+    span {
+        border: 1px solid @c;
+        display: block; //500px
+        width: @public;
+        height: 100px;
+        font-size: 18px;
+        color: blue;
+        i {
+            .init(50px,50px);
+        }
+    }
+    
+}
+
+.init(@w:100px,@h:100px){
+    display: block;
+    width: @w;
+    height: @h;
+    background-color: green;
+}
+
+.pub(@w)when(@w>200px){
+    // 当@w大于 200px时，此作用域中的样式才会执行
+    background-color: hotpink;
+}
+#box1{
+    .pub(100px);
+}

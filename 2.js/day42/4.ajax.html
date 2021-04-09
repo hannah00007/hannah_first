@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /*
+            客户端往服务端传递参数的 3 种方式
+                + 请求头--
+                + 请求体(例如像 ajax 里面的 send(xxx))---post
+                + 问号传参
+
+            数据请求的方式
+                + http 中每一种请求的类型和特点
+                    + GET系列
+                        + GET
+                        + DELECT 告诉浏览器要删除的东西(路劲后面的参数要加上标识，比如  xxxx?id=1)
+                        + HEAD 只要请求头
+                        + OPTIONS 试探性请求
+                    + POST系列
+                        + POST
+                        + PUT 告诉服务器现在服务器上存储某些东西
+                    + 用GET还是POST 没有明确的界限
+
+            注: josn 格式属性名必须是字符串（字符串必须是双引号）
+
+            post系列和get系列之间的其他区别
+                1.GET传递给服务器的内容比POST的少，因为浏览器对URL的大小有限制(IE一般限制2kb左右，谷歌一般限制7kb左右)，POST系列的请求理论上可以发送无限大的数据
+                    + xhr.open('get','/list?name=1&age=2&sex=0&...')
+                    + xhr.send(.....)
+                2.GET系列请求相对于POST来说不安全
+                    + GET系列请求时基于url的问号进行传参，参数会直接暴露在url上，别人可以很容易的使用url劫持把你的参数进行篡改或者获取，POST系列的请求时把参数存储到请求主体中，别人不容易获取和篡改
+                3.GET系列请求会默认走缓存(为了节省性能提高请求的速度),但是 post 系列是不走缓存
+                    + GET:如果两次请求的 URL（全部） 是一样的就会走缓存，如果两次URL（全部）是不一样的就不会走缓存（get请求静态资源的时候服务器只会去找你的目标文件，和后面的参数没有关系,后面的加参数就是为了不走缓存）
+                4.GET一般都是得到数据（得到的多，发送的少），POST一般是发送的数据（得到的少，发送的多）
+                    
+        */
+
+        let time=new Data();
+        let url="http://www.baidu.com/index.html?name="+time
+
+        let xhr = new XMLHttpRequest();
+
+        console.log(xhr.readyState)//0 说明刚建完一个 ajax 实例，但是还没有open
+        // get传参就在你的 url里面传（get是没有请求体的），但是 post的参数就要在 send("xxx")里面传(post 既有请求头又有请求体，参数直接传给请求体)
+        xhr.open("get", "xxxx?name=wanghan&age=18");//自己电脑上的服务器智只能请求 get，默认是 true 同步
+
+        xhr.timeout = 1000//设置请求的超时时间
+
+        xhr.ontimeout = function () {
+            console.log("超时")
+        }//监听请求超时执行这个函数
+
+        console.log(xhr.readyState)//1 说明已经打开 open 请求
+
+        // 以上 send()还没有发送
+
+        xhr.setRequestHeader("ss", 100)//手动添加属性一次只能设置一个（在 open执行后，send执行前）浏览器给服务器发送的请求头（不管你写啥格式，存的都是字符串）
+
+        xhr.onreadystatechange = function () {
+            if (xhr.status === 200 && xhr.readyState === 4) {
+
+                xhr.abort()//打断请求体
+
+                console.log(xhr.readyState)           // 2 /3 /4
+
+                console.log(xhr.status)               // 200 /200 /200
+
+                console.log(xhr.responseText)         // 空/响应体(不完整应体（完整）)/响
+
+                // 获取所有的响应头的数据
+                console.log(xhr.getAllResponseHeaders)// 响应头/响应头/响应头
+                // 获取在响应头中某个属性名对应的属性值
+                console.log(xhr.getResponseHeader("Data"))
+            }
+        }
+
+        xhr.send("name=wanghan&age=18")//post 参数就要在 send 里面传 ，基于请求体发的参数
+
+
+        xhr.widthCredentials//在跨域的时候能否携带资源凭证
+        status //状态码
+        readyState//请求的步骤
+        response //返回的请求体
+        responseURL//请求的 url
+        open//配置请求的一个基本信息
+        onreadystatechange//监听readystatechange的变化
+
+    </script>
+</body>
+
+</html>

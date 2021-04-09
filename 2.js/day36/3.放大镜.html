@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+            /* position: absolute; */
+            margin: 0 auto;
+            /* left: 50%;
+            top: 50%; */
+            /*transform:translate(-50%,-50%); */
+        }
+        #mark{
+            width: 300px;
+            height: 300px;
+            position: relative;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+ 
+    </div>
+</body>
+</html>
+<script>
+    /*
+      需求
+        + 大盒子里面包裹着小盒子
+        + 当鼠标放到大盒子的时候小盒子出现
+        + 小盒子会随着鼠标的移动而动
+        + 小盒子移动的最宽和最高范围
+    
+    */
+    let box=document.getElementById("box")
+    let mark=null
+    box.onmouseenter=function(){
+        mark=document.createElement("div")
+        mark.id="mark"
+        box.appendChild(mark)
+    }
+    box.onmousemove=function(e){
+        let minL=0;
+        let maxL=box.offsetWidth-mark.offsetWidth;
+        let minT=0;
+        let maxT=box.offsetHeight-mark.offsetHeight;
+        let left=e.clientX-box.offsetLeft-150;
+        let top=e.clientY-box.offsetTop-150;//注意是要获取的是距离 body,只是这个地方就是 body
+        if(left<minL){
+            left=minL
+        }
+        if(left>maxL){
+            left=maxL
+        }
+        if(top<minT){
+            top=minT
+        }
+        if(top>maxT){
+            top=maxT
+        }
+        mark.style.left=left+"px"
+        mark.style.top=top+"px"
+    }
+    box.onmouseleave=function(){
+        // box.removeChild(mark)
+        mark.style.display="none"
+    }
+
+
+
+</script>

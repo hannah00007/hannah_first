@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .main {
+            width: 479px;
+            margin: 0 auto;
+            background: #333;
+            border-radius: 5px;
+            padding: 30px;
+            box-sizing: border-box;
+            color: #fff;
+            position: relative;
+        }
+
+        .main li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            justify-content: space-evenly;
+        }
+
+        .main li .info {
+            color: #fff;
+        }
+
+        button {
+            width: 52px;
+            height: 44px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            border: none;
+        }
+
+
+        .num {
+            width: 44px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background: #fff;
+            border-radius: 10px;
+            color: #333;
+        }
+
+        .shopInfo {
+            bottom: 20px;
+            left: 30px;
+        }
+
+        .shopInfo p {
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <!-- <ul class="list">
+            <li>
+                <button class="add" flag="1">+</button>
+                <b class="num">0</b>
+                <button class="sub" flag="0">-</button>
+                <span class="info">
+                    单价:<span class="itemPrice">1</span>元 小计：
+                    <b class="xjMoney">0</b>元
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1">+</button>
+                <b class="num">0</b>
+                <button class="sub" flag="0">-</button>
+                <span class="info">
+                    单价:<span class="itemPrice">2</span>元 小计：
+                    <b class="xjMoney">0</b>元
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1">+</button>
+                <b class="num">0</b>
+                <button class="sub" flag="0">-</button>
+                <span class="info">
+                    单价:<span class="itemPrice">3</span>元 小计：
+                    <b class="xjMoney">0</b>元
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1">+</button>
+                <b class="num">0</b>
+                <button class="sub" flag="0">-</button>
+                <span class="info">
+                    单价:<span class="itemPrice">4</span>元 小计：
+                    <b class="xjMoney">0</b>元
+                </span>
+            </li>
+        </ul> -->
+        <!-- <div class="shopInfo">
+            <p>商品共<span class="totalNum">0</span>件</p>
+            <p>共花了<span class="totalMoney">0</span>元</p>
+            <p id="changeBox">其中最贵的商品单价是<span class="specileMoney">0</span>元</p>
+        </div> -->
+    </div>
+</body>
+
+</html>
+<script>
+    //单例模式
+    let shopModule = (function () {
+        //获取需要的操作元素
+        let box = document.querySelector(".main")
+
+
+        //构建数据模型
+        let data = [
+            {
+                id: 1,
+                count: 0,
+                price: 12.5
+            }, {
+                id: 2,
+                count: 0,
+                price: 10.5
+            }, {
+                id: 3,
+                count: 0,
+                price: 12.5
+            }, {
+                id: 4,
+                count: 0,
+                price: 18.5
+            }, {
+                id: 5,
+                count: 0,
+                price: 14.5
+            }];
+
+        //渲染数据
+        let render = function render() {
+            //总信息
+            let counts = 0,
+                total = 0,
+                priceArr = [0];
+            //数据绑定
+            let str = `<ul class="list">`;
+            data.forEach(item => {
+                let {
+                    id,
+                    count,
+                    price
+                } = item;
+                //循环数据中的每一项，计算总购买数量和总价格以及把所有单价存在数组里
+                counts += count;
+                total += count * price;
+                count > 0 ? priceArr.push(price) : null;
+                str += `<li>
+                    <button data-btn="plus" data-id="${id}" class="add" flag="1">   
+                        +
+                    </button>
+                    <b class="num">${count}</b>
+                    <button data-btn="minus" data-id="${id}" class="sub" flag="0">
+                        -
+                    </button>
+                    <span class="info">
+                        单价: <span class="itemPrice">${price}</span>元 
+                        小计: <b class="xjMoney">${count * price}</b>元
+                    </span>
+                </li>`
+            });
+            str += `</ul>`;
+            str += ` <div class="shopInfo">
+                <p>商品共<span class="totalNum">${counts}</span>件</p>
+                <p>共花了<span class="totalMoney">${total}</span>元</p>
+                <p id="changeBox">其中最贵的商品单价是<span class="specileMoney">${Math.max(...priceArr)}</span>元</p>
+            </div>`;
+            box.innerHTML = str;
+            //每一次页面按照数据重新渲染完，就获取所有的+、-标签，绑定点击事件
+            handle();
+        };
+        //事件绑定
+        let handle = function handle() {
+            let btns = Array.from(box.querySelectorAll("button"));
+            //console.log(btns)
+            btns.forEach(item => {
+                //每一次点击，我们需要明确两个值，加还是减（对应哪个数据）？
+                item.onclick = function () {
+                    let btn = this.getAttribute("data-btn"),//字符串
+                        id = this.getAttribute("data-id"); //字符砖
+                    id = parseInt(id);
+                    //为啥要用 map不用 forEach?
+                    data = data.map(cur => {
+                        if (cur.id == id) {
+                            //操作修改的是当前的这一项
+                            if (btn == "minus") {
+                                cur.count--;
+                                cur.count < 0 ? cur.count = 0 : null;
+                            } else {
+                                cur.count++;
+                            }
+
+                        }
+                        return cur;
+                    })
+                    render();
+
+                };
+            });
+        };
+        return {
+            init:render
+ 
+        }
+    })()
+    shopModule.init();
+
+</script>

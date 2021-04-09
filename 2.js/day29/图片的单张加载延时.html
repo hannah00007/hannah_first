@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+
+    #box {
+        width: 300px;
+        height: 200px;
+        border: 1px solid red;
+        margin: 900px auto 0 auto;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body>
+    <div id="box">
+        <img src="1.onload.gif" alt="" true-img="2.item.jpg">
+    </div>
+
+</body>
+
+</html>
+<script>
+    /*
+        1.现在浏览器页面中把图片的宽高写出来
+        2.当用户滚动条的时候检测当前图片的位置是否要加载出来
+    
+    */
+
+    function screen(key, value) {
+        if (value == undefined) {
+            return document.documentElement[key] || document.body[key]
+        }
+        else {
+            document.documentElement[key] = value;
+            document.body[key] = value;
+        }
+
+    }
+
+    function offset(ele) {
+        let left = ele.offsetLeft;
+        let top = ele.offsetTop;
+        let parent = ele.offsetParent;
+        while (parent !== document.body) {
+            left += parent.clientLeft + parent.offsetLeft;
+            top += parent.clientTop + parent.offsetTop;
+            parent = parent.offsetParent;
+        }
+        return {
+            left,
+            top,
+        };
+    }
+
+
+    
+    let img = document.getElementsByTagName("img")[0];
+    let imgH = img.offsetHeight
+    let imgT = offset(img).top
+    let winH = screen("clientHeight")
+    console.log(winH)
+    function delay() {
+        if (img.flag) {
+            return
+        }
+        let winT = screen("scrollTop")
+        let win = winH + winT;
+        let imgg = imgH + imgT;
+
+        if (win > imgg) {
+            img.flag = true
+            let address = img.getAttribute("true-img");
+            let newImg = document.createElement("img");
+            img.src = address
+            fadeIn(img)     
+            img.onerror = function () {
+                img.src = "3.noimg.jpg"
+            }
+        }
+    }
+    function fadeIn(img) {
+        /*
+            1.先让 opacity=0;
+            2.再慢慢加
+        */
+        img.style.opacity = 0
+        let cur=parseFloat(img.style.opacity);
+        console.log(cur)
+        let timer = setInterval(() => {
+            cur+=0.002
+            if(cur>=1){
+                clearInterval(timer);
+                img.style.opacity = 1
+                return
+            }
+            img.style.opacity=cur
+        },17)
+    }
+    delay()
+    window.onscroll = function () {
+        delay()
+    }
+
+</script>

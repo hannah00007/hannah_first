@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 200px;
+            /* height: 500px; */
+            background: rgb(226, 218, 226);
+            border: 2px solid black;
+            box-shadow: 14px 26px 16px rgba(0, 0, 0, .5);
+            text-align: center;
+            position: absolute;
+            display: none;
+            list-style: none;
+        }
+
+        li {
+            border-bottom: 1px solid blue;
+            line-height: 40px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <div>sssss</div>
+    <script>
+        /*
+          需求
+            + 鼠标右键取消默认事件
+            + 鼠标右键出现目标元素框，并且目标元素框左上角就在鼠标点击的位置
+            + 鼠标点击除了目标元素框之外的就会消失，但是点击目标元素框不会消失
+        */
+        let box = document.getElementById('box');
+        window.oncontextmenu = function (e) {//鼠标右键
+
+            e.returnValue = false;//阻止默认事件的发生
+
+            let cliX = e.clientX; // 获取当前鼠标点击的位置距离屏幕（可视区域）左边框的距离
+            let cliY = e.clientY;
+            box.style.left = cliX + 'px';
+            box.style.top = cliY + 'px';
+            box.style.display = 'block';
+        }
+
+        window.onclick = function (e) {
+            console.log(e.target)//获取到当前点击dom元素(含结构)
+            let tagName = e.target.tagName; // 获取当前点击元素大写的名字
+            if (tagName !== 'LI' && tagName !== 'UL') {
+                box.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

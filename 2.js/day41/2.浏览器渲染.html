@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    // 浏览器的渲染
+    // 在渲染的时候遇到link/img/video/audio等都是异步去加载信息(浏览器会分配一个新的线程只执行当前的任务，主线程继续往下走)，但是遇到script、@import，必须是同步加载信息了，当信息加载完成之后，主线程才会继续往下走
+
+    // DOM的回流和重绘
+    //重绘：元素的样式改变，但是元素的大小，位置，宽高不变
+    //回流：元素的大小或者位置发生的变化，会触发重新布局，导页面重新的布局和渲染
+    //注意的是：回流一定会引发重绘，但是重绘不会引发回流
+
+    // 前端性能优化的几个点：
+    // 1、放弃传统的操作DOM的时代，基于react、vue去写你的项目，(特点是数据影响视图的模式，框架内部操作的是虚拟的DOM，还会进行DOM-diff的对比)
+
+    // 2、DOM操作的读写分离
+    // 现代版的浏览器有一个"渲染队列"的机制，如果发现某一行要修改元素的样式，不会立即进行渲染，他要看看下一行是否还要进行元素样式的修改，如果是，那就把上一次的修改样式放到渲染队列里，这个过程一致持续到不是修改样式的操作为止，整体进行一次渲染引发一次回流，
+
+    //js中的13个盒子模型和getComputedStyle和style都会引发渲染队列的刷新
+
+    // box.style.width = 100 +'px';
+    // box.style.height = 100 +'px';
+    // box.style.padding = '10px';
+
+    // console.log(box.style.width);
+
+    //-------------------------------------
+    //一开始的width是80px
+    // box.style.width = 100 +'px';
+    // console.log(box.clientHeight);
+    // box.style.height = 100 +'px';
+    // console.log(box.style.width); // 100px
+    // box.style.padding = '10px';
+
+
+      // 3、样式的集中改变
+    // box.style.cssText = 'width:100px;height:100px;padding:10px'
+    // 或者动态增加类名
+    // 能拿css完成的就不要拿js去写
+
+    // 5、文档碎片 cerateDocumentFragment 模板字符串
+
+
+
+
+    box.style.width = box.offsetWidth + 1 + 'px';
+    box.style.height = box.offsetHeight + 1 + 'px';
+    // 此处渲染两次
+    // ---------------------------------
+
+    // 此处渲染一次
+    let w = box.offsetWidth;//缓存布局
+    let h = box.offsetHeight;//缓存布局
+
+    box.style.width = w + 1+'px';
+    box.style.height = h + 1 + 'px';
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            promise的本质: 状态机
+            promise的应用:
+                + promise解决可解决: 异步的代码以同步的方式展现出来,从而解决 异步地狱回调 的问题
+                    + 传统的地域回调就是类似于 ajax 里面再包裹 ajax...
+                + promise是Es6的一个内置类
+                + promise语法
+                    + new promise(必须传一个回调函数)，而且这个回调函数会在promise内部马上执行(同步)，回调函数里面的 this 都是 window
+                        + 这个回调函数会有两个形参，形参对应的值分别是两个函数resolve(),reject()
+                        + promise 默认是等待的状态--pending
+                        + resolve(x'x'x)等待的状态转为成功的状态---filfulled（这里面的形参会在 then 的第一个函数接收）
+                        + reject(x'x'x)等待的状态转为失败的状态---rejected（这里面的形参会在 then 的第二个函数接收）
+                        + 注意: promise实例的状态一旦发生变化就会凝固，不可能再变了
+
+            Promise.prototype身上方法: then
+                + then执行的结果返回的是当前的实例，也就是可以多次使用 then
+                + then 方法里面有两个回调函数（可以传，也可以不传），第一个回调函数的是成功状态执行的函数（这个函数是装在成功状态的数组池子），第二个回调函数是失败状态执行的函数（这个函数是装在失败状态的数组池子），回调函数的执行是异步的
+                + then函数里面的return
+                    + 如果 return后面是一个新的 promise 的实例，下面的 then 到底执行哪个函数要看当前这个新实例的状态。
+                    + 如果 return后面不是新的 promise 实例，默认就是执行 then成功状态的函数
+            Promise.prototype身上方法: catch
+                + 可以解决 then 里面只写成功状态要执行的函数，不写失败状态要执行的函数
+                + 失败状态要执行的函数写在 catch 里面
+            Promise.prototype身上方法: finally
+                + 不管上面是执行成功状态的函数还是失败状态的函数都会执行finally里面
+            Promise身上方法: all
+                + promise.all() 可以实现当所有目标 promise 实例都执行完之后（谁的时间最长就是多久）再去执行 then 函数
+                + promise.all([p1,p2,p3])函数里面的接收的是一个数组,只有当里面的所有实例都变成成功状态才会执行 then里面的函数，只要有一个失败，all 会马上返回结果给到 then 执行 then 里面的失败的函数
+                + 每一个实例的实参（resolve(x'x'x),reject(x'x'x)）还是都会给到 then 对应函数里面的参数, 如果都成功参数返回的是一个数组，数组里面是上面每一个实例状态的参数值  ，如果有一个失败就会返回失败的传递的那个值并且下面值都不会传下去了（自己测一下）
+            Promise身上方法:race
+                + 用法跟all类似，当p1,p2,p3中有一个状态改变了，那race实例的状态就会跟着发生变化(不管是成功还是失败)，即立即执行 then 里面的成功或者失败的函数（then里面的参数还是会传给 then 里面的形参）
+            Promise身上方法: allsettled
+        */
+
+        // 传统低于回调案例
+        // 第一个请求: 是请求当前一个学生的基本信息
+        // 第二个请求: 是想要拿到当前某个学生的个人成绩，但是当发送请求成绩的接口时，主要把当前学生的id值作为参数发送给后台
+        // { name: 'erya', age: 18, sex: '女', address: '紫禁城', id: 1 }
+        let data = null;
+        $.ajax({
+            url: 'http://www.xxx.com/student/info?name=erya',
+            async: true,//异步
+            success: (res) => {
+                // data = res;
+                $.ajax({
+                    url: 'http://www.xxx.com/student/info',
+                    async: true,
+                    data: { id: res.id },
+                    success: (res) => {
+                        // res // 个人成绩
+
+                    }
+                });
+            }
+        });
+        let res = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log('请求成功了');
+                resolve(100)//promiseState:filfulled;promiseResult:100
+
+            }, 2000);
+        });
+        console.log(res);//pending
+        // promise回顾
+
+        let res = new Promise((resolve,reject)=>{
+          $.ajax({
+          url:'xxx',
+          success:()=>{
+            resolve()
+          },
+          error:()=>{
+            reject()
+          }
+        })
+        });
+
+
+        //------------------------------------------------------------------
+        let p1 = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve();
+          });
+          reject();
+        });
+        console.log(1);
+
+        let p2 = p1.then(() => {
+          console.log(2);
+          return 100;
+          return new Promise((res, rej) => { rej() });
+        }, () => {
+          console.log(3);
+          return new Promise((res, rej) => { });
+          return 200;
+        });
+
+        p2.then(() => {
+          console.log(4);
+        }, () => {
+          console.log(5);
+        });
+        console.log(6);
+        //1 6 3
+
+        //--------------------------------
+        // catch promise原型上的一个方法，他就是捕获错的
+        let p1 = new Promise(() => {
+            reject()
+        });
+
+        p1.then(() => {
+            console.log(1);
+            return new Promise((res, rej) => { res() })
+        }).then(() => {
+            console.log(2);
+        }).catch(() => {
+            console.log(3);
+        }).finally(() => {
+            // 不管上边是什么状态，最后这个finally里的回调函数都会最后执行
+            console.log(5);
+        });
+
+
+
+
+
+        // 页面有三个请求，当三个请求全都成功以后做什么事
+        let p1 = new Promise((res, rej) => {
+            setTimeout(() => {
+                rej(100)
+            }, 2000);
+        });
+        let p2 = new Promise((res, rej) => {
+            setTimeout(() => {
+                res(200)
+            }, 5000);
+        });
+        let p3 = new Promise((res, rej) => {
+            setTimeout(() => {
+                res(300)
+            }, 3000);
+        });
+        let res = Promise.all([p1, p2, p3]);
+
+        res.then((res) => {
+            console.log(res, '当前页面已经请求完毕');
+            // [100,200,300]
+        }).catch((res) => {
+            console.log('失败了');
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn1">排序</button>
+    <button id="btn2">排序</button>
+    <ul>
+        <li num=5 hot="300">5</li>
+        <li num=2 hot=125>2</li>
+        <li num=3 hot=304>3</li>
+        <li num=4 hot=298>4</li>
+        <li num=1 hot=330>1</li>
+    </ul>
+    <script>
+        let btn1 = document.getElementById("btn1");
+        let btn2 = document.getElementById("btn2");
+        let box = document.getElementsByTagName("ul")[0];
+        let list = document.getElementsByTagName("li");
+        list = Array.from(list)//类数组转数组
+        btn1.index = 0;
+        btn2.index = 1;
+        btn1.flag = -1;
+        btn2.flag = -1;
+        btn1.onclick = listSort;
+        btn2.onclick = listSort;
+        function listSort() {
+            this.flag *= -1;
+            let ary = ['num','hot'];
+            list.sort((a, b) => {
+                a = a.getAttribute(ary[this.index])
+                b = b.getAttribute(ary[this.index])
+                return (a - b) * this.flag
+            });
+            for (var i = 0; i < list.length; i++) {
+                box.appendChild(list[i])
+            }
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

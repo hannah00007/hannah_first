@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <script>
+    /*
+        三种本地存储localStorage、sessionStorage、cookie
+            + 共同的特点
+                1.不管是哪一种存储，只能在当前相同的域(域名和端口号都的一样)下获取到
+                2.在不同的浏览器下存储的本地存储是不互通的
+                3.本地存储是明文存储，谁都可以看见，这样是不太友好的，所有如果有一些比较敏感的数据要存储到本地的话，最好加密或者转码
+                4.不管哪种存储存在浏览器都是字符串
+    
+    
+    */
+
+        
+    // 本地存储 （本次存储导致不同的浏览器也会拿不到存储）
+    // 1.localStorage:本地永久性存储
+    // localStorage是永久性的本地存储，如果你不手动删除，那么他会永远存储在你的浏览器里
+    // localStorage.setItem('key',value); // 设置新的本地存储
+
+    // 当设置的时候浏览器会默认把value转换成字符串在去存储；如果你存储的值是引用数据类型的，可以先拿JSON.stringify转一下在存储
+    // let obj = {a:2,b:2};
+    // obj = JSON.stringify(obj);
+    // localStorage.setItem(obj,obj);
+    // 当获取的时候，把获取的值在拿JSON.parse转一下即可
+
+
+    // localStorage.getItem('key'); // 获取存储的值
+    // localStorage.removeItem('key');
+    // localStorage.clear(); // 清除全部localStorage存储
+
+    // 本地存储在存储的时候，如果域名和端口号不一致，那存储的数据是相互独立的，如果只是资源路径名称不一样的是可以的
+
+    // btn.onclick = function(){
+    //   let arr = localStorage.getItem('arr') || '[]';
+    //   arr = JSON.parse(arr);
+    //   arr.push(100);
+    //   arr = JSON.stringify(arr);
+    //   localStorage.setItem('arr',arr);
+    // }
+
+
+    // sessionStorage 会话存储
+    // 存储的数据仅仅局限于当前的页面，如果页面关闭，那存储的数据就都没有了
+
+    // cookie
+        /*
+        1.大小限制：一般浏览器允许在同一个域下最多8kb。而localStorage会存储5mb左右
+        2.兼容性：cookie几乎可以兼容所有浏览器，但是localStorage是H5新增的，低版本的浏览器不支持
+        3.稳定性：cookie可以设置过期时间，但是一般情况下没有到达时间之前cookie都被清除了(比如你的各种安全卫士在清除缓存垃圾的时候，就有可能把cookie清除，浏览器里的清除浏览记录也可以清除cookie，无痕浏模式不会设置cookie)
+      
+        4.cookie会自动通过请求头发送给服务端
+        后台也可以设置cookie信息，在响应头设置一个字段 setCookies:'a=1;b=2',当请求成功的时候，浏览器会检测当前的响应头中有没有setCookies字段，如果有的话，就会把此字段对应的信息存储到浏览器的cookie中
+      
+        cookie经常会穿梭于浏览器和服务器之间
+      
+        */
+
+    // 不管是哪一种存储，每一个不同的域下都会有一套独立的本地存储，相互不冲突
+
+    //后台存储: session不太稳定，只要服务器给管理后台存储就没有了，也有过期时间
+
+
+
+     // 三种本地存储
+//   localStorage
+//   sessionStorage
+
+//   cookies
+
+
+
+  //-------------------------------------
+  // cookies和localStorage的特点
+  // 1.存储的大小不一样 cookies只能8kb左右  localStorage能够大约能够存储5mb左右
+  // 2.稳定性：coookies可以设置过期的时间，但是一般在没有过期的时候cookies就有可能被清除了，因为你手动的清除浏览器的缓存垃圾，或者使用第三方的安全卫士之类的软件，清除垃圾的时候也会把cookies清空了   清除缓存垃圾的时候，清除不了localStorage
+
+  // 3.兼容性：cookies存在的时间还早，所以对老浏览器的兼容性比较好，但是localStorage是h5新增的功能，对老的浏览器的兼容是比较差的
+  // 4.cookies可以自动携带到请求头中发给后台，而且后台也可以通过响应头去设置浏览器的cookies，经常穿梭于浏览器和服务器之间
+
+
+  // -----------------------
+  // 后台存储
+  // 后台存储session 不太稳定(只要把服务器关闭了，那存储的session信息就没有了)，也有过期的时间
+    </script>
+</body>
+
+</html>

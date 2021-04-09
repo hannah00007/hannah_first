@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        ul li{
+            width: 100px;
+            border: 1px solid red ;
+        }
+    </style>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li qqq="haha">
+            <span></span>
+        </li>
+        <li></li>
+        <li></li>
+    </ul>
+    <input type="text">
+    <script src="./jquery-1.11.3.js"></script>
+    <script>
+        let $lis = $("ul li");
+        let $box=$("ul")
+        let str="<h2>你好</h2>"
+        // let str=document.createElement("h2")
+        // str.innerHTML="你好"
+        //console.log($box[0])
+        // let $li = $lis.filter("[qqq=\"haha\"]")
+        // $box.html(str)//里面的内容就只剩下 str（带格式） 了，但是 test 就不支持带格式
+        // console.log($li.find("span"));
+        // $box.append(str)//原生 $box[0].appendChild(str)里面的参数 str 必须用 createElement创建
+
+
+        //$li.prev()
+        // $li.next();
+        // $li.prevAll();
+        // $li.nextAll();
+        // $li.parent();
+        // $li.parents();
+        // $li.siblings();
+        // $li.index();
+        // $li.find("span")
+
+
+        // let $inp=$("input")
+        // console.log($inp.val())
+        // console.log($inp.val(666))
+        
+
+
+        /* 
+        jq详解（zepto 是 缩减版的jq）   
+            基本知识
+                + 通过$获取的元素都是 jq 对象
+                + jq不管获取什么得到的都是一个组。哪怕啥都没有获取到，也是一个空组；
+                    - jQuery.fn.init(5) [li, li, li, li, li, prevObject: jQuery.fn.init(1), context: document, selector: "ul li"]
+                + jq提供的方法不用考虑兼容问题
+            怎么把jq对象转换成原生对象，元素对象转为 jq 对象
+                + $li.style.color="red"//不可以这样使用
+                + $li[0].style.color="red"//通过索引方式获取 jq元素里面的原生元素
+                + $($li[0]）//把元素对象转为 js 对象，$("原生 dom 对象")
+
+
+            语法
+                +  获取dom(选择器): .$('可以传递任何选择器')
+                    - $('div') 获取div元素集合
+                    - $('#btn') 获取id为btn的 元素
+                    - $('.btn') 获取类名为btn的元素
+                    - $('div .box') 获取类名为box的div元素
+                    - $('div:first') 获取第一个div元素
+                    - $('div:last') 获取最后一个div元素
+                    - $('div:eq(2)') 获取索引为2的div(第三个div)
+                    - $('div:gt(2)') 获取大于索引2的div元素
+                    - $('div:lt(2)') 获取小于索引2的div元素
+                    
+
+                + 方法: 
+                    + .attr(key|obj|key,value) 获取或者设置元素的行间属性
+                        - $('div').attr('ss') 获取div元素行间上的ss属性名对应的属性值
+                        - $('div').attr('ss',100) 把div元素的行间属性ss的值设置为100
+                        - $('div').attr({a:100,b:100}) 给div元素设置两个行间属性
+
+                    + .removeAttr(key) 移除元素的行间属性
+                        - $('div').removeAttr(ss) 移除div元素的行间ss属性
+
+                    + .addClass(name) 为元素设置类名
+                        - $('div').addClass('a') 为div元素设置a类名
+                        - $('div').addClass('a b') 为div元素设置a和b类名
+
+                    + .removeClass(name) 为元素移除类名
+                        - $('div').removeClass('a') 为div元素移除a类名
+                        - $('div').removeClass('a b') 为div元素移除a和b类名
+
+                    + .toggleClass(name)  元素如果存在（不存在）就删除（添加）一个类名
+                        - $('div').toggleClass('a') 如果当前div元素存在a类名，就移除a类名，如果不存在a类名就添加a列类名
+
+                    + .html(value) 获取或者设置当前元素里面的内容（支持带样式）
+                        - $('div').html() 获取div元素的内容
+                        - $('div').html(100) 把div元素的内容设置为100
+
+                    + .text(value) 和html使用方法类似，区别是html设置的时候可以识别字符串的标签，text不可以
+
+                    + .append(ele) 向元素末尾追加内容
+                        - $('div').append('<span></span>') 把span元素追加到div元素的末尾
+
+                    + .remove(ele) 移除元素
+                        - $('div').remove() 把div元素从页面中移除
+
+                    + .eq(index) 按照 index获取目标jq元素
+                        - .get(index) 按照索引获取原生的dom元素
+
+                    + .first/last和选择器那块的作用一样
+                        - $('div').first() 获取第一个div元素
+
+                    + .filter(value) 筛选出与指定表达式匹配的元素集合。
+                        - $('div').filter('.box') 获取div元素中类名为box的元素
+
+                    + .find(expr) 找到符合条件的后代元素
+                        - $('div').find('span') 获取div元素中的span儿子元素
+
+                    + .index() 获取元素在兄弟姐妹中的索引
+                    + $.each(data,(index,item)=>{})
+                    + $.type() 数据类型检测  返回小写的类
+                    + $('div').on('click',function(){}) 事件绑定 【方法中的this是原生dom】
+                    + $('div').click(function(){}) 事件绑定 【方法中的this是原生dom】
+
+
+                    + $('div').parent() 获取元素的父级元素
+                    + $('div').parents() 获取元素的所有祖先元素
+    
+                    + next() 获取元素的下一个弟弟元素
+                    + nextAll(expr) 获取元素所有的弟弟元素集合
+                        - $('div').nextAll('span') 获取div元素所有的span弟弟集合
+    
+                    + prev() 获取元素的上一个哥哥元素
+                    + prevAll(expr) 获取元素所有的哥哥元素集合【使用方法和nextAll相同】
+    
+                    + .siblings(expr) 获取除了自己以外的所有的兄弟姐妹元素
+                        - $('div').siblings() 获取除了自己以外的所有的兄弟姐妹元素
+                        - $('div').siblingsAll('span') 获取除了自己以外的所有的span兄弟姐妹元素  
+
+                    + .css(key|key,value|obj) 设置或者获取元素的样式
+                        - $('div').css('color') 获取div元素的color样式
+                        - $('div').css('color','red') 设置div元素的color样式为red
+                        - $('div').css({color:'red',width:200}) 设置div元素的color样式为red,宽度为200px(可以不加单位)
+
+                    + .offset 获取元素在当前视口的相对偏移
+                        - $('div').offset.left 获取div元素距离可视窗口的左偏移量
+                        - $('div').offset.top 获取div元素距离可视窗口的上偏移量
+
+                    + .scrollTop() 获取或者设置元素的滚动条纵向卷曲的高度
+                        - $(window).scrollTop() 获取屏幕的滚动条纵向卷曲的高度
+                        - $(window).scrollTop(100) 设置屏幕的滚动条纵向卷曲的高度为100
+                        - $(window).scrollLeft() 获取或者设置元素的滚动条横向卷曲的宽度(用法同上)
+
+                    + .height() 设置或者获取元素的高度
+                        - $('div').height() 获取div元素的高度
+                        - $('div').height(100) 设置div元素的高度为100px(可以不加单位)
+
+                    + .width() 设置或者获取元素的宽度
+
+                    + .innerHeight() 获取或者设置元素的可视区域的高度(等于clientHeight)
+                        - $('div').innerHeight() 获取div元素的可视区域的高度
+                        - .innerWidth() 获取或者设置元素的可视区域的宽度(等于clientWidth)
+
+                    + .outerHeight(value) 获取或者设置元素的总高度(等于offsetHeight)
+                        - $('div').outerHeight() 获取div元素的总高度
+                        - $('div').outerHeight(true) 获取div元素的总高度然后在加上 上下margin
+                        - .outerWidth(value) 获取或者设置元素的总高度(等于offsetWidth)【用法和上边一样】   
+       
+        */
+
+
+        
+
+    </script>
+</body>
+
+</html>

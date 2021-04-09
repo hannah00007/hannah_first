@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: orange;
+            position: absolute;
+            left: 30px;
+            top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        window.onkeydown = function (e) {
+            let style = getComputedStyle(box);//获取 css计算后的样式值，不能用 box.style.left
+            let left = parseFloat(style.left);
+            let top = parseFloat(style.top);
+            let keyCode = e.keyCode;
+
+            //四个边界值
+            let minL = 0;
+            let maxL = document.documentElement.clientWidth - box.offsetWidth;
+            let minT = 0;
+            let maxT = document.documentElement.clientHeight - box.offsetHeight;
+            // 上38 下40 左37 右39
+
+            switch (keyCode) {
+                case 37:
+                    left--;
+                    break;
+                case 39:
+                    left++;
+                    break;
+                case 38:
+                    top--;
+                    break;
+                case 40:
+                    top++;
+                    break;
+            }
+            if (left <= 0) {
+                left = 0;
+            }
+            if (left >= maxL) {
+                left = maxL;
+            }
+            if (top <= 0) {
+                top = maxT;
+            }
+            if (top >= maxT) {
+                top = 0;
+            }
+            box.style.left = left + "px"
+            box.style.top = top + "px"
+
+        }
+
+    </script>
+</body>
+
+</html>

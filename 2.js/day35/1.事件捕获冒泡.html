@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer {
+            width: 200px;
+            height: 200px;
+            background: orangered;
+            margin: auto;
+        }
+
+        #inter {
+            width: 100px;
+            height: 100px;
+            background: green;
+            margin: auto;
+        }
+
+        #center {
+            width: 50px;
+            height: 50px;
+            background: purple;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inter">
+            <div id="center"></div>
+        </div>
+    </div>
+    <script>
+        let outer = document.getElementById('outer');
+        let inter = document.getElementById('inter');
+        let center = document.getElementById('center');
+
+        /*
+          事件触发流程:
+            + 首先: 捕获阶段(从外往里依次触发每一个元素身上的捕获阶段的方法)
+            + 其次: 执行的目标阶段(目标元素身上的方法依次执行)[在目标阶段的方法会按照函数绑定的顺序去执行]
+            + 最后: 进行冒泡阶段(从里往外依次触发每一个元素身上的冒泡阶段的方法)      
+        */
+
+        outer.addEventListener('click', function (e) {console.log('outer捕获', e.target);}, true);
+        inter.addEventListener('click', function (e) { console.log('inter捕获', e.target); }, true);
+        // 目标阶段按照绑定数顺序执行。同时center里面阻止冒泡，本身的冒泡还是会执行，但是后面的冒泡就不会有了。
+        center.addEventListener('click', function (e) { console.log('center冒泡', e.target); e.cancelBubble = true }, false);
+        center.addEventListener('click', function (e) { console.log('center捕获', e.target); }, true);
+
+        outer.addEventListener('click', function (e) { console.log('outer冒泡', e.target); }, false);
+        inter.addEventListener('click', function (e) { console.log('inter冒泡', e.target); }, false);
+        
+        
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="box">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <span>111111</span>
+    <li>6</li>
+  </ul>
+  <div>111</div>
+
+  <script>
+    /*
+      事件的委托
+        + 核心: 利用事件的冒泡机制
+        + 问题: 例如给每一个 li 绑定冒泡事件会消耗性能
+        + 解决: 把当前每一个元素绑定的事件委托给他们共同的父元素
+        + 原因: 因为元素的事件存在冒泡传播机制，所以点击儿子元素，最终也会触发父亲身上的相同的事件  
+    */
+    
+    let list = document.getElementsByTagName('li');
+    let ul = document.getElementById('box');
+
+    // 通过遍历给每一个 li 身上绑定点击事件，会损耗性能
+    // for(let i = 0;i<list.length;i++){
+    //   list[i].onclick = function(){
+    //     console.log(this.innerHTML);
+    //   }
+    // }
+
+    // 只给共同的父级元素绑定点击事件========================
+    ul.onclick = function(e){
+      let tagName = e.target.tagName;
+      if(tagName == 'LI'){
+        console.log(e.target.innerHTML);
+      }
+      
+    }
+    
+
+  </script>
+</body>
+</html>

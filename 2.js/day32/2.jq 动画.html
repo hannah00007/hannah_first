@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: orangered;
+            position: absolute;
+            /* transition: all 1000ms linear; */
+            left: 0;
+            top: 0;
+        }
+
+        #btn1 {
+            position: absolute;
+            top: 120px;
+            left: 0
+        }
+
+        #btn2 {
+            position: absolute;
+            top: 150px;
+            left: 0
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" style="left:0px"></div>
+    <button id="btn1">往右走</button>
+    <button id="btn2">往左走</button>
+    <script src="./jquery-1.11.3.js"></script>
+    <script>
+
+        let box = document.getElementById('box');
+        let btn1 = document.getElementById('btn1');
+        let btn2 = document.getElementById('btn2');
+        let target = document.documentElement.clientWidth - box.offsetWidth; // 小球移动的总距离  1000
+
+        let step = 5; // 每一步走的距离
+        let timer = null;
+        btn1.onclick = function () {
+
+            clearInterval(timer)
+            timer = setInterval(() => {
+                // 先获取一下当前小球的left值，然后在给lef加上step的值，在设置回去
+                // 当小球的left值大于等于target的时候，说明自奥球已经到达做右边了，就清除定时器
+                let left = parseFloat(box.style.left); // 当前小球最新的left值 // 0 5 10 // 999
+                left += step;
+
+                if (left >= target) {
+                    // 如果left大于等于target了，把就把box的最大值直接设置为target的值，然后清空定时器，
+                    // 最后return的作用是不让下边的设置left值的代码执行
+                    box.style.left = target + 'px';
+                    clearInterval(timer);
+                    return;
+                }
+                box.style.left = left + 'px';
+            }, 17);
+        }
+        btn2.onclick = function () {
+
+            clearInterval(timer)
+            timer = setInterval(() => {
+                // 先获取一下当前小球的left值，然后在给lef加上step的值，在设置回去
+                // 当小球的left值大于等于target的时候，说明自奥球已经到达做右边了，就清除定时器
+                let left = parseFloat(box.style.left); // 当前小球最新的left值 // 0 5 10 // 999
+                left -= step;
+
+                if (left <= 0) {
+                    // 如果left大于等于target了，把就把box的最大值直接设置为target的值，然后清空定时器，
+                    // 最后return的作用是不让下边的设置left值的代码执行
+                    box.style.left = 0 + 'px';
+                    clearInterval(timer);
+                    return;
+                }
+                box.style.left = left + 'px';
+            }, 17);
+
+        }
+        // btn1.onclick = function () {
+        //     $('#box').stop().animate({
+        //       left:target,
+        //       // opacity:0
+        //       // height:0
+        //     },3000,'linear',function(){
+        //       console.log(1);
+        //       box.style.background = 'green';
+        //     });
+        //     // 第一个参数是当前元素主要运动的目标值
+        //     // 第二个参数是运动的总时间
+        //     // 第三个参数是动画的效果
+        //     // 第四个参数是动画执行完成之后的回调函数
+        // };
+        // btn2.onclick = function () {
+        //     $('#box').stop().animate({
+        //       left:0,
+
+        //     },3000,'linear');
+        //     // 第一个参数是当前元素主要运动的目标值
+        //     // 第二个参数是运动的总时间
+        //     // 第三个参数是动画的效果
+        //     // 第四个参数是动画执行完成之后的回调函数
+        // };
+
+        // 利用原生实现左右运动的动画
+        let timer = null
+        btn1.onclick = function () {
+            function fn() {
+                let left = parseFloat(box.style.left);
+                left += step;
+                if (left >= target) {
+                    box.style.left = target + 'px';
+                    return;
+                }
+                box.style.left = left + 'px';
+                requestAnimationFrame(fn);
+            }
+            requestAnimationFrame(fn);
+
+        }
+        window.requestAnimationFrame(); // 他是h5上新增的创建动画的一个api，他的好处就是可以根据电脑的执行频率去确定动画函数的执行时机
+    // 1.requestAnimationFrame最大的优势是由系统来决定回调函数的执行时机
+    // 2.requestAnimationFrame则完全不同，当页面处理未激活的状态下，该页面的屏幕刷新任务也会被系统暂停，因此跟着系统步伐走的requestAnimationFrame也会停止渲染，当页面被激活时，动画就从上次停留的地方继续执行，有效节省了CPU开销。
+    //--------------------------------------------------------
+
+    </script>
+</body>
+
+</html>

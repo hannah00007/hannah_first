@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /**{
+            margin: 0;
+            padding: 0;
+        }*/
+        .box {
+            width: 500px;
+            /*1.角度  颜色*/
+            background: linear-gradient(-45deg, lightseagreen, lightpink, lightblue, lightyellow, lightcoral);
+            background: -webkit-linear-gradient(-45deg, lightseagreen, lightpink, lightblue, lightyellow, lightcoral);
+        }
+
+        .box span {
+            display: block;
+            height: 35px;
+            line-height: 35px;
+            cursor: pointer;
+        }
+
+        .box span.close:before {
+            content: "+";
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .box span.open:before {
+            content: "-";
+            font-size: 30px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="box" id="box">
+        <li><span>第一级菜单</span>
+            <ul>
+                <li><span>第二级菜单</span>
+                    <ul>
+                        <li><span>第三级菜单</span>
+                            <ul>
+                                <li><span>第四级菜单</span></li>
+                                <li><span>第四级菜单</span></li>
+                            </ul>
+                        </li>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                    </ul>
+                </li>
+                <li><span>第二级菜单</span>
+                    <ul>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                    </ul>
+
+                </li>
+                <li><span>第二级菜单</span>
+                </li>
+                <li><span>第二级菜单</span></li>
+            </ul>
+        </li>
+        <li><span>第一级菜单</span></li>
+        <li><span>第一级菜单</span></li>
+        <li><span>第一级菜单</span></li>
+    </ul>
+    <script>
+        /*
+          需求:
+            + 先判断一下哪些 span 有兄弟元素，有行动元素的就给 span 加上 close属性并且让他的兄弟元素display = "none"，没有就加上 open 属性
+            + 点击 box ，如果点击的tagName是span并且 span 有兄弟元素
+                + 判断一下当前 span身上的 class 类名是 open还是 close
+                    + open: claseeName="close";span 的兄弟元素 diaplay="none"
+                    + close:claseeName="open";span 的兄弟元素 diaplay="block"
+                        + 当你点开底层的 span 没有关闭时，再去打开他还是展开的状态
+                            + 获取你点击的目标 span 下的所有 子span
+                            + 遍历每一子 span,判读子 span 下面有没有兄弟元素，有就改类名并且让兄弟消失
+        */
+
+        let box = document.getElementById("box")
+        let spans = document.getElementsByTagName("span")
+
+
+        for (let i = 0; i < spans.length; i++) {
+            if (spans[i].nextElementSibling) {
+                spans[i].className = "close";
+                spans[i].nextElementSibling.style.display = "none"
+            } else {
+                spans[i].className = "open";
+            }
+        }
+
+
+        box.onclick = function (e) {
+            let target = e.target;
+            if (target.tagName == "SPAN" && target.nextElementSibling) {
+                if (target.className == "close") {
+                    target.className = "open"
+                    target.nextElementSibling.style.display = "block"
+                } else {
+                    target.className = "close"
+                    target.nextElementSibling.style.display = "none"
+
+
+
+                    let spanschild = target.nextElementSibling.getElementsByTagName("span")
+                    for (let i = 0; i < spanschild.length; i++) {
+                        if (spanschild[i].nextElementSibling) {
+                            spanschild[i].className = "close"
+                            spanschild[i].nextElementSibling.style.display = "none"
+                        }
+                    }
+
+                }
+                
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

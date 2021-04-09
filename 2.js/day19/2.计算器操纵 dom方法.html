@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .main {
+            width: 479px;
+            margin: 0 auto;
+            background: #333;
+            border-radius: 5px;
+            padding: 30px;
+            box-sizing: border-box;
+            color: #fff;
+            position: relative;
+        }
+
+        .main li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            justify-content: space-evenly;
+        }
+
+        .main li .info {
+            color: #fff;
+        }
+
+        button {
+            width: 52px;
+            height: 44px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .sub {
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        .num {
+            width: 44px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background: #fff;
+            border-radius: 10px;
+            color: #333;
+        }
+
+        .shopInfo {
+            bottom: 20px;
+            left: 30px;
+        }
+
+        .shopInfo p {
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <ul class="list">
+            <li>
+                <button class="add" flag="1">+</button>
+                <b class="num">0</b>
+                <button class="sub" flag="0">-</button>
+                <span class="info">
+                    单价:<span class="itemPrice">1</span>元 小计：
+                    <b class="xjMoney">0</b>元
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1">+</button>
+                <b class="num">0</b>
+                <button class="sub" flag="0">-</button>
+                <span class="info">
+                    单价:<span class="itemPrice">2</span>元 小计：
+                    <b class="xjMoney">0</b>元
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1">+</button>
+                <b class="num">0</b>
+                <button class="sub" flag="0">-</button>
+                <span class="info">
+                    单价:<span class="itemPrice">3</span>元 小计：
+                    <b class="xjMoney">0</b>元
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1">+</button>
+                <b class="num">0</b>
+                <button class="sub" flag="0">-</button>
+                <span class="info">
+                    单价:<span class="itemPrice">40</span>元
+                    小计：<b class="xjMoney">0</b>元
+                </span>
+            </li>
+        </ul>
+        <div class="shopInfo">
+            <p>商品共<span class="totalNum">0</span>件</p>
+            <p>共花了<span class="totalMoney">0</span>元</p>
+            <p id="changeBox">其中最贵的商品单价是<span class="specileMoney">0</span>元</p>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let shopModule = (function () {
+        //获取所需要的 dom元素
+        let list = document.querySelector(".list"),
+            buttons = list.querySelectorAll("button"),
+            pluseArr = [],
+            subArr = [],
+            zero = list.querySelectorAll("li>b"),
+
+            price = document.querySelectorAll(".info span"),
+            total = document.querySelectorAll(".info b"),
+            totalNum = document.querySelector(".shopInfo .totalNum"),
+            totalMoney = document.querySelector(".shopInfo .totalMoney"),
+            specileMoney = document.querySelector(".shopInfo .specileMoney");
+        console.log(price);
+        //在所有的buttons中区分加减
+        [].forEach.call(buttons, (items, index) => {
+            if (index % 2 === 0) {
+                pluseArr.push(items)
+            } else {
+                subArr.push(items)
+            }
+        });
+        console.log(pluseArr, subArr)
+        //计算总数量
+        let computedInfo = function computedInfo() {
+            //总数量和已购买商品中的单价
+            let count = 0,
+                arr = [0];
+            [].forEach.call(zero, (item, index) => {
+                console.log(parseFloat(zero[index].innerHTML));
+                count += Number(zero[index].innerHTML);
+                if (zero[index].innerHTML > 0) {
+                    arr.push(parseFloat(price[index].innerHTML));
+                }
+
+            });
+            totalNum.innerHTML = count;
+            specileMoney.innerHTML = Math.max(...arr)
+
+            //总价格
+            let total = 0;
+            [].forEach.call(totalMoney, (item, index) => {
+                total += parseFloat(item.innerHTML)
+            })
+            totalMoney.innerHTML = total
+        };
+        //给所有加减绑定点击事件
+
+        let handle = function handle() {
+            pluseArr.forEach((item, index) => {
+                item.onclick = function () {
+                    zero[index].innerHTML++;
+                    total[index].innerHTML = price[index].innerHTML * zero[index].innerHTML
+                    computedInfo()
+
+                }
+            });
+            subArr.forEach((item, index) => {
+                item.onclick = function () {
+                    zero[index].innerHTML--;
+                    zero[index].innerHTML < 0 ? zero[index].innerHTML = 0 : null;
+                    total[index].innerHTML = price[index].innerHTML * zero[index].innerHTML
+                    computedInfo()
+
+                }
+            })
+        }
+        return {
+            init() {
+                handle();
+            }
+        }
+
+
+    })()
+
+    shopModule.init()
+
+</script>

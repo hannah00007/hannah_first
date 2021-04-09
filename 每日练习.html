@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let p1 = new Promise((resolve, reject) => {
+                let timer = setTimeout(() => {
+                   
+                }, 1000);
+                console.log(300); // 1
+                resolve(timer);
+            });
+
+            console.log(p1);
+            console.log(100); // 2
+            // allFns: {1: fn1, 2: fn2}
+            // 
+            setTimeout(() => {
+                let p2 = p1.then(
+                    (res) => {
+                        console.log(res); // 4
+                        return Promise.reject();
+                    },
+                    (res) => {
+                        console.log(res);
+                        return Promise.resolve();
+                    }
+                );
+            }, 2000);
+
+            // allFns: {1: fn1, 2: fn2, 3: finnally}
+            p2.then((res) => {
+                console.log(1, res);
+            })
+                .catch((res) => {
+                    console.log(2, res); // 5
+                })
+                .finally(() => {
+                    console.log(900); // 6
+                });
+            console.log(200); // 3
+        </script>
+    </body>
+</html>

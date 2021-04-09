@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            + location的使用
+                + location是 window 身上的属性，是一个大对象，里面既有属性又有方法
+                    - hash 当前 hash 值
+                    - href  变更url ，可以回去
+                    - protocol 协议
+                    - hostname 域名
+                    - port 端口号
+                    - host 域名+端口号
+                    - origin 协议+域名+端口号
+                    - pathname 资源路径名称                 
+                    - search 问号参数
+                    - reload() 刷新页面
+                    - replace() 替换页面链接进入新的页面，但是不能回去。
+            + history的使用
+                + history是 window 身上的属性是一个大对象，里面都是方法
+                    - history.black() 回去
+                    - history.forward()(下一页,前提是必须有下一页)
+                    - history.go(参数 +-1，+-2....)支持跳过或者回去多张页面
+                    - length: 表示你当前页面有几个历史页面
+            + location 和historyc需要配合使用。先是让页面跳转，再让页面返回目标页面
+
+        */
+       console.log(location)//是一个对象，里面放着url里面的各个信息
+       console.log(location.hash)//查找属性值
+       console.log(location.hash="#newHash")//给 hash 重新赋值
+       console.log(location.href="https://www.baidu.com")//给 href 重新赋值可以打开一个新页面，并且可以回去
+       console.log(location.replace("https://www.baidu.com"))//给 hash 重新赋值
+       
+
+
+
+
+
+    </script>
+</body>
+</html>

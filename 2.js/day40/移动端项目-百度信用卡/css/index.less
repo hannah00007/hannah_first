@@ -1,0 +1,228 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    overflow-x: hidden; //控制横向不要有滚动条
+    overflow-y: auto;
+    text-decoration: none;
+    list-style: none;
+}
+body {
+    padding-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+.footer {
+    height: 1rem;
+    width: 100%;
+    background-color: pink;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid black;
+    text-align: center;
+    z-index: 9;
+    ul {
+        display: flex;
+        height: 1rem;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.36rem;
+        box-sizing: border-box;
+        padding: 0 0.3rem;
+
+        li {
+            display: flex;
+            flex-flow: column nowrap;
+            span {
+                &.select {
+                    color: brown;
+                }
+            }
+        }
+    }
+}
+
+.nav {
+    width: 100%;
+    height: 1rem;
+    background-color: chartreuse;
+    padding: 0 0.3rem;
+    box-sizing: border-box;
+    font-size: 0.2rem;
+    line-height: 1rem;
+    color: white;
+    span:nth-child(1) {
+        padding-right: 0.2rem;
+    }
+    span:nth-child(2) {
+        color: #333;
+        border-left: 1px solid white;
+        padding-left: 0.2rem;
+    }
+    &:after {
+        content: "";
+        width: 130%;
+        display: block;
+        height: 3rem;
+        border-radius: 0 0 50% 50%;
+        margin-left: -0.7rem;
+        background-color: yellowgreen;
+    }
+}
+.title_banner {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 0.3rem;
+    img {
+        display: block;
+        width: 100%;
+        height: 3rem;
+    }
+}
+.simple-box {
+    font-size: 0.36rem;
+    .title {
+        height: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span:nth-child(2) {
+            font-size: 0.24rem;
+        }
+        &.none {
+            display: none;
+        }
+    }
+}
+.bank {
+    width: 100%;
+    background: white;
+    padding: 0.2rem 0.3rem;
+    box-sizing: border-box;
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            width: 25%;
+
+            padding: 0.2rem;
+            box-sizing: border-box;
+            a {
+                color: black;
+                display: block;
+                width: 100%;
+                font-size: small;
+                img {
+                    display: block;
+                    width: 1rem;
+                    height: 1rem;
+                    margin: 0 auto;
+                }
+                span {
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    height: 30px;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+}
+
+.hotRecommend {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.2rem;
+    .swiper-container {
+        height: 3rem;
+        .swiper-slide {
+            background-color: brown;
+        }
+        .swiper-slide111 {
+            height: 3rem;
+            line-height: 3rem;
+            background-color: brown;
+            text-align: center;
+        }
+    }
+}
+hr {
+    height: 0.15rem;
+    background-color: rgb(179, 175, 175);
+}
+
+.recommend {
+    width: 100%;
+    // background: honeydew;
+    box-sizing: border-box;
+    padding: 0 0.3rem;
+    margin-bottom: 0.5rem;
+    .ul1 {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 0.1rem;
+        li {
+            width: 48%;
+            height: 2rem;
+            border: 1px solid black;
+            margin-bottom: 0.2rem;
+        }
+    }
+    .ul2 {
+        display: flex;
+        justify-content: space-between;
+        li {
+            width: 23%;
+            margin: 0 1%;
+            height: 2rem;
+            border: 1px solid black;
+            margin-bottom: 0.2rem;
+        }
+    }
+}
+
+.middle {
+    li {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid red;
+        box-sizing: border-box;
+
+        .left {
+            width: 40%;
+            margin-right: 0.2rem;
+            img {
+                height: 2rem;
+            }
+        }
+        .right {
+            height: 2rem;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .name {
+                font-size: 0.24px;
+                padding-bottom: .1rem;
+            }
+            .present {
+                padding-bottom: .1rem;
+                font-size: 0.2px;
+                color: cornflowerblue;
+            }
+            .sold {
+                span {
+                    font-size: 0.1px;
+                    border: 0.1px solid red;
+                    color: red;
+                    padding: 0.05rem;
+                }
+            }
+        }
+    }
+}

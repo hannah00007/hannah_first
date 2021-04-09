@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html,body{
+        width: 100%;
+        height: 300%;
+    }
+
+</style>
+<body>
+    <div id="btn">点击</div>
+</body>
+
+</html>
+<!-- underscore里面封装的是一些防抖节流的函数 -->
+<script src="./underscore(防抖节流).js"></script>
+<script>
+    /* 防抖和节流 */
+    /*
+        防抖：在触发元素的某个时间对应的方法在规定的时间之内，只让他触发一次，如果在规定的时间之内用户再次触发该事件，那就回重新计时
+            + 一般用在高频点击的事件中
+            + 防抖函数的第一个参数是要防抖的函数，第二个参数是间隔时间，第三个参数控制防抖函数是在点击之前开始执行还是在结束执行（默认是 false 在结束时执行）
+    */
+    let btn = document.getElementById("btn")
+    function fn(){
+        console.log(222)
+    }
+    let res=_.debounce(fn,3000);
+    btn.onclick=res
+
+
+    /*
+        节流： 函数的节流是稀释执行的频率，并不是让函数只执行一次。是在规定的时间内执行一次，即如果滑动超过规定时间内就会再执行
+            + 注意：鼠标的移动使用节流是比较合适(鼠标的划入滑出)    
+    */
+    let res1=_.throttle(fn,3000);
+    btn.onclick=res1
+    /*
+        once:封装
+            + 核心就是值输出一次
+            + 返回的是一个新函数     
+    */
+   function myOnce(fn){
+       let flag=false//目的是让函数只执行一次
+       return function(){
+           if(flag){
+            return
+           }
+           fn()
+       }
+    }
+   function fn(){
+       console.log(1)
+   }
+   let res2=myOnce(fn)
+   btn.onclick=res2
+
+</script>

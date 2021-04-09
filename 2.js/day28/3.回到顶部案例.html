@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        #btn {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: orangered;
+            text-align: center;
+            line-height: 200px;
+            color: white;
+            font-size: 16px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            border: 0px solid black;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="./1.png" alt="">
+        <img src="./1.png" alt="">
+        <img src="./1.png" alt="">
+        <img src="./1.png" alt="">
+        <button id="btn">回到顶部</button>
+    </div>
+</body>
+
+</html>
+<script src="1.utils(正则 demo 复习).js"></script>
+<script>
+    let btn = document.getElementById("btn")
+    btn.onclick = function () {
+        //utils.screen("scrollTop",0)这样会直接回去，不人性化
+        let distance = utils.screen("scrollTop")
+        let avg=distance/50//相当于把运动距离分成50 份，而每隔 20 毫秒执行一次，所以一个需要 50*20=1000毫秒执行完
+        let timer = setInterval(() => {
+            distance -= avg;
+            if (distance <= 0) {
+                clearInterval(timer)
+            }
+            utils.screen("scrollTop", distance)
+        }, 20)//每隔 20毫秒运动一次
+    }//50*20=1000毫秒=1秒走完
+    //当滚动条滑动时候就会触发下面的函数
+    let clientH = utils.screen("clientHeight")//这个值是固定的，不要放到里面
+    window.onscroll=function(){
+        let scrollTop = utils.screen("scrollTop")
+
+        if(scrollTop>clientH){
+            btn.style.display="block"
+        }else{
+            btn.style.display="none"
+        }
+    }
+
+</script>

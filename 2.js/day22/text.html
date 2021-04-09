@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+
+
+
+    </ul>
+</body>
+
+</html>
+<script>
+    //获取数据
+    let ary = [
+        {
+            name: "Hannah",
+            age: 1,
+        },
+        {
+            name: "lili",
+            age: 1,
+        },
+        {
+            name: "Dane",
+            age: 1,
+        },
+    ];
+
+    //渲染数据
+    let box = document.querySelector("ul")
+    console.log(box);
+    let str = ``;
+    ary.forEach(item => {
+        str += `
+    <li>
+        <span>${item.name}</span>
+        <span>${item.age}</span>
+    </li>
+    `
+
+    })
+    console.log(str)
+    box.innerHTML=str;
+
+
+
+
+</script>

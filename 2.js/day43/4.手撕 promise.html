@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Promise内置的一个类，
+    // 当new Promise的时候可以传递一个回调函数，而且这个回调函数会马上执行，这个回调函数也会有两个形参，分别是resolve函数和reject函数，
+    // promise拥有三个状态，pending、fulfilled、rejected，
+    // 状态只能从pending-->fulfilled或者从pending-->rejected,状态一旦发生变化就会凝固，不会再变了
+
+
+    class MyPromise {
+      constructor(callback) {
+        if (typeof callback !== 'function') {
+          throw new Error('callback不是一个函数');
+        };
+        // this-->p1
+        this.status = 'pending'; // promise实例初始化的时候默认的状态是pending等待态
+        this.fulfilledEvent = []; // 往当前实例上新增一个成功的事件池子
+        this.rejectedEvent = [];// 往当前实例上新增一个失败的事件池子
+
+        // 如果当前的callback不是一个函数，那就直接抛出错误，如果是一个回调函数在继续执行
+
+        let resolve = (res) => {
+          // 1.把当前状态改为成功态(同步)
+          // 2.去发布成功的事件池子里的方法(异步)
+          if (this.status !== 'pending') return;
+          
+          this.status = 'fulfilled';
+          setTimeout(()=>{
+            // 找到对应的事件池子，然后循环池子里的每一个方法并且去执行他
+            // this-->p1
+            this.fulfilledEvent.forEach((item)=>{
+              item(res);
+            });
+          },0);
+
+        }
+        let reject = (rej) => {
+          if (this.status !== 'pending') {
+            return;
+          }
+          this.status = 'rejected';
+          setTimeout(()=>{
+            // 找到对应的事件池子，然后循环池子里的每一个方法并且去执行他
+            this.rejectedEvent.forEach((item)=>{
+              item(rej);
+            });
+          },0);
+        }
+        // 当callback执行的时候，给他传递两个实参函数，分别是成功和失败的函数
+        callback(resolve, reject);
+      }
+
+      //   ssss
+      then(resFn,rejFn){
+        // this-->p1
+
+        this.fulfilledEvent.push(resFn); // 往成功的事件池子里订阅方法
+        this.rejectedEvent.push(rejFn); // 王失败的事件池子里订阅方法
+      }
+    }
+
+    let p1 = new MyPromise((resolve, reject) => {
+      // console.log(resolve,reject);
+      // resolve();
+      // setTimeout(()=>{
+        resolve(100);
+      // },3000);
+      // reject();
+    });
+    // console.log(p1)
+
+    // 当then执行的时候就是往对应的事件池子里去增加(push)方法
+    p1.then((res)=>{
+      console.log(res);
+    },()=>{
+
+    });
+    console.log(1);
+  </script>
+</body>
+
+</html>

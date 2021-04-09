@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            border: 10px solid lightgreen;
+            font-size: 16px;
+            line-height: 30px;
+            /* margin:  100px auto; */
+            background: lightpink;
+        }
+
+        /* 知道宽高的情况下把当前元素上下左右居中 */
+        /* #box {
+            position: absolute;
+            top:50%;
+            left:50%;        
+            margin-left: -130px;
+            margin-top: -130px;
+        } */
+
+
+        /* 基于CSS3变形属性中的位移，在不知道宽高的情况下也能实现效果  */
+        /* #box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        } */
+
+        /* #box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        } */
+
+        /* flex 布局 */
+        /* body {
+			display: flex;//要加在父级身上
+			justify-content: center; 
+			align-items: center; 
+		} */
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        的哈达四大说不定甲A爱打架爱神的箭阿萨德甲ADHAU盾甲ADJAda的DA的空间DJA货daD
+
+    </div>
+    <script>
+
+        // 利用js实现元素居中：
+        // 利用js设置盒子的left和top值
+        // left==>屏幕宽度的一般 - 盒子宽度的一半==>(屏幕宽度- 盒子宽度)/2
+        let winW = document.documentElement.clientWidth,
+            winH = document.documentElement.clientHeight,
+            box = document.getElementById('box');
+
+        box.style.position = 'absolute';
+        box.style.left = (winW - box.offsetWidth) / 2 + 'px';
+        box.style.top = (winH - box.offsetHeight) / 2 + 'px';
+    </script>
+</body>
+
+</html>

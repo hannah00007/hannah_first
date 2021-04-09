@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: orangered;
+            position: absolute;
+        }
+
+        p {
+            width: 100%;
+            line-height: 40px;
+            background: green;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            /* 组织鼠标放进去选中文字 */
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <p id="title">1223</p>
+    </div>
+    <script>
+        let box = document.getElementById('box');
+        let title = document.getElementById('title');
+        // 通过 js的方法让盒子垂直居中（获取的数值是没有 px 单位的，记得加上去）
+        let left = document.documentElement.clientWidth / 2 - box.offsetWidth / 2;
+        let t = document.documentElement.clientHeight / 2 - box.offsetHeight / 2;
+        box.style.left = left + 'px';
+        box.style.top = t + 'px';
+
+        function down(e) {
+            this.initClientX = e.clientX
+            this.initClientY = e.clientY
+            this.initLeft = parseFloat(box.style.left)
+            this.initTop = parseFloat(box.style.top)
+            /*
+              问题: title.onmousemove会存在一种现象，当鼠标过快滑到 box的外面时候，抬起鼠标不会触碰到 up事件了
+              原因: 光标移动之后，元素需要回流重绘，消耗性能，所以跟不上光标的速度
+              方法: 移动事件和点击时间要绑到 window上
+            
+            
+            */
+            window.onmousemove = move.bind(this)//如果用 call会返回立即执行的结果undefined 给到onmousemove
+        }
+        function move(e) {
+
+            let clientX = e.clientX
+            let clientY = e.clientY
+            // 鼠标滑动的距离就是盒子移动的距离
+            // 鼠标滑动的距离=移动后的鼠标坐标-原始鼠标坐标+初始的盒子的坐标
+            box.style.left = clientX - this.initClientX + this.initLeft + "px"
+            box.style.top = clientY - this.initClientY + this.initTop + "px"
+
+        }
+        function up() {
+            window.onmousemove = null;
+        }
+        title.onmousedown = down;
+        window.onmouseup = up;
+    </script>
+</body>
+
+</html>

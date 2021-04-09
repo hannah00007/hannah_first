@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            /* 
+              布局方式
+                + 响应式布局
+                    + 直接设置百分比: width=100%,即宽度会依据你的屏幕自适应
+                    + vw: width=50vw,即宽度是整个屏幕的一半
+                    + vh: height=50vh,即高度是整个屏幕的一半                   
+                + 媒体查询
+                + rem 布局 
+                    + 背景:UI的设计图一般是按照 750px 宽设计的
+                    + 为了自适应可以用 rem
+                        + 给html 设置 font-size=100px,即 1rem=100px
+                        + 那么 350px的 宽需要把html 设置 font-size=50px
+                        + 总结: html 设置 font-size值=100*winW/75          
+            */
+            font-size: 100px;
+        }
+        #box{
+            /* 50%则会一直按照你父级的一半 */
+            /* width: 50%; */
+            /* 相对于你的屏幕 */
+            /* width: 50vw; */
+            /* 宽是50%屏幕的高 */
+            /* width: 50vh; */
+            /* height: 50vh; */
+            /* 2rem*html的font-size =200px*/
+            width: 2rem;
+            /* 1rem*html的font-size =100px*/
+            height: 1rem;
+            background: red;
+            /* 这样也会自适应 */
+            /* margin: 5%; */
+
+        }
+        
+
+    </style>
+    <script>
+        function resize(){//监听屏幕宽度的变化
+            let winW=document.documentElement.clientWidth
+            let res=100*winW/750
+            document.documentElement.style.fontSize=res+"px"
+        }
+        window.onresize=resize
+        resize()//给 html设置 font-size值要放在页面的上面
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+    
+</body>
+</html>
+<script>
+
+
+    
+
+
+</script>

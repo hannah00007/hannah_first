@@ -20,30 +20,51 @@
         /* 位移
             + 1.可以分开写 XY轴
             + 2.也可以是放在一起写，里面的数字可以写成 0 */
-        transform: translateX(500px);
+        /* transform: translateX(500px);
         transform: translateY(300px);
         transform: translate(100px, 100px);
-        /* 过渡动画
-            + 1.属性 时间 过渡方式 延迟时间
+        transform: translate3d(100px, 100px, 100px); */
+        /*translateX/translateY/translateZ*/
+
+
+        /* 过渡动画transition（可以和 transform位移一起用，就是边位移边动画）
+            + 1.属性(all即是随便那个属性边都会触发,left只有左边属性变化才会触发...) 时间 过渡方式 延迟时间
             + 2.要给两个属性加动画，用逗号隔开
-            + 3.属性很多时第一个属性直接写成 all，即所有变化的属性
-            + 4.分开的属性分别是transition-property,transition-duration,transition-timing-function,transition-delay..
-            + 5.缺陷：transition只能规定开始和结束的状用
+            + 3.属性很多时第一个属性直接写成 all，即所有变化的属性（transition-property:all）
+            + 4.分开的属性分别是transition-property,transition-duration(动画过渡的时间),transition-timing-function（过渡效果 、ease、ease-in、ease-out、ease-in-out、cubic-bezier...）,transition-delay(设置延迟时间，默认值0s“立即执行”)..
+            + 5.缺陷：transition只能规定开始和结束的状用(transition和 transform位移一起用，就是边位移边动画但是他只能做从A到B的动画，哪想做一些比较复杂的动画怎么办呢，就要利用咱们的帧动画)
                 + 改善方法：@keyframes+animation
                     + @keyframe里面可以划分区域
+                    ```
+                     1.制作运动的轨迹（每一帧元素的样式） @keyframes
+                        @keyframes 动画名{
+                            0%或者from{ 第一帧的样式 }
+                            ...
+                            50%{ 中间某帧的样式 }
+                            ...
+                            100%或者to{ 最后一帧的样式 }
+                    }
+                    ```
                     + animation：名字，时间，方式，延迟时间，次数（infinite无限性也可以是 1，2...）
-                    + infinite无限循环
-                    + forwards让动画停留在最后一点
-                    + backwards 让动画从第延迟的时间点开始
-                    + both 是上边两个的结合
+                        + animation-name：动画名
+                        + animation-duration：播放的时间
+                        + animation-timing-function：运动方式，默认ease
+                        + animation-delay：延迟时间，默认0s
+                        + animation-iteration-count：播放次数，默认1，infinite无限次播放
+                        + animation-fill-mode：控制运动状态
+                            + forwards让动画停留在最后一点,默认会返回第一帧所在的位置，如果设置了这个属性，则运动完停留在最后一帧的位置
+                            + backwards 在动画设置延迟时间的情况下，我们让元素在第一帧位置等待运行
+                            + both 同时具备以上两个特点
                 */
         transition: all 4s linear 1s;
         overflow: hidden;
-        /* animation: run 1s linear 1s infinite */
-       
+
+        
+        animation: music 2s linear 1s 
+
     }
 
-    @keyframes run {
+    /* @keyframes run {
         0% {
             transform: translate(100px, 200px)
         }
@@ -59,54 +80,58 @@
         100% {
             transform: translate(700px, 800px)
         }
-    }
+    } */
+
     /* 下面是音乐图标旋转的写法
         + 里面可写比分比
         + 也可以写from to */
-    
-        @keyframes music {
-        0%{
+
+    @keyframes music {
+        0% {
             transform: rotate(0);
         }
-        100%{
+
+        100% {
             transform: rotate(360deg);
         }
     }
-        @keyframes music {
-            from {
-                transform: rotate(0);
-            }
 
-            to {
-                transform: rotate(360deg);
-            }
+    /* @keyframes music {
+        from {
+            transform: rotate(0);
         }
 
+        to {
+            transform: rotate(360deg);
+        }
+    } */
 
 
 
 
 
-    .box:hover {
+
+    /* .box:hover { */
         /* 缩放
             + 1.可以分开写，也可以复合写，当水平和垂直都是相同比例则也可以写一个数字
-            + 2.默认缩放的中心点是中心 */
-        transform: scaleX(0.5);
+            + 2.默认缩放的中心点是中心 
+            + 3.改变旋转中心点：用transform-origin，水平:left cener right 垂直: top cener bottom,也可以写具体的数字100 px，100px*/
+        /* transform: scaleX(0.5);
         transform: scaleY(0.5);
         transform: scale(0.5);
-        transform: scale(0.5, 0.2);
+        transform: scale(0.5, 0.2); */
         /* 旋转
             + 1.默认旋转的中心点是中心,可以绕 XYZ 轴旋转
-            + 2.改变旋转中心点：用transform-origin，水平:left cener right 垂直: top cener bottom
+            + 2.改变旋转中心点：用transform-origin，水平:left cener right 垂直: top cener bottom,也可以写具体的数字100 px，100px
             + 3.近大远小的效果：用perspective：1000px，加在他的父级,后面的数字是你看舞台剧的距离*/
-        transform: rotateX(360deg);
+        /* transform: rotateX(360deg);
         transform: rotateY(360deg);
-        transform: rotateZ(360deg);
+        transform: rotateZ(360deg); */
 
         /* 倾斜
             + 1.可以是单个写，也可以是复合写*/
-        transform: skew(45deg, 30deg);
-    }
+        /* transform: skew(45deg, 30deg); */
+    /* } */
 
     .box img {
         width: 200px;
@@ -121,9 +146,10 @@
 </style>
 
 <body>
-    <div class="box">
+    <div >
         <img src="1.jpg" alt="">
-        <audio src="14.音频.mp3" controls loop></audio>
+        <audio src="14.音频.mp3" controls loop ></audio>
+        <span style="display: block;"class="box">123</span>
     </div>
 </body>
 

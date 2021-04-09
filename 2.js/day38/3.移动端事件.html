@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">123</div>
+    <script>
+
+        /*
+          移动端的相关事件
+            + touchstart: 手指触摸
+            + touchmove: 手指移动
+            + touchend:触摸结束
+        */
+       let box=document.querySelector("#box")//在移动端querySelector、querySelectorAll 性能比较好
+        box.ontouchstart=function(e){
+            console.log("手指触摸",e)//事件对象还是存在的 e.changedTouches
+        }
+        box.ontouchmove=function(){
+            console.log("手指移动")
+        }
+        box.ontouchend=function(){
+            console.log("触摸结束")
+        }
+        //如果我只是触摸一下不移动这时候 click 也会执行的，但是如果我触摸然后移动就不会执行 click
+        box.onclick=function(){
+            console.log("触摸一下")//也就是说点击和移动是互斥的
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+          node
+            + 一个运行环境，可以供 js运行。node是在服务器运行，这样 js就可以写后台逻辑了
+            + 下载 node以后，就会自带 npm--下载插件的
+                + npm init -y 初始化一个项目，并且生成配置（依赖）清单
+                    + 执行完成之后就会生成一个package.json文件，里面的内容就是对当前项目的描述和插件的配置清单（package.json文件dependencies这个对象里面存着下载的插件)
+                    
+                + npm install xxx/npm i xxx（安装插件其实就是安装依赖）
+                    + 会先生成一个文件夹 node_modules里面放了各种下载好的插件
+                    + xxx: jquery、swiper(下载是最新版本的插件，有时会出现一些新的文件不要管)...
+                    + xxx@1: 下载 1版本中的最新版本
+                    + xxx@1.1.8: 下载指定版本的
+                    + 注意: 
+                        + 下载一个版本之后可以再下载另一个版本会覆盖
+                        + 上传 github 上是可以不上传 node_module文件的，因为比较大，
+                            + github上往下拉的时候可执行 npm stall（会按照你的配置清单重新下载）
+                            + 当然如果你直接改配置清单的版本可以在终端再执行npm stall，会知道给你重新下载
+                        + bug: 当你的node_module文件夹里面插件比较多时，新增插件会发之前的文件夹里面的插件搞丢了，当你用的时候就会显示没有，这时候你可以npm i 检索一遍。
+                            + 可以换一种方式下载插件: yarn
+                                + 这个需要下载一下 i这个插件：npm i yarn -g(装到电脑上),如果不加 g 就是装到你当前的文件上
+                                    + npm root -g 查看全局依赖清单存储的路径
+                                + yarn 本身也是可以下载插件的(yarn 是国内下载比较稳定，不容易丢包，而 npm是从国外下载比较慢，且容易丢包)：yarn add xxx/yarn add xxx@3.1.2
+                            + 想用npm，并且想在国内下载: nrm
+                                + npm i nrm -g
+                                + nrm ls 查看下载源(*就是当前长在使用的下载源)
+                                + nrm use xxx 切换下载源
+                + npm uninstall xxx 删除插件（需要刷新）
+                + npm uninstall xxx xxxx 同时下载多个插件
+
+
+        */
+
+    </script>
+</body>
+</html>

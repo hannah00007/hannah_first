@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /*
+      订阅、发布、取消发布
+        + 背景
+            + 1.开辟一块很大的空地，为了装各个要订阅的类型以及类型的池子--obj
+            + 2.这块地里面可以放好多要订阅的类型---属性名（早上起床，晚上睡觉）
+            + 3.类型对应的是可以放好多事件的事件池--属性值[]
+        
+        + 细节
+            + 订阅: on
+                + 参数: 地名，类型名，放到池子里面的函数
+                + 注意 
+                    - 池子里面的函数不要有重名，否则会覆盖；可以先用 includes 检测一下
+                    - 最后一个参数是函数，为了防止用户输入错误可以先用 typeof 检测一下
+            + 发布：emit(一般用一个定时器包裹)
+                + 参数: 地名，类型名
+                + 注意: 函数要遍历池子数组的每一项逐个发布，函数执行的时候外面一般包裹一个定时器
+            + 取消发布: off
+                + 参数: 地名，类型名，要取消订阅的函数名
+                + 注意: 通过获取目标函数的索引值在结合 splice 删除。但是为了防止数组塌陷，不要随意改变数组的结构，可以用 null 占位
+    
+    
+    */
+    let obj = {
+
+    }
+    function on(obj, type, fn) {
+        if (!obj[type]) {
+            obj[type] = [];
+        }
+
+        let ary = obj[type]
+        if (ary.includes(fn) || typeof fn !== "function") return
+        ary.push(fn)
+    }
+    function emit(obj, type) {
+        let ary = obj[type]//拿到池子
+        ary.forEach((item, index) => {
+            if (typeof item === "function") {
+                item()
+            }
+
+        })
+    }
+    function off(obj, type, fn) {
+        //移除之后尽量不要改变原有数组的结构,防止数组塌陷
+        let ary = obj[type];
+        let index = ary.indexOf(fn)
+        ary.splice(index, 1, null)
+    }
+
+    function fn() {
+        console.log("晚上洗漱")
+    }
+    function fn1() {
+        console.log("说晚安")
+    }
+    function fn2() {
+        console.log("说早安")
+    }
+    function fn3() {
+        console.log(" 吃2早饭")
+    }
+
+    on(obj, "sleep", fn)
+    on(obj, "sleep", fn)
+    on(obj, "sleep", fn1)
+    on(obj, "getup", fn2)
+    on(obj, "getup", fn3)
+
+    off(obj, "sleep", fn)
+
+
+    setTimeout(() => {
+        emit(obj, "sleep")
+    }, 5000)
+    console.log(obj)
+
+
+    //为啥要这样移除和上面的移除有什么不一样
+    function fn4() { }
+    box.addEventListener('click', fn4, true);//订阅
+    box.removeEventListener('click', fn4, true);//移除
+    // 移除和订阅的时候传递的参数要一模一样
+</script>

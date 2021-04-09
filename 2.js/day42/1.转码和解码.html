@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+        转码: encodeURI;一般用它转码整个URL里面的汉字，把汉字进行特殊的编译
+
+        解码: decodeURI;一般用它解码整个URL的特殊的编译
+    
+    */
+    let url=  'http://www.baidu.com:8080/info?name=二丫&school=北大'
+
+    
+
+    url = encodeURI(url); // 转码 "http://www.baidu.com:8080/info?name=%E4%BA%8C%E4%B8%AB&school=%E5%8C%97%E5%A4%A7"
+    url = decodeURI(url); // 解码 "http://www.baidu.com:8080/info?name=二丫&school=北大"
+
+    //------------------------------------------------
+
+    /*
+        转码: encodeURIComponent,会对字符串的数字和字母以外的值进行编码(一般用于给参数部分进行编码)
+
+        注意:encodeURIComponent适合于转码参数，不使用于整个url;encodeURI适合于转码整个url
+    */
+    url = encodeURIComponent(url);// http%3A%2F%2Fwww.baidu.com%3A8080%2Finfo%3Fname%3D%E4%BA%8C%E4%B8%AB%26school%3D%E5%8C%97%E5%A4%A7
+
+    // 假设当前传递的参数的属性值是一个完整的url，这时候就用到encodeURIComponent去转码了
+
+    let params = encodeURIComponent('ss=www.ss.com:8888/ss')
+    let url = 'http://www.baidu.com:8080/info?'+ params;
+    console.log(url);// http://www.baidu.com:8080/info?ss%3Dwww.ss.com%3A8888%2Fss
+
+  </script>
+</body>
+</html>

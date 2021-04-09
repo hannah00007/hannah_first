@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html,
+body {
+  background-color: #f5f5f5;
+}
+.shop_box {
+  width: 1200px;
+  margin: 0 auto;
+}
+.shop_box .sort_btn_box {
+  background-color: #fff;
+  overflow: hidden;
+}
+.shop_box .sort_btn_box li {
+  float: left;
+  margin: 0 20px;
+  height: 50px;
+  line-height: 50px;
+  cursor: pointer;
+  user-select: none;
+}
+.shop_box .phone_list_box {
+  margin-top: 30px;
+  overflow: hidden;
+}
+.shop_box .phone_list_box > li {
+  width: 220px;
+  height: 380px;
+  padding: 10px;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  margin: 0 20px 20px 0;
+}
+.shop_box .phone_list_box > li .img_box {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+.shop_box .phone_list_box > li .img_box img {
+  width: 100%;
+}
+.shop_box .phone_list_box > li h5 {
+  font-size: 15px;
+  padding: 10px 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.shop_box .phone_list_box > li .price_box {
+  padding: 10px;
+}
+.shop_box .phone_list_box > li .price_box .price {
+  color: #ff0000;
+  font-size: 18px;
+}
+.shop_box .phone_list_box > li .price_box .select_icon {
+  font-size: 10px;
+  border: 1px solid blue;
+  border-radius: 20px;
+  color: blue;
+}
+.shop_box .phone_list_box > li .feature_box {
+  overflow: hidden;
+}
+.shop_box .phone_list_box > li .feature_box > li {
+  border: 1px solid #ff0000;
+  float: left;
+  margin-right: 5px;
+  color: #ff0000;
+  font-size: 12px;
+  padding: 0 10px;
+}
+.shop_box .phone_list_box > li .feature_box > li:nth-child(1) {
+  margin-left: 15px;
+}
+.shop_box .phone_list_box > li .comment_box {
+  position: absolute;
+  bottom: 0px;
+  font-size: 12px;
+  color: #ccc;
+  padding: 0 5px;
+}
+.shop_box .phone_list_box > li .comment_box span {
+  margin-right: 15px;
+}

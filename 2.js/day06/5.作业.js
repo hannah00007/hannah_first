@@ -20,13 +20,52 @@ var result =
     addZero(time.split(":")[1]) +
     "分" +
     addZero(time.split(":")[2] + "秒");
-console.log(result)
+console.log(result);
 
 /**
- * 作业二:获取链接里的参数
+ * 作业二:获取链接里的参数：URL问号传参解析
+ * 问号部分后面的值（或者#哈希后面的值）获取到，组成一个对象的格式
  */
+//获取问号和井号后面的值name=wanghan&age=18&sex=female#teacher
+//获取之后再按照&拆分["name=wanghan","age=18","sex=female"]
+//然后分别处理每一项，按照=拆分，让数组中的第一项是属性名，第二项数属性值
+//直接获取井号后面的值让其属性名是 HASH,属性值就是获取的值
+var str =
+    "https://www.baidu.com?name=wanghan&age=18&job=cooker&sex=female#teacher";
+function queryURLParameter(url) {
+    //1.分别获取？和#后面的内容
+    let askIndex = url.indexOf("?"), //获取索引值,没有的返回-1
+        polIndex = url.lastIndexOf("#"),
+        askText = "",
+        polText = "";
+    //没有井号则截取到末尾
+    polIndex === -1 ? (polIndex = url.length) : null;
+    //没有问号则不用截取
+    askText > -1 ? (askText = url.substring(askIndex + 1, polIndex)) : null;
+    polText = url.substring(polIndex + 1);
+    //处理井号后面的值
+    let obj = {};
+    polText ? (obj["HASH"] = polText) : null;
+    // 处理问号后面
+    if (askText) {
+        askText.split("&").forEach((item) => {
+            item = item.split("=");
+            obj[item[0]] = item[1];
+        });
 
-var str = "https://www.baidu.com?name=wanghan&age=18&job=cooker&sex=female";
+        //let arr = askText.split("&");
+
+        // for (var i = 0; i < arr.length; i++) {
+        //     var key = arr[i].split("=")[0];
+        //     var value = arr[i].split("=")[1];
+        //     obj[key] = value;
+        // }
+    }
+
+    return obj;
+}
+queryURLParameter(str);
+
 function getContent(str) {
     var list = str.split("?")[1].split("&");
     if (list) {
@@ -145,39 +184,38 @@ function unique(ary) {
     var obj = {};
     for (var i = 0; i < ary.length; i++) {
         var getItems = ary[i];
-        if(obj[getItems]==getItems){
-            ary.splice(i,1);
+        if (obj[getItems] == getItems) {
+            ary.splice(i, 1);
             i--;
-        }else{
-            obj[getItems]=getItems;
+        } else {
+            obj[getItems] = getItems;
         }
-
     }
-    return ary
+    return ary;
 }
 console.log(unique(ary));
 /**
  * 作业九:截取字符串的方法
  */
-var str="abcdefg"
-console.log(str.slice(-4,-1))//从第一个参数开始复制（包含），到第二个参数结束（不包含）
-console.log(str.substring(3,6))//从第一个参数开始复制（包含），到第二个参数结束（不包含）
+var str = "abcdefg";
+console.log(str.slice(-4, -1)); //从第一个参数开始复制（包含），到第二个参数结束（不包含）
+console.log(str.substring(3, 6)); //从第一个参数开始复制（包含），到第二个参数结束（不包含）
 // 区别：slice支持负数索引值，但是 substring 不支持
-console.log(str.substr(-4,3))
+console.log(str.substr(-4, 3));
 
 /**
  * 作业十:删除数组最后一项
  */
 var ary = [1, 2, 2, 2, 3, 3, 3, 3];
-console.log(ary.pop())
-console.log(ary.splice(ary.length-1,1))
-console.log(ary.length--)
+console.log(ary.pop());
+console.log(ary.splice(ary.length - 1, 1));
+console.log(ary.length--);
 
 /**
-* 作业十一:在数组最后加一项
-*/
+ * 作业十一:在数组最后加一项
+ */
 var ary = [1, 2, 2, 2, 3, 3, 3, 3];
 
-console.log(ary.splice(ary.length,0,6))
-console.log(ary.push(6))
-console.log(ary[ary.length]=6)
+console.log(ary.splice(ary.length, 0, 6));
+console.log(ary.push(6));
+console.log((ary[ary.length] = 6));

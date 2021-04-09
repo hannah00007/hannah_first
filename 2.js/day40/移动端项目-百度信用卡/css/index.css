@@ -1,0 +1,212 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  padding-bottom: 1rem;
+  box-sizing: border-box;
+}
+.footer {
+  height: 1rem;
+  width: 100%;
+  background-color: pink;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid black;
+  text-align: center;
+  z-index: 9;
+}
+.footer ul {
+  display: flex;
+  height: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.36rem;
+  box-sizing: border-box;
+  padding: 0 0.3rem;
+}
+.footer ul li {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.footer ul li span.select {
+  color: brown;
+}
+.nav {
+  width: 100%;
+  height: 1rem;
+  background-color: chartreuse;
+  padding: 0 0.3rem;
+  box-sizing: border-box;
+  font-size: 0.2rem;
+  line-height: 1rem;
+  color: white;
+}
+.nav span:nth-child(1) {
+  padding-right: 0.2rem;
+}
+.nav span:nth-child(2) {
+  color: #333;
+  border-left: 1px solid white;
+  padding-left: 0.2rem;
+}
+.nav:after {
+  content: "";
+  width: 130%;
+  display: block;
+  height: 3rem;
+  border-radius: 0 0 50% 50%;
+  margin-left: -0.7rem;
+  background-color: yellowgreen;
+}
+.title_banner {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 0.3rem;
+}
+.title_banner img {
+  display: block;
+  width: 100%;
+  height: 3rem;
+}
+.simple-box {
+  font-size: 0.36rem;
+}
+.simple-box .title {
+  height: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.simple-box .title span:nth-child(2) {
+  font-size: 0.24rem;
+}
+.simple-box .title.none {
+  display: none;
+}
+.bank {
+  width: 100%;
+  background: white;
+  padding: 0.2rem 0.3rem;
+  box-sizing: border-box;
+}
+.bank .content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.bank .content li {
+  width: 25%;
+  padding: 0.2rem;
+  box-sizing: border-box;
+}
+.bank .content li a {
+  color: black;
+  display: block;
+  width: 100%;
+  font-size: small;
+}
+.bank .content li a img {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  margin: 0 auto;
+}
+.bank .content li a span {
+  display: block;
+  width: 100%;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+}
+.hotRecommend {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.2rem;
+}
+.hotRecommend .swiper-container {
+  height: 3rem;
+}
+.hotRecommend .swiper-container .swiper-slide {
+  background-color: brown;
+}
+.hotRecommend .swiper-container .swiper-slide111 {
+  height: 3rem;
+  line-height: 3rem;
+  background-color: brown;
+  text-align: center;
+}
+hr {
+  height: 0.15rem;
+  background-color: #b3afaf;
+}
+.recommend {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 0.3rem;
+  margin-bottom: 0.5rem;
+}
+.recommend .ul1 {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 0.1rem;
+}
+.recommend .ul1 li {
+  width: 48%;
+  height: 2rem;
+  border: 1px solid black;
+  margin-bottom: 0.2rem;
+}
+.recommend .ul2 {
+  display: flex;
+  justify-content: space-between;
+}
+.recommend .ul2 li {
+  width: 23%;
+  margin: 0 1%;
+  height: 2rem;
+  border: 1px solid black;
+  margin-bottom: 0.2rem;
+}
+.middle li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid red;
+  box-sizing: border-box;
+}
+.middle li .left {
+  width: 40%;
+  margin-right: 0.2rem;
+}
+.middle li .left img {
+  height: 2rem;
+}
+.middle li .right {
+  height: 2rem;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.middle li .right .name {
+  font-size: 0.24px;
+  padding-bottom: 0.1rem;
+}
+.middle li .right .present {
+  padding-bottom: 0.1rem;
+  font-size: 0.2px;
+  color: cornflowerblue;
+}
+.middle li .right .sold span {
+  font-size: 0.1px;
+  border: 0.1px solid red;
+  color: red;
+  padding: 0.05rem;
+}

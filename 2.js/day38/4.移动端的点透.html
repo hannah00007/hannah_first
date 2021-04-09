@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            background-color: red;
+            width: 100px;
+            height: 200px;
+        }
+        #box2{
+            background-color:green;
+            width: 50px;
+            height: 100px;
+            z-index: 3;
+            position: absolute;
+            top: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>
+<script>
+    let box1=document.getElementById("box1")
+    let box2=document.getElementById("box2")
+    box2.ontouchstart=function(e){
+        /*      
+          问题: 之所以会返回box1click是因为点击 box2 时候会先执行start（此时box2已经从文档树上消失了）-move-click ，执行click此时box2已经消失了
+          解决: 
+            + 1.阻止默认行为
+            + 2.通过定时器解决
+          */
+        console.log("box1start")//box1start和box1click
+        // e.preventDefault()
+        setTimeout(()=>{
+            box2.style.display="none"
+        },5000)
+        
+    }
+    box1.onclick=function(){
+        console.log("box1click")
+    }
+
+
+
+</script>
