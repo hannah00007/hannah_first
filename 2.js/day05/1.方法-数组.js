@@ -1,10 +1,12 @@
-// 数组可以用 for in 和 for of 迭代
-// 数组里面的 length 是不可枚举的属性
-
-
 /*
-  数组: 对象类型,属性名是索引数字,属性值可以是任意类型;
- */
+    数组: 对象类型,属性名是索引数字,属性值可以是任意类型;
+    数组可以用 for in 和 for of 迭代
+        + let arr=[1,2,3,8]  
+            + for(var key of arr){console.log(key,arr[key])}//0 1;1 2;2 3;3 8
+            + for(var key of arr){console.log(key)}//1 2 3 8
+        + 数组里面的 length 是不可枚举的属性
+*/
+
 var ary = [1, 2, 3];
 ary.length; //获取 ary的长度
 ary[0]; //获取第一项
@@ -59,7 +61,7 @@ console.log(ary); //[2,3]
 console.log(res); //1
 
 /*
-  删除/新增: splice(n m x1 x2);
+  删除/新增: ary.splice(n m x1 x2);
      + 作用: 从索引n开始(包含),删除m项后用x1、x2... 替代;
      + 参数: n、m、x1、x2;
      + 返回值: 删除项的数组,获取删除的某项:res[0];
@@ -139,9 +141,9 @@ ary.slice(0);
 ary.slice();
 
 /*
-  拼接: ary.concat(ary1);
+  拼接: ary.concat(ary1,ary2....);
      + 作用: 拼接数组
-     + 参数: 具体的某项或者数组
+     + 参数: 具体的某项或者数组(支持多个)
      + 返回值: 拼接后的数组;
      + 是否改变原数字: 不改变;
  */
@@ -184,6 +186,7 @@ console.log(ary, res); //[1, 2, 3] "1+2+3"
 */
 var ary = [1, 2, 3];
 var res = ary.reverse(); //[3, 2, 1]
+console.log(res); //[3, 2, 1]
 
 /*
   数组排序:ary.sort()/
@@ -192,7 +195,7 @@ var res = ary.reverse(); //[3, 2, 1]
           })
      + 作用: 排序;
      + 参数:
-          + 无: 10以内不会受影响,10 以上会有影响;
+          + 无:10以内不会受影响,10 以上会有影响;
           + 函数: return a-b 代表升序,return b-a代表降序;
      + 返回值: 排序之后的数组;
      + 是否改变原数字: 改变;
@@ -208,14 +211,15 @@ ary.sort(function (a, b) {
   数组检索: ary.indexOf(x,n)/ary.lastIndexOf(x,n);
      + 作用: 
           + 从位置n(包括)开始进行检索,x在数组中首次出现的位置(索引),如果没有x，就返回-1;
-          + 到位置n(包括)结束前进行检索,x 在数组中最后一次出现的位置(索引),如果没有x，就返回-1;
-     + 参数:indexof(x,n)/lastindexof(x,n);
+          + 到位置n(包括)结束前进行检索,x在数组中最后一次出现的位置(索引),如果没有x，就返回-1;
+     + 参数: indexOf(x,n)/lastindexOf(x,n);
         + x 表示检索的目标值;
         + n 表示:
-          + ary.indexOf(x,n):从位置n(包括)开始检索,首次 x出现的位置(索引);
+          + n 可以写也可以不写，不写表示 x 首次出现（最后一次出现）的位置
+          + ary.indexOf(x,n):从位置n(包括)开始检索,首次x出现的位置(索引);
           + ary.lastIndexOf(x,n):到位置n(包括)停止检索,最后 x出现的位置(索引);
      + 返回值: 索引位置/-1;
-     + 是否改变原数字: 改变;
+     + 是否改变原数字: 不改变;
 */
 var ary = [1, 2, 2, 4, 1, 4];
 var res = ary.indexOf(1); //0
@@ -227,7 +231,7 @@ var res2 = ary.lastIndexOf(1, 4); //4
 
 /*
   判断包含: includes;
-     + 作用: 判断是否包含否一项;
+     + 作用: 判断是否包含某一项;
      + 参数: 判断的项;
      + 返回值: true(包含),false(不包含);
      + 是否改变原数组: 不改变;
@@ -244,9 +248,9 @@ var res = ary.includes(1); //true
 var ary = [4, 5, 6, 7];
 var res = ary.forEach((item, index) => {
     console.log(index); //数组索引
-    console.log(item); //数组索引值
-    console.log(ary[index]); //数组索引值
-    return 1;
+    console.log(item); //数组值
+    console.log(ary[index]); //数组值
+    return 1;//无用
 });
 console.log(ary); //[4,5,6,7]
 
@@ -294,7 +298,11 @@ console.log(res); //false
     + 参数: 函数
     + 返回值: return 后面是 true就会 push 到一个新数组里面，反之不会。没有符合条件的值就会返回空数组
 */
-//let arr=[100,220,300];
+let arr=[100,220,300];
+arr.filter((item)=>{
+    return item>120
+})
+//[220,300]
 let arr = [
     {
         name: "陈晓光",
@@ -313,9 +321,8 @@ let arr = [
         sex: 1,
     },
 ];
-arr = arr.filter((item) => {
+arr.filter((item) => {
     //当回调函数执行的时候，如果返回的是 true ，那当前的 item 就会被存在新数组里面
-
     return item.sex == 0;
     //return false//空数组
     //return true //克隆数组
@@ -331,5 +338,16 @@ console.log(arr);
  */
 let arr = [100, 220, 300];
 let res = arr.find((item) => {
-    return item > 200;
+    return item > 100;
 });
+//[220]
+let ary = [1, 22, 3, 4, 5, 5, 6, 6];
+function ss(ary, num) {
+    let arr = [];
+    for (let i = 0; i < ary.length; ) {
+        // 4 8
+        arr.push(ary.slice(i, (i += num))); // 0,4    4,8   8,12
+    }
+    return arr;
+}
+ss(ary, 4);

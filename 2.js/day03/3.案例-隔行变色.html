@@ -32,7 +32,7 @@
 
 <body>
     <ul id="main">
-        <li>最后一段恋情则是在2011年,滕丽名经人介绍与现在的老公朱建昆相识</li>
+        <li class="111">最后一段恋情则是在2011年,滕丽名经人介绍与现在的老公朱建昆相识</li>
         <li>最后一段恋情则是在2011年,滕丽名经人介绍与现在的老公朱建昆相识</li>
         <li>最后一段恋情则是在2011年,滕丽名经人介绍与现在的老公朱建昆相识</li>
         <li>最后一段恋情则是在2011年,滕丽名经人介绍与现在的老公朱建昆相识</li>
@@ -43,17 +43,19 @@
 </html>
 <script>
     var main = document.getElementById("main");
-    var lis = main.getElementsByTagName("li");
+    var lis = main.getElementsByTagName("li");//HTMLCollection(5) [li, li, li, li, li]是一个类数组
 
     // 通过添加属性
     // for (var i = 0; i < lis.length; i++) {
     //     if (i % 2 == 0) {
-    //         lis[i].className = "color1";
+    //         lis[i].className = "color1";//className会覆盖当前元素之前的的类名
+    //         //lis[i].classList.add("color1")//classList不会覆盖，会在之前的类名里面加上当前的类名
     //     } else {
     //         lis[i].className = "color2";
     //     }
     // }
-    // 通过判断
+    
+    // 通过设置背景颜色
     for (var i = 0; i < lis.length; i++) {
         if (i % 2 == 0) {
             lis[i].style.background = "blue";
@@ -61,13 +63,16 @@
             lis[i].style.background = "yellow";
         }
         lis[i].onmouseover = function () {
-            //oldcolor是自定义属性，this 是获取当前所使用的元素
+            //oldcolor是自定义属性，this 是获取当前所使用的元素，在当前点击的元素身上添加一个属性oldcolor
             this.oldcolor = this.style.background;
             this.style.background = "lightpink";
+
+
         }
         lis[i].onmouseout = function () {
             this.style.background = this.oldcolor;
         }
+
 
     }
 

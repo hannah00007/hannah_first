@@ -31,6 +31,7 @@
         margin-right: 30px;
         text-align: center;
         border: 1px solid #333;
+        /* 因为li 和 div都设置了1px边框，加起来就是 2px，所以让 li相对于自己原来的位置向下移动了 1px */
         position: relative;
         top: 1px;
     }
@@ -74,18 +75,31 @@
     var lists = main.getElementsByTagName("li");
     var divs = main.getElementsByTagName("div");
     for (var i = 0; i < divs.length; i++) {
-        lists[i].index = i;
-        lists[i].onclick = function () {
-            var index = this.index;
-            for (var i = 0; i < divs.length; i++) {
-                lists[i].className = ""
-                divs[i].className = ""
-            }
-            lists[index].className = "current"// this.className="current"
-            //lists[index].classList.add("current")// this.className="current"
-            divs[index].className = "current"
-            //divs[index].classList.add("current")// this.className="current"
+        lists[i].index = i//在 lists 身上添加一个属性
+        lists[i].onclick = function () {          
+            [].forEach.call(lists, (item) => { item.className = "" });//让类数组调用数组身上的forEach方法，call里面的第二个参数就是传给 forEach的
+            this.classList.add("current");
+            [].forEach.call(divs, (item) => { item.className = "" });
+            divs[this.index].classList.add("current");
+
         }
     }
+
+
+    
+    // for (var i = 0; i < divs.length; i++) {
+    //     lists[i].index = i;
+    //     lists[i].onclick = function () {
+    //         var index = this.index;
+    //         for (var i = 0; i < divs.length; i++) {
+    //             lists[i].className = ""
+    //             divs[i].className = ""
+    //         }
+    //         lists[index].className = "current"// this.className="current"
+    //         //lists[index].classList.add("current")// this.className="current"
+    //         divs[index].className = "current"
+    //         //divs[index].classList.add("current")// this.className="current"
+    //     }
+    // }
 
 </script>

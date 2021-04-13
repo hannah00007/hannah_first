@@ -36,10 +36,9 @@
   </style>
 </head>
 
-
 <body>
   <div class="main" id="main">
-    <button class="Btn" id="Btn">隐藏</button>
+    <button class="Btn" id="Btn"><p>隐藏</p></button>
     <img id="img"
       src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1577444372587&di=1684c649c2b1d4b1fdcd5910968c508b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fpcdlc%2F1709%2F16%2Fc79%2F59427944_1505500668556.gif"
       alt="">
@@ -53,7 +52,8 @@
   Btn.onclick = function () {
     // var value = Btn.innerText;
 
-    if (Btn.innerText == "隐藏") {
+    if (Btn.innerText == "隐藏") {//Btn.innerHTML="<p>隐藏</p>"
+
       img.style.display = "none";
       Btn.innerText = "显示"
 

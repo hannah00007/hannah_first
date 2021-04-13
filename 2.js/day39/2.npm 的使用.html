@@ -34,6 +34,13 @@
                                 + npm i nrm -g
                                 + nrm ls 查看下载源(*就是当前长在使用的下载源)
                                 + nrm use xxx 切换下载源
+                + npm i xxx -g 下载到 C 盘
+                + npm i xxx --save 把当前的模块下载到生产依赖里面（上次按之后还是会用 eg.jquery）
+                    + npm i xxx 默认是生产依赖（原因是不管是啥依赖，一切都已生产依赖上传到服务器）
+                    +  dep是生产依赖
+                + npm i xxx --save-dev 把当前模块下载到开发依赖里面
+                    + dev是开发依赖
+                    
                 + npm uninstall xxx 删除插件（需要刷新）
                 + npm uninstall xxx xxxx 同时下载多个插件
 
